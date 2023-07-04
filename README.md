@@ -36,7 +36,7 @@ https://docs.google.com/spreadsheets/d/1Sv1xPKt93eveZDH3BZty6n0g1dT3k1YsbuPGNN1a
 https://docs.google.com/spreadsheets/d/1Z3Jr6FGV1eMw2JdwksX11o-AnSnzXgWjmy8kGfKitPM/edit#gid=895554373
 
 ## ワイヤーフレーム
-https://drive.google.com/drive/u/2/my-drive
+https://drive.google.com/file/d/1InZ6lxTkKvG7lB2JcGeTN2wcF0oJJXmc/view?usp=sharing
 
 ## ER図
 ![ER図](README_images/ER図.png)
