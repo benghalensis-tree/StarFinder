@@ -29,11 +29,14 @@
 * rails db:create && rails db:migrate
 * rails s
 
+## チェックシート
+https://docs.google.com/spreadsheets/d/17VgaYnN_GRRiCZZYc7RjlfkV79E4i6-XEG17wMIc13k/edit?usp=sharing
+
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/1Sv1xPKt93eveZDH3BZty6n0g1dT3k1YsbuPGNN1aqKA/edit#gid=1186708815
+https://docs.google.com/spreadsheets/d/1Sv1xPKt93eveZDH3BZty6n0g1dT3k1YsbuPGNN1aqKA/edit?usp=sharing
 
 ## テーブル定義書
-https://docs.google.com/spreadsheets/d/1Z3Jr6FGV1eMw2JdwksX11o-AnSnzXgWjmy8kGfKitPM/edit#gid=895554373
+https://docs.google.com/spreadsheets/d/1Z3Jr6FGV1eMw2JdwksX11o-AnSnzXgWjmy8kGfKitPM/edit?usp=sharing
 
 ## ワイヤーフレーム
 https://drive.google.com/file/d/1InZ6lxTkKvG7lB2JcGeTN2wcF0oJJXmc/view?usp=sharing
