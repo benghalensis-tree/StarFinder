@@ -14,6 +14,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
+gem 'devise-i18n'
 gem 'rexml'
 
 group :development, :test do
