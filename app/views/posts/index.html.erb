@@ -26,7 +26,7 @@
         <td><%= post.address %></td>
         <td><%= post.latitude %></td>
         <td><%= post.longitude %></td>
-        <td><%= post.image %></td>
+        <td><%= image_tag post.image.url, class: 'img-index' %></td>
         <td><%= post.view_count %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
