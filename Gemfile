@@ -16,6 +16,7 @@ gem 'mini_magick'
 gem 'devise'
 gem 'devise-i18n'
 gem 'rexml'
+gem 'rails_admin', '~> 3.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
