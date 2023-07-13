@@ -19,6 +19,9 @@ gem 'rexml'
 gem 'rails_admin', '~> 3.0'
 gem 'cancancan'
 gem 'geocoder'
+gem 'gon'
+gem 'dotenv-rails'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
