@@ -6,6 +6,6 @@ Rails.application.routes.draw do
       get 'map'
     end
   end
-  root 'posts#index'
+  root 'posts#map'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
