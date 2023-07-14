@@ -21,6 +21,7 @@ gem 'cancancan'
 gem 'geocoder'
 gem 'gon'
 gem 'dotenv-rails'
+gem 'faker'
 
 
 group :development, :test do
