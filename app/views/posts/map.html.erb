@@ -11,7 +11,7 @@
 
 <script>
   let map;
-  let marker = []; 
+  let markers = []; 
   let infoWindow = []; 
   let markerData = gon.posts; 
   function initMap() {
@@ -30,7 +30,7 @@
         lng: markerData[i]['longitude']
       });
 
-      marker[i] = new google.maps.Marker({
+      markers[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map
       });
@@ -41,13 +41,19 @@
 
       markerEvent(i);
     }
+
+    new markerClusterer.MarkerClusterer({
+        map,
+        markers
+    });
   }
 
   function markerEvent(i) {
-    marker[i].addListener('click', function () {
-      infoWindow[i].open(map, marker[i]);
+    markers[i].addListener('click', function () {
+      infoWindow[i].open(map, markers[i]);
     });
   }
 
 </script>
+<script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_API_KEY']%>&callback=initMap" async defer></script>
