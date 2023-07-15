@@ -8,6 +8,20 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def map
+    @posts = Post.all
+    gon.posts = @posts.map do |post|
+      {
+        title: post.title,
+        address: post.address,
+        latitude: post.latitude,
+        longitude: post.longitude,
+        image_url: post.image.url,
+        post_url: post_url(post)
+      }
+    end
+  end
+
   # GET /posts/1 or /posts/1.json
   def show
   end

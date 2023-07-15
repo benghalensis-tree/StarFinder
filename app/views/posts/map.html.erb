@@ -1,0 +1,74 @@
+
+<h2>gmap</h2>
+<div id='map'></div>
+
+<style>
+#map {
+  height: 600px;
+  width: 100%%;
+}
+</style>
+
+<script>
+  let map;
+  let markers = []; 
+  let infoWindow = []; 
+  let markerData = gon.posts; 
+  
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 35.6585, lng: 139.7486 }, 
+      zoom: 5,
+      mapId: "<%=ENV['MAP_ID']%>",
+    });
+
+    for (var i = 0; i < markerData.length; i++) {
+      let id = markerData[i]['id']
+
+      markerLatLng = new google.maps.LatLng({
+        lat: markerData[i]['latitude'],
+        lng: markerData[i]['longitude']
+      });
+
+      markers[i] = new google.maps.marker.AdvancedMarkerView({
+        position: markerLatLng,
+        map: map,
+        collisionBehavior: 'OPTIONAL_AND_HIDES_LOWER_PRIORITY',
+      });
+
+      content_data = `<div style="width:300px; height:300px;">
+                        <a href="${ markerData[i]['post_url'] }">
+                          <img src="${ markerData[i]['image_url'] }" width="100%" />
+                        </a>
+                        <p style="font-size:20px;">${ markerData[i]['title']}</p>
+                      </div>`
+
+      infoWindow[i] = new google.maps.InfoWindow({
+        content: content_data,
+        maxWidth: 600
+      });
+
+      markerEvent(i);
+    }
+
+    new markerClusterer.MarkerClusterer({
+        map,
+        markers
+    });
+  }
+
+  function markerEvent(i) {
+    markers[i].addListener('click', function () {
+      infoWindow[i].open(map, markers[i]);
+    });
+  }
+  document.addEventListener('turbolinks:load', function() {
+  initMap();
+});
+
+</script>
+<script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_API_KEY']%>&v=beta&libraries=marker&callback=initMap"data-turbolinks-eval="false"></script>

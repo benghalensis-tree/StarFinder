@@ -8,11 +8,13 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= include_gon %>
   </head>
 
   <body>
     <header>
-      <li><%= link_to 'ホーム', posts_path %></li>
+      <li><%= link_to 'マップ', map_posts_path %></li>
+      <li><%= link_to '一覧', posts_path %></li>
       <% if user_signed_in? %>
         <li><%= link_to '新規投稿', new_post_path %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
