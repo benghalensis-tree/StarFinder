@@ -1,4 +1,5 @@
 require 'faker'
+require 'gimei'
 
   User.create(
     name: 'admin', 
@@ -7,11 +8,13 @@ require 'faker'
     password: "111111"
   )
 
-  100.times do |i|
-    
+  30.times do |i|
+    address = Gimei.address
+
     post = Post.create(
       title: "test#{i}",
-      latitude: Faker::Number.between(from: 24.0, to: 46.0),
-      longitude: Faker::Number.between(from: 123.0, to: 154.0)
+      address: address.kanji,
+      latitude: Faker::Address.latitude,
+      longitude: Faker::Address.longitude
     )
   end
