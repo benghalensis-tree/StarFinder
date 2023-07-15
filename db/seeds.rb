@@ -10,11 +10,13 @@ require 'gimei'
 
   30.times do |i|
     address = Gimei.address
+    latitude = Faker::Number.between(from: 24.0, to: 46.0)
+    longitude = Faker::Number.between(from: 123.0, to: 154.0)
 
     post = Post.create(
       title: "test#{i}",
       address: address.kanji,
-      latitude: Faker::Address.latitude,
-      longitude: Faker::Address.longitude
+      latitude: latitude,
+      longitude: longitude
     )
   end
