@@ -20,6 +20,7 @@
     map = new google.maps.Map(document.getElementById('map'), {
       center: { lat: 35.6585, lng: 139.7486 }, 
       zoom: 2,
+      mapId: 'DEMO_MAP_ID',
     });
 
     for (var i = 0; i < markerData.length; i++) {
@@ -30,10 +31,10 @@
         lng: markerData[i]['longitude']
       });
 
-      markers[i] = new google.maps.Marker({
+      markers[i] = new google.maps.marker.AdvancedMarkerView({
         position: markerLatLng,
         map: map,
-        optimized: true 
+        collisionBehavior: 'OPTIONAL_AND_HIDES_LOWER_PRIORITY',
       });
 
       infoWindow[i] = new google.maps.InfoWindow({
@@ -57,4 +58,5 @@
 
 </script>
 <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_API_KEY']%>&callback=initMap" async defer></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_API_KEY']%>&v=beta&libraries=marker&callback=initMap"></script>
