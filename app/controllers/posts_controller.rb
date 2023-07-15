@@ -16,7 +16,8 @@ class PostsController < ApplicationController
         address: post.address,
         latitude: post.latitude,
         longitude: post.longitude,
-        image_url: post.image.url
+        image_url: post.image.url,
+        post_url: post_url(post)
       }
     end
   end

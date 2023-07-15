@@ -14,6 +14,7 @@
   let markers = []; 
   let infoWindow = []; 
   let markerData = gon.posts; 
+  
   function initMap() {
     geocoder = new google.maps.Geocoder()
 
@@ -38,7 +39,7 @@
       });
 
       infoWindow[i] = new google.maps.InfoWindow({
-        content: `<a><h2>${ markerData[i]['title']}</h2><br><img src="${ markerData[i]['image_url'] }" width="100" /></a>`
+        content: `<a href="${ markerData[i]['post_url'] }"><h2>${ markerData[i]['title']}</h2><br><img src="${ markerData[i]['image_url'] }" width="100" /></a>`
       });
 
       markerEvent(i);
@@ -55,6 +56,7 @@
       infoWindow[i].open(map, markers[i]);
     });
   }
+  
 
 </script>
 <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
