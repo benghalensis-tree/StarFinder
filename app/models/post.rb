@@ -4,5 +4,6 @@ class Post < ApplicationRecord
   validates :title, presence: true
   geocoded_by :address
   after_validation :geocode, if: lambda {|obj| obj.address_changed?}
+  belongs_to :user
 
 end
