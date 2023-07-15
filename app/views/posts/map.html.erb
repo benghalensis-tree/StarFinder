@@ -5,7 +5,7 @@
 <style>
 #map {
   height: 600px;
-  width: 600px;
+  width: 100%%;
 }
 </style>
 
@@ -38,7 +38,7 @@
       });
 
       infoWindow[i] = new google.maps.InfoWindow({
-        content: markerData[i]['address']
+        content: `<a><h2>${ markerData[i]['title']}</h2><br><img src="${ markerData[i]['image_url'] }" width="100" /></a>`
       });
 
       markerEvent(i);
