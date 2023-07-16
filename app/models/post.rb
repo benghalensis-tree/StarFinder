@@ -5,5 +5,7 @@ class Post < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: lambda {|obj| obj.address_changed?}
   belongs_to :user
+  has_many :favorites
+  has_many :favorite_users, through: :favorites, source: :user
 
 end
