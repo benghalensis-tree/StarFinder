@@ -1,2 +1,14 @@
 <h1>MyPages#edit</h1>
 <p>Find me in app/views/my_pages/edit.html.erb</p>
+
+<%= form_with(model: @user, url: my_page_path, method: :patch) do |form|%>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
