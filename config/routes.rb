@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
-  resources :users, only:[:show]
+  resources :my_pages, only:[:show, :edit]
   resources :favorites, only:[:create, :destroy, :show]
   resources :posts do
     collection do
