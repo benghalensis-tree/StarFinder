@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :users, only:[:show]
-  resources :favorites, only:[:create, :destroy]
+  resources :favorites, only:[:create, :destroy, :show]
   resources :posts do
     collection do
       get 'map'
