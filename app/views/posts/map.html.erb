@@ -53,10 +53,10 @@
       markerEvent(i);
     }
 
-    new markerClusterer.MarkerClusterer({
-        map,
-        markers
-    });
+    // new markerClusterer.MarkerClusterer({
+    //     map,
+    //     markers
+    // });
   }
 
   function markerEvent(i) {
@@ -69,6 +69,3 @@
 });
 
 </script>
-<script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_API_KEY']%>&v=beta&libraries=marker&callback=initMap"data-turbolinks-eval="false"></script>

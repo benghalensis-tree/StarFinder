@@ -24,6 +24,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @favorite = current_user.favorites.find_by(post_id: params[:id])
   end
 
   # GET /posts/new
