@@ -8,4 +8,5 @@
 <h2><%= @user.content %></h2>
 <%= link_to '編集',  edit_my_page_path %>
 <%= link_to '投稿',  my_page_path(@user) %>
+<%= link_to 'コメント', post_comment_path(@user) %>
 <%= link_to 'お気に入り',  favorite_path(@user) %>
