@@ -1,3 +1,9 @@
 // Place all the styles related to the MyPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.img-icon {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background-image: url("image.jpg");
+}

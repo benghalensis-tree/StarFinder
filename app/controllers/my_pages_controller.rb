@@ -19,7 +19,7 @@ class MyPagesController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :content)
+    params.require(:user).permit(:name, :content, :image, :image_cache)
   end
 
 end
