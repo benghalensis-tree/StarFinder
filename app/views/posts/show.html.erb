@@ -2,7 +2,14 @@
   
   <%= image_tag @post.image.url, class: 'img-show' %>
 </p>
+<% if @favorite.present? %>
+  <%= link_to 'お気に入り解除', favorite_path(@favorite.id), method: :delete %> 
+<% else %>
+  <%= link_to 'お気に入り', favorites_path(post_id: @post.id), method: :post %> 
+<% end %>
 
+<%= link_to 'Edit', edit_post_path(@post) %> 
+<%= link_to 'Back', posts_path %>
 <p>
   <strong>Title:</strong>
   <%= @post.title %>
@@ -38,20 +45,14 @@
     <% if comment.id.present? %>
       <p>
         <%= comment.content %>
+        <% if comment.image.present? %>
+          <%= image_tag comment.image.url, class:'img-comment-show'%>
+        <% end %>
         <%= link_to '削除', post_comment_path(@post, comment), method: :delete %>
       </p>
     <% end %>
   <% end %>
 </p>
-
-<% if @favorite.present? %>
-  <%= link_to 'お気に入り解除', favorite_path(@favorite.id), method: :delete %> 
-<% else %>
-  <%= link_to 'お気に入り', favorites_path(post_id: @post.id), method: :post %> 
-<% end %>
-
-<%= link_to 'Edit', edit_post_path(@post) %> 
-<%= link_to 'Back', posts_path %>
 
 <%= form_with(model: [@post, @comment]) do |form| %>
 
