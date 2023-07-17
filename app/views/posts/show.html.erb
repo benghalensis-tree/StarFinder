@@ -32,6 +32,12 @@
   <strong>View count:</strong>
   <%= @post.view_count %>
 </p>
+<p>
+  <strong>Comment:</strong>
+  <% @comments.each do |comment|%>
+    <p><%= comment.content %></p>
+  <% end %>
+</p>
 
 <% if @favorite.present? %>
   <%= link_to 'お気に入り解除', favorite_path(@favorite.id), method: :delete %> 
@@ -41,3 +47,19 @@
 
 <%= link_to 'Edit', edit_post_path(@post) %> 
 <%= link_to 'Back', posts_path %>
+
+<%= form_with(model: [@post, @comment]) do |form| %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
