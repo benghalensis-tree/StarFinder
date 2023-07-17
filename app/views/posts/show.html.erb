@@ -44,6 +44,11 @@
   <% @comments.each do |comment|%>
     <% if comment.id.present? %>
       <p>
+        <% if comment.user.image.present? %>
+          <%= link_to image_tag(comment.user.image.thumb.url, class: 'img-icon-post-show'), my_page_path(comment.user) %>
+        <% else %>
+          <%= link_to image_tag("default.jpg", class: 'img-icon-post-show'), my_page_path(comment.user) %>
+        <% end %>
         <%= comment.content %>
         <% if comment.image.present? %>
           <%= image_tag comment.image.url, class:'img-comment-show'%>
