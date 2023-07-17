@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   resources :my_pages, only:[:show, :edit, :update]
   resources :favorites, only:[:create, :destroy, :show]
   resources :posts do
+    resources :comments
     collection do
       get 'map'
     end
+
   end
   
   root 'posts#map'
