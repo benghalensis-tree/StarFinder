@@ -1,4 +1,5 @@
-<%= image_tag @user.image.url %>
+<%= image_tag @user.image.thumb.url, class: 'img-icon' %>
+
 <h1><%= @user.name %></h1>
 <h2><%= @user.content %></h2>
 <%= link_to '編集',  edit_my_page_path %>
