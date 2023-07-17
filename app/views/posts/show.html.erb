@@ -35,7 +35,12 @@
 <p>
   <strong>Comment:</strong>
   <% @comments.each do |comment|%>
-    <p><%= comment.content %></p>
+    <% if comment.id.present? %>
+      <p>
+        <%= comment.content %>
+        <%= link_to '削除', post_comment_path(@post, comment), method: :delete %>
+      </p>
+    <% end %>
   <% end %>
 </p>
 
