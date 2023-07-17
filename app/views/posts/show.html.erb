@@ -1,4 +1,9 @@
 <p>
+  
+  <%= image_tag @post.image.url, class: 'img-show' %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
@@ -19,23 +24,8 @@
 </p>
 
 <p>
-  <strong>Latitude:</strong>
-  <%= @post.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @post.longitude %>
-</p>
-
-<p>
   <strong>User:</strong>
-  <%= @post.user.name %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @post.image.url, class: 'img-show' %>
+  <%= link_to @post.user.name, my_page_path(@post.user) %>
 </p>
 
 <p>

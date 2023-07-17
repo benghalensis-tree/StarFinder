@@ -1,0 +1,11 @@
+<% if @user.image? %>
+  <%= image_tag @user.image.thumb.url, class: 'img-icon' %>
+<% else %>
+  <%= image_tag "default.jpg", class: 'img-icon' %>
+<% end %>
+
+<h1><%= @user.name %></h1>
+<h2><%= @user.content %></h2>
+<%= link_to '編集',  edit_my_page_path %>
+<%= link_to '投稿',  my_page_path(@user) %>
+<%= link_to 'お気に入り',  favorite_path(@user) %>

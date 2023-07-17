@@ -10,4 +10,9 @@ class FavoritesController < ApplicationController
     redirect_to post_path(params[:id]), notice: "お気に入りを解除しました"
   end
 
+  def show
+    @user = User.find(params[:id])
+    @posts = @user.favorite_posts
+  end
+
 end
