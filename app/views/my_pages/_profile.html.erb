@@ -1,4 +1,8 @@
-<%= image_tag @user.image.thumb.url, class: 'img-icon' %>
+<% if @user.image? %>
+  <%= image_tag @user.image.thumb.url, class: 'img-icon' %>
+<% else %>
+  <%= image_tag "default.jpg", class: 'img-icon' %>
+<% end %>
 
 <h1><%= @user.name %></h1>
 <h2><%= @user.content %></h2>
