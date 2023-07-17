@@ -19,6 +19,12 @@ class CommentsController < ApplicationController
       render 'posts/show'
     end
   end
+
+  def show
+    @user = User.find(params[:id])
+    @comments = @user.comments
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:content, :image)
