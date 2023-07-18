@@ -24,6 +24,9 @@ gem 'dotenv-rails'
 gem 'faker'
 gem 'gimei'
 gem 'rails-i18n'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
