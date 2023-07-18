@@ -8,4 +8,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_posts, through: :favorites, source: :post
   has_many :comments, dependent: :destroy
+  def self.create_unique_string
+    SecureRandom.uuid
+  end
 end
