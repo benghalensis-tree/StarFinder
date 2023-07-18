@@ -312,4 +312,6 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   config.omniauth :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], name: :google
+  config.omniauth :line, ENV['LINE_KEY'], ENV['LINE_SECRET']
+
 end
