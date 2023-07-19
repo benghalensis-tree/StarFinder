@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     @favorite = current_user.favorites.find_by(post_id: params[:id])
     @comments = @post.comments
     @comment = @post.comments.build
-    unless ViewCount.find_by(user_id: current_user.id, post_id: @post.id)
+    unless ViewCount.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, post_id: @post.id)
       current_user.view_counts.create(post_id: @post.id)
     end
   end
