@@ -3,5 +3,5 @@
 <% else %>
   <h1>Posts</h1> 
 <% end %> 
-<%= render 'search', q: @q, url: search_posts_path %>
+<%= render 'search', q: @q, url: posts_path %>
 <%= render 'list', posts: @posts %>
