@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_posts, through: :favorites, source: :post
   has_many :comments, dependent: :destroy
-  has_many :view_couts
+  has_many :view_counts
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i(google line)
