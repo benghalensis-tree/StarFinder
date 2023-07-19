@@ -1,14 +1,18 @@
 <p>
   <%= image_tag @post.image.url, class: 'img-show' %>
 </p>
-<% if @favorite.present? %>
-  <%= link_to 'お気に入り解除', favorite_path(@favorite.id), method: :delete %> 
+<% if user_signed_in?%>
+  <% if @favorite.present? %>
+    <%= link_to 'お気に入り解除', favorite_path(@favorite.id), method: :delete %> 
+  <% else %>
+    <%= link_to 'お気に入り', favorites_path(post_id: @post.id), method: :post %> 
+  <% end %>
 <% else %>
-  <%= link_to 'お気に入り', favorites_path(post_id: @post.id), method: :post %> 
+  <%= link_to 'お気に入り',  new_user_registration_path%> 
 <% end %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> 
-<%= link_to 'Back', posts_path %>
+
 <p>
   <strong>Title:</strong>
   <%= @post.title %>
@@ -58,18 +62,20 @@
   <% end %>
 </p>
 
-<%= form_with(model: [@post, @comment]) do |form| %>
+<% if user_signed_in? %>
+  <%= form_with(model: [@post, @comment]) do |form| %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.text_area :content %>
+    </div>
+    <div class="field">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>
