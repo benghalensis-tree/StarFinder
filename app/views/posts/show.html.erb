@@ -3,7 +3,7 @@
 </p>
 <% if user_signed_in?%>
   <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除', favorite_path(@favorite.id), method: :delete %> 
+    <%= link_to 'お気に入り解除', favorite_path(@favorite.id, post_id: @post.id), method: :delete %> 
   <% else %>
     <%= link_to 'お気に入り', favorites_path(post_id: @post.id), method: :post %> 
   <% end %>
@@ -41,6 +41,11 @@
 <p>
   <strong>View count:</strong>
   <%= @post.view_count %>
+</p>
+
+<p>
+  <strong>Favorite count:</strong>
+  <%= @post.favorite_count %>
 </p>
 <p>
   <strong>Comment:</strong>

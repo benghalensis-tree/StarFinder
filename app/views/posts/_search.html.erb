@@ -2,4 +2,5 @@
    <%= f.search_field :title_or_address_cont%>
    <%= f.submit '検索' %>
 <% end %>
-<%= sort_link(@q, :view_count, "閲覧数の多い順", hide_indicator: true) %>
+<%= sort_link(@q, :view_count, "閲覧数の多い順") %>
+<%= sort_link(@q, :favorite_count, "お気に入りの多い順") %>
