@@ -10,7 +10,8 @@ class PostsController < ApplicationController
   end
 
   def map
-    @posts = Post.all
+    @q = Post.ransack(params[:q])
+    @posts = @q.result
     gon.posts = @posts.map do |post|
       {
         title: post.title,
