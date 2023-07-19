@@ -5,11 +5,14 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @q = Post.ransack(params[:q])
+    @q.sorts = ['view_count desc', 'favorite_count desc'] if @q.sorts.empty? 
+    @posts = @q.result
   end
 
   def map
-    @posts = Post.all
+    @q = Post.ransack(params[:q])
+    @posts = @q.result
     gon.posts = @posts.map do |post|
       {
         title: post.title,
@@ -24,12 +27,15 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @favorite = current_user.favorites.find_by(post_id: params[:id])
-    @comments = @post.comments
-    @comment = @post.comments.build
-    unless ViewCount.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, post_id: @post.id)
-      current_user.view_counts.create(post_id: @post.id)
+    if user_signed_in?
+      @favorite = current_user.favorites.find_by(post_id: params[:id])
+      unless ViewCount.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, post_id: @post.id)
+        current_user.view_counts.create(post_id: @post.id)
+        @post.update_column(:view_count, @post.view_counts.count)
+      end
     end
+    @comment = @post.comments.build
+    @comments = @post.comments
   end
 
   # GET /posts/new
