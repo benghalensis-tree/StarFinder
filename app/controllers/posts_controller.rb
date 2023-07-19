@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @q = Post.ransack(params[:q])
-    @q.sorts = 'view_count asc' if @q.sorts.empty? 
+    @q.sorts = ['view_count desc', 'favorite_count desc'] if @q.sorts.empty? 
     @posts = @q.result
   end
 
