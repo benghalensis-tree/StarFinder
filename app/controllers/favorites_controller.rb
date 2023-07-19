@@ -11,7 +11,7 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.find_by(id: params[:id]).destroy
     @post = Post.find(params[:post_id])
     @post.update_column(:favorite_count, @post.favorites.count)
-    redirect_to post_path(params[:id]), notice: "お気に入りを解除しました"
+    redirect_to post_path(params[:post_id]), notice: "お気に入りを解除しました"
   end
 
   def show
