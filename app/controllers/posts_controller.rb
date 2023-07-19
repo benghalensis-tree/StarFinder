@@ -31,6 +31,7 @@ class PostsController < ApplicationController
     @comment = @post.comments.build
     unless ViewCount.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, post_id: @post.id)
       current_user.view_counts.create(post_id: @post.id)
+      @post.update_column(:view_count, @post.view_counts.count)
     end
   end
 
