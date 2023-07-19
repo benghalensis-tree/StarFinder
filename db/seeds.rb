@@ -5,7 +5,9 @@ require 'gimei'
     name: 'admin', 
     admin: true, 
     email: "admin@gmail.com", 
-    password: "111111"
+    password: "111111",
+    provider: "#{Faker::Number.between}",
+    uid: "#{Faker::Number.between}"
   )
   
   3.times do |i|
@@ -13,7 +15,9 @@ require 'gimei'
       name: "user#{i}", 
       admin: false, 
       email: "user#{i}@gmail.com", 
-      password: "111111"
+      password: "111111",
+      provider: "#{Faker::Number.between}",
+      uid: "#{Faker::Number.between}"
     )
   end
 
@@ -25,6 +29,7 @@ require 'gimei'
 
     post = Post.create(
       title: "test#{i}",
+      address: "test#{i}",
       latitude: latitude,
       longitude: longitude,
       image:File.open("./public/images/image1.jpg"),
