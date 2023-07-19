@@ -11,4 +11,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :view_counts
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["access_date", "address", "content", "created_at", "id", "image", "latitude", "longitude", "title", "updated_at", "user_id", "view_count"]
+  end
+
 end

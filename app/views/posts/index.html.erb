@@ -1,7 +1,7 @@
 <% if current_user.try(:admin?) %>
   <h1>Posts_admin</h1>
 <% else %>
-  <h1>Posts</h1>  
-<% end %>  
-
+  <h1>Posts</h1> 
+<% end %> 
+<%= render 'search', q: @q, url: search_posts_path %>
 <%= render 'list', posts: @posts %>

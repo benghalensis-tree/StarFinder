@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :comments
     collection do
       get 'map'
+      get 'search'
     end
 
   end

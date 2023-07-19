@@ -6,6 +6,13 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.all
+    @q = Post.ransack(params[:q])
+  end
+  
+  def search
+    @q = Post.ransack(params[:q])
+    @posts = @q.result
+    render :index
   end
 
   def map
