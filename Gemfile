@@ -29,7 +29,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
 gem 'ransack'
-gem "simple_calendar", "~> 2.4"
+gem "simple_calendar", "~> 2.0"
 gem 'mk_sunmoon'
 gem 'mk_calendar'
 
