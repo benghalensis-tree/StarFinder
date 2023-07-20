@@ -1,7 +1,9 @@
 <%= month_calendar attribute: :access_date, events: posts do |date, posts| %>
+  <div class="<%= moon_age(date) %>">
 
-  <%=link_to date.day, posts_path %>
-  <%#(仮)カレンダー詳細ページへのリンクに変更予定%>
+    <%=link_to date.day, posts_path %>
+    <%#(仮)カレンダー詳細ページへのリンクに変更予定%>
+  </div>
 
   <% posts.each do |post| %>
       <%= post.title %>

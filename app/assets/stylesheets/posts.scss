@@ -15,3 +15,54 @@
   height: 10%;
   border-radius: 50%;
 }
+
+.simple-calendar {
+  .day {
+    background: #fff9ee;
+  }
+  .wday-0 {
+    background: #ffeaea;
+    color: #ff505c;
+  }
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {
+    background: #d4ebff;
+    color: #5984dc;
+  }
+  .today {
+    background: #9dffeb;
+  }
+  .past {
+    background: #d0d5ea;
+  }
+  .future {
+ 
+  }
+  .start-date {}
+  .prev-month {}
+  .next-month {}
+  .current-month {}
+  .has-events {}
+  .super_good{
+    background: #008cff;
+  }
+  .good{
+    background: #33a2fd;
+  }
+  .normal{
+    background: #82c7ff;
+  }
+  .short{
+    background: #d8ebfa;
+  }
+  .bad{
+    background: #ffffff;
+  }
+}
+.calendar-table tr td:hover {
+  background-color: #FFFF8c;    
+}
