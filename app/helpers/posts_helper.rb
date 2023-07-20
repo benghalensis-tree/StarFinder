@@ -11,9 +11,9 @@ module PostsHelper
       'super_good'
     elsif day.moonage > 25 || 5 > day.moonage 
       'good'
-    elsif day.moonage > 20 || 10 > day.moonage 
+    elsif day.moonage > 21 || 9 > day.moonage 
       'normal'
-    elsif day.moonage > 18 || 13 > day.moonage 
+    elsif day.moonage > 19 || 12 > day.moonage 
       'short'
     else
       'bad'
