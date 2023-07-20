@@ -1,6 +1,7 @@
-<%= month_calendar posts: posts do |date, posts| %>
+<%= month_calendar attribute: :access_date, events: posts do |date, posts| %>
 
-  <%= date.day %>
+  <%=link_to date.day, posts_path %>
+  <%#(仮)カレンダー詳細ページへのリンクに変更予定%>
 
   <% posts.each do |post| %>
       <%= post.title %>
