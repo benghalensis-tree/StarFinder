@@ -1,0 +1,9 @@
+<%= month_calendar posts: posts do |date, posts| %>
+
+  <%= date.day %>
+
+  <% posts.each do |post| %>
+      <%= post.title %>
+    
+  <% end %>
+<% end %>

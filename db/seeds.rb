@@ -23,12 +23,13 @@ require 'gimei'
 
   users = User.all
 
-  30.times do |i|
+  5.times do |i|
     latitude = Faker::Number.between(from: 24.0, to: 46.0)
     longitude = Faker::Number.between(from: 123.0, to: 154.0)
 
     post = Post.create(
       title: "test#{i}",
+      access_date: 20230720,
       address: "test#{i}",
       latitude: latitude,
       longitude: longitude,
