@@ -29,9 +29,14 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
 gem 'ransack'
+gem "simple_calendar", "~> 2.0"
+gem 'mk_sunmoon'
+gem 'mk_calendar'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
+  gem 'rails-pry'
 end
 
 group :development do
