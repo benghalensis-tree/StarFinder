@@ -7,13 +7,13 @@ module PostsHelper
     date_time = date.strftime('%Y%m%d')
     day = MkCalendar.new("#{date_time}")
     # binding.pry
-    if day.moonage > 29 || 1 > day.moonage 
+    if day.moonage > 27 || 3 > day.moonage 
       'super_good'
     elsif day.moonage > 25 || 5 > day.moonage 
       'good'
-    elsif day.moonage > 21 || 9 > day.moonage 
+    elsif day.moonage > 21 || 8 > day.moonage 
       'normal'
-    elsif day.moonage > 19 || 12 > day.moonage 
+    elsif day.moonage > 19 || 10 > day.moonage 
       'short'
     else
       'bad'
