@@ -35,6 +35,8 @@ gem 'mk_calendar'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
+  gem 'rails-pry'
 end
 
 group :development do

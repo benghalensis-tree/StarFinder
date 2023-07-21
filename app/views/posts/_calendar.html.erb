@@ -1,11 +1,14 @@
 <%= month_calendar attribute: :access_date, events: posts do |date, posts| %>
   
-
+  <p>
     <%=link_to date.day, posts_path %>
     <%#(仮)カレンダー詳細ページへのリンクに変更予定%>
-
+  </p>
   <% posts.each do |post| %>
       <%= post.title %>
   <% end %>
-
+  <% moon_time(date).each do |moon| %>
+    <p><%= moon %></p>
+  
+  <% end %>
 <% end %>
