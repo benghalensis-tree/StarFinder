@@ -64,9 +64,6 @@
       infoWindow[i].open(map, markers[i]);
     });
   }
-  document.addEventListener('turbolinks:load', function() {
-  initMap();
-});
 
 </script>
 <%= render 'calendar', posts: @posts%>
