@@ -79,12 +79,14 @@
         <%= image_tag "weather-icons/201.png", class: 'img-show-weather-icon' %>
       <% elsif code == 3 %>
         <%= image_tag "weather-icons/200.png", class: 'img-show-weather-icon' %>
-      <% elsif 60 < code && code < 68 %>
+      <% elsif 60 < code && code < 68 || 79 < code && code < 83%>
         <%= image_tag "weather-icons/300.png", class: 'img-show-weather-icon' %>
       <% elsif 50 < code && code < 56 %>
         <%= image_tag "weather-icons/202.png", class: 'img-show-weather-icon' %>
       <% elsif 70 < code && code < 78 || 85 == code || code == 86 %>
         <%= image_tag "weather-icons/400.png", class: 'img-show-weather-icon' %>
+      <% elsif 94 < code %>
+        <%= image_tag "weather-icons/500.png", class: 'img-show-weather-icon' %>
       <% else %>
         <%= image_tag "no-image.png", class: 'img-show-weather-icon' %>
       <% end %>
