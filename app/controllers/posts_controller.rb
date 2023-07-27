@@ -36,6 +36,8 @@ class PostsController < ApplicationController
     end
     @comment = @post.comments.build
     @comments = @post.comments
+    response = RestClient.get "https://api.open-meteo.com/v1/forecast?latitude=35.6785&longitude=139.6823&daily=weathercode&timezone=Asia%2FTokyo&forecast_days=14"
+    @weather_data = JSON.parse(response.body)
   end
 
   # GET /posts/new

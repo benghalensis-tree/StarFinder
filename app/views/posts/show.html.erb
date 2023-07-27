@@ -48,6 +48,10 @@
   <%= @post.favorite_count %>
 </p>
 <p>
+  <strong>天気:</strong>
+  <%= @weather_data["daily"]["weathercode"]%>
+</p>
+<p>
   <strong>Comment:</strong>
   <% @comments.each do |comment|%>
     <% if comment.id.present? %>
