@@ -15,7 +15,13 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
-        <td><%= image_tag post.image.url, class: 'img-index' %></td>
+        <td>
+        <% if post.image? %>
+          <%= image_tag post.image.url, class: 'img-index' %>
+        <% else %>
+          <%= image_tag "no-image.png", class: 'img-index' %>
+        <% end %>
+        </td>
         <td><%= post.view_count %></td>
         <td><%= post.favorite_count %></td>
         <td><%= link_to 'Show', post %></td>

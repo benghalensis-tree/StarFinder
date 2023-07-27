@@ -1,5 +1,9 @@
 <p>
-  <%= image_tag @post.image.url, class: 'img-show' %>
+  <% if @post.image? %>
+    <%= image_tag @post.image.url, class: 'img-show' %>
+  <% else %>
+    <%= image_tag "no-image.png", class: 'img-show' %>
+  <% end %>
 </p>
 <% if user_signed_in?%>
   <% if @favorite.present? %>
