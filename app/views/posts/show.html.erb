@@ -51,10 +51,49 @@
   <strong>Favorite count:</strong>
   <%= @post.favorite_count %>
 </p>
-<p>
-  <strong>天気:</strong>
-  <%= @weather_data["daily"]["weathercode"]%>
-</p>
+
+<table>
+  <thead>
+    <tr>
+      <% for i in 0..13 do %>
+        <th>
+          <% date = Date.today %>
+          <% date += i %>
+          <% month = date.month %>
+          <% day = date.day%>
+          <%= "#{month}/#{day}" %>
+        </th>
+      <% end %> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% weathercode = @weather_data["daily"]["weathercode"]%>
+    <% weathercode.each do |code| %>
+      <td>
+      <% if code == 0 %>
+        <%= image_tag "weather-icons/100.png", class: 'img-show-weather-icon' %>
+      <% elsif code == 1 %>
+        <%= image_tag "weather-icons/101.png", class: 'img-show-weather-icon' %>
+      <% elsif code == 2 %>
+        <%= image_tag "weather-icons/201.png", class: 'img-show-weather-icon' %>
+      <% elsif code == 3 %>
+        <%= image_tag "weather-icons/200.png", class: 'img-show-weather-icon' %>
+      <% elsif 60 < code && code < 68 %>
+        <%= image_tag "weather-icons/300.png", class: 'img-show-weather-icon' %>
+      <% elsif 50 < code && code < 56 %>
+        <%= image_tag "weather-icons/202.png", class: 'img-show-weather-icon' %>
+      <% elsif 70 < code && code < 78 || 85 == code || code == 86 %>
+        <%= image_tag "weather-icons/400.png", class: 'img-show-weather-icon' %>
+      <% else %>
+        <%= image_tag "no-image.png", class: 'img-show-weather-icon' %>
+      <% end %>
+      </td>
+    <% end %>
+    </tr>
+  </tbody>
+</table>
+
 <p>
   <strong>Comment:</strong>
   <% @comments.each do |comment|%>
