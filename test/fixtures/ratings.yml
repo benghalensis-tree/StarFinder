@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post: one
+  sky_light: 1
+  sky_clear: 1
+  sky_extent: 1
+  accessiblity: 1
+  convenient: 1
+
+two:
+  post: two
+  sky_light: 1
+  sky_clear: 1
+  sky_extent: 1
+  accessiblity: 1
+  convenient: 1
