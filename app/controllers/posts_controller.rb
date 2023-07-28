@@ -45,6 +45,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @post.build_rating
   end
 
   # GET /posts/1/edit
@@ -98,6 +99,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content, :access_date, :address, :latitude, :longitude, :image, :image_cache, :view_count)
+      params.require(:post).permit(:title, :content, :access_date, :address, :latitude, :longitude, :image, :image_cache, :view_count,rating_attributes: [:id, :sky_light,:sky_clear,:sky_extent, :accessiblity, :convenient])
     end
 end
