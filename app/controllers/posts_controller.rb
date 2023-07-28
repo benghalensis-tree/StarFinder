@@ -40,6 +40,15 @@ class PostsController < ApplicationController
     longitude = @post.longitude
     response = RestClient.get "https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&daily=weathercode&timezone=Asia%2FTokyo&forecast_days=14"
     @weather_data = JSON.parse(response.body)
+    if @post.rating.present?
+      gon.rating_data = [
+        @post.rating.sky_light,
+        @post.rating.sky_clear,
+        @post.rating.sky_extent,
+        @post.rating.accessiblity,
+        @post.rating.convenient,
+      ]
+    end
   end
 
   # GET /posts/new

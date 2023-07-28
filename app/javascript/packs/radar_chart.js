@@ -8,7 +8,7 @@ window.onload = function(){
         label: 'ユーザーの評価',
         backgroundColor: "rgba(0,0,80,0.4)",
         borderColor: "rgba(0,0,80,1)",
-        data: [5,4,5,3,2]
+        data: gon.rating_data
       }]
     }
   });
