@@ -39,7 +39,7 @@
       });
 
       content_data = `<div style="width:300px; height:300px;">
-                        <a href="${ markerData[i]['post_url'] }">
+                        <a data-turbolinks = "false" href="${ markerData[i]['post_url'] }">
                           <img src="${ markerData[i]['image_url'] }" width="100%" />
                         </a>
                         <p style="font-size:20px;">${ markerData[i]['title']}</p>
