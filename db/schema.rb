@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_19_100946) do
+ActiveRecord::Schema.define(version: 2023_07_28_152303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,18 @@ ActiveRecord::Schema.define(version: 2023_07_19_100946) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.integer "sky_light", default: 0
+    t.integer "sky_clear", default: 0
+    t.integer "sky_extent", default: 0
+    t.integer "accessiblity", default: 0
+    t.integer "convenient", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_ratings_on_post_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.text "image"
@@ -89,6 +101,7 @@ ActiveRecord::Schema.define(version: 2023_07_19_100946) do
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "ratings", "posts"
   add_foreign_key "view_counts", "posts"
   add_foreign_key "view_counts", "users"
 end

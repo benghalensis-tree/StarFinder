@@ -36,6 +36,29 @@
     <%= form.file_field :image %>
   </div>
 
+  <%= form.fields_for :rating do |rating_form| %>
+    <div class="field">
+      <%= rating_form.label :sky_light %>
+      <%= rating_form.number_field :sky_light %>
+    </div>
+    <div class="field">
+      <%= rating_form.label :sky_clear %>
+      <%= rating_form.number_field :sky_clear %>
+    </div>
+    <div class="field">
+      <%= rating_form.label :sky_extent %>
+      <%= rating_form.number_field :sky_extent %>
+    </div>
+    <div class="field">
+      <%= rating_form.label :accessiblity %>
+      <%= rating_form.number_field :accessiblity %>
+    </div>
+    <div class="field">
+      <%= rating_form.label :convenient %>
+      <%= rating_form.number_field :convenient %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
