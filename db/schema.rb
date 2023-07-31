@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2023_07_31_073005) do
   create_table "light_pollutions", force: :cascade do |t|
     t.float "latitude"
     t.float "longitude"
-    t.integer "limitingmag"
+    t.integer "limiting_mag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
