@@ -25,6 +25,14 @@ class PostsController < ApplicationController
         post_url: post_url(post)
       }
     end
+    @light_pollutions = LightPollution.all
+    gon.light_pollutions = @light_pollutions.map do |light_pollution|
+      {
+        latitude: light_pollution.latitude,
+        longitude: light_pollution.longitude,
+        limiting_mag: light_pollution.limiting_mag,
+      }
+    end
   end
 
   # GET /posts/1 or /posts/1.json
