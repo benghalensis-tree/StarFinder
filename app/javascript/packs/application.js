@@ -11,3 +11,10 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(function() {
+  $('.images').slick({
+      dots: true,
+      autoplay: true
+  });
+});
