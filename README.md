@@ -5,19 +5,32 @@
 * Ruby on Rails 6.1.7
 
 ## カリキュラムの技術
-* devise
-* rails_admin
+* Gem
+* devise (ログイン)
+* rails_admin (管理者)
+* omniauth-google-oauth2 (googleログイン)
+
+*その他
 * お気に入り機能
 * フォロー機能
 * AWS EC2
 
 ## カリキュラム外の技術
-* google maps API
-* geocoder
-* chart.js
-* 天気予報系API導入予定
-* 月の出、月没時間取得系API導入予定
+* Gem
+* geocoder (緯度経度取得)
+* ransack (検索)
+* simple_calendar (カレンダー)
+* omniauth-line (LINEログイン)
+* mk_sunmoon (月の出、月没時間取得)
+* mk_calendar (月齢取得)
+
+* API
+* google maps API (マップ)
+* open meteo API (天気予報)
 * 周辺地域の情報を所得するAPI導入予定
+
+* その他
+* chart.js (レーダーチャート表示)
 
 ## 実行手順
 * git clone https://github.com/genergia/StarFinder.git
