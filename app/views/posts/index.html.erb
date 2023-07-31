@@ -1,8 +1,3 @@
-<% if current_user.try(:admin?) %>
-  <h1>Posts_admin</h1>
-<% else %>
-  <h1>Posts</h1> 
-<% end %> 
 <%= render 'search', q: @q, url: posts_path %>
 <%= render 'topimage', bests: @bests %>
 <%= render 'list', posts: @posts %>
