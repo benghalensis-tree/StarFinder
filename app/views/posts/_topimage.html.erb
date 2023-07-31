@@ -1,0 +1,7 @@
+<% bests.each do |best| %>
+  <% if best.image? %>
+    <%= image_tag best.image.url, class: 'img-topimage' %>
+  <% else %>
+    <%= image_tag "no-image.png", class: 'img-topimage' %>
+  <% end %>
+<% end %>

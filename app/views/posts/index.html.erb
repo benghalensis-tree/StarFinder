@@ -4,5 +4,6 @@
   <h1>Posts</h1> 
 <% end %> 
 <%= render 'search', q: @q, url: posts_path %>
+<%= render 'topimage', bests: @bests %>
 <%= render 'list', posts: @posts %>
 <%= render 'calendar', posts: @posts%>
