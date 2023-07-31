@@ -10,7 +10,7 @@ namespace :import do
       list << {
           latitude: row["Latitude"],
           longitude: row["Longitude"],
-          limitingmag: row["LimitingMag"]
+          limiting_mag: row["LimitingMag"]
       }
     end
     puts "start to create"
