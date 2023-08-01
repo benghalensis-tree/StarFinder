@@ -59,6 +59,9 @@ class PostsController < ApplicationController
         @post.rating.convenient,
       ]
     end
+    lat_sec = @post.latitude * 3600
+    lon_sec = @post.longitude * 3600
+    @hotels = RakutenWebService::Travel::Hotel.search(latitude: lat_sec.round(2), longitude: lon_sec.round(2), searchRadius: 3)
   end
 
   # GET /posts/new
