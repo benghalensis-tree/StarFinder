@@ -15,6 +15,7 @@
   let markers = []; 
   let infoWindow = []; 
   let markerData = gon.posts; 
+  let light_pollutions = gon.light_pollutions;
   
   function initMap() {
     geocoder = new google.maps.Geocoder()
@@ -25,6 +26,52 @@
       mapId: "<%=ENV['MAP_ID']%>",
     });
 
+    for (var i = 0; i < light_pollutions.length; i++) {
+      let id = light_pollutions[i]['id']
+
+      markerLatLng = new google.maps.LatLng({
+        lat: light_pollutions[i]['latitude'],
+        lng: light_pollutions[i]['longitude']
+      });
+
+      let limiting_mag_icon
+      if (light_pollutions[i]['limiting_mag'] == 0 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_0.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 1 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_1.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 2 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_2.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 3 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_3.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 4 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_4.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 5 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_5.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 6 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_6.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 7 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_7.png' %>'
+        }
+      else{
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_0.png' %>'
+        }
+      
+      markers[i] = new google.maps.Marker({
+        position: markerLatLng,
+        map: map,
+        icon: {
+          url: limiting_mag_icon,
+          scaledSize: new google.maps.Size(10, 10),
+           }
+      });
+    }
     for (var i = 0; i < markerData.length; i++) {
       let id = markerData[i]['id']
 
@@ -53,6 +100,8 @@
 
       markerEvent(i);
     }
+
+    
 
     // new markerClusterer.MarkerClusterer({
     //     map,
