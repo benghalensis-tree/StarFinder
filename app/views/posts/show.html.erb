@@ -137,3 +137,21 @@
     </div>
   <% end %>
 <% end %>
+
+<% begin %>
+  <% @hotels.each do |hotel| %>
+    <% info = hotel["hotelBasicInfo"] %>
+      <p>
+        <img src="<%= info["hotelThumbnailUrl"] %>" class = 'img-show-hotel'>
+      </p>
+      <p>
+        <a href="<%= info["hotelInformationUrl"] %>" target="_blank"><%= info['hotelName'] %></a>
+        <%= info["reviewAverage"] %>
+        <%= info["reviewCount"] %>
+      </p>
+      <%= info["userReview"] %>
+      <%= info["access"] %>
+  <% end %>
+<% rescue RakutenWebService::NotFound %>
+  <strong> ホテルが見つかりませんでした </strong>
+<% end %>
