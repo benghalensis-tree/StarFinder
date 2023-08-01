@@ -284,6 +284,8 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
     rake (13.0.6)
+    rakuten_web_service (1.13.2)
+      json (~> 2.3)
     ransack (4.0.0)
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
@@ -409,6 +411,7 @@ DEPENDENCIES
   rails-i18n
   rails-pry
   rails_admin (~> 3.0)
+  rakuten_web_service
   ransack
   rest-client
   rexml

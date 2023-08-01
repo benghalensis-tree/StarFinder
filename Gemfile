@@ -33,6 +33,7 @@ gem "simple_calendar", "~> 2.0"
 gem 'mk_sunmoon'
 gem 'mk_calendar'
 gem 'rest-client'
+gem 'rakuten_web_service'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
