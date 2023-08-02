@@ -103,11 +103,13 @@
         info_window_image = '<%= asset_path 'no-image.png' %>'
       }
 
-      content_data = `<div style="width:300px; height:300px;">
+      content_data = `<div style="width:200px; height:200px;">
                         <a data-turbolinks = "false" href="${ markerData[i]['post_url'] }">
                           <img src="${ info_window_image }" width="100%" />
                         </a>
                         <p style="font-size:20px;">${ markerData[i]['title']}</p>
+                        <p style="font-size:10px;">閲覧数:${ markerData[i]['view_count']}</p>
+                        <p style="font-size:10px;">${ markerData[i]['content']}</p>
                       </div>`
 
       infoWindow[i] = new google.maps.InfoWindow({
