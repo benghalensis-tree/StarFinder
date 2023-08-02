@@ -24,6 +24,16 @@
       center: { lat: 35.6585, lng: 139.7486 }, 
       zoom: 5,
       mapId: "<%=ENV['MAP_ID']%>",
+      scrollwheel: true,
+      restriction: {
+        latLngBounds: {
+          north: 49.55, 
+          south: 20.25, 
+          west: 122.935, 
+          east: 153.986
+        },
+        strictBounds: false
+      }
     });
 
     for (var i = 0; i < light_pollutions.length; i++) {
@@ -92,7 +102,7 @@
       else{
         info_window_image = '<%= asset_path 'no-image.png' %>'
       }
-      
+
       content_data = `<div style="width:300px; height:300px;">
                         <a data-turbolinks = "false" href="${ markerData[i]['post_url'] }">
                           <img src="${ info_window_image }" width="100%" />
