@@ -18,7 +18,8 @@ class PostsController < ApplicationController
     gon.posts = @posts.map do |post|
       {
         title: post.title,
-        address: post.address,
+        view_count: post.view_count,
+        content: post.content,
         latitude: post.latitude,
         longitude: post.longitude,
         image_url: post.image.url,
