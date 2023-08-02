@@ -98,20 +98,28 @@
         maxWidth: 600
       });
 
-      markerEvent(i);
+      infoOpen(i);
+      infoClose(i);
     }
-
-    
-
     // new markerClusterer.MarkerClusterer({
     //     map,
     //     markers
     // });
   }
 
-  function markerEvent(i) {
+  function infoOpen(i) {
     markers[i].addListener('click', function () {
+      for (var j = 0; j < infoWindow.length; j++) {
+      if (j !== i) {
+        infoWindow[j].close();
+      }
+    }
       infoWindow[i].open(map, markers[i]);
+    });
+  }
+  function infoClose(i) {
+    map.addListener('click', function () {
+      infoWindow[i].close(map, markers[i]);
     });
   }
 
