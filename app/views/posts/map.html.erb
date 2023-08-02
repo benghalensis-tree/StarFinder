@@ -85,10 +85,17 @@
         map: map,
         collisionBehavior: 'OPTIONAL_AND_HIDES_LOWER_PRIORITY',
       });
-
+      
+      if( markerData[i]['image_url']){
+        info_window_image = markerData[i]['image_url']
+      }
+      else{
+        info_window_image = '<%= asset_path 'no-image.png' %>'
+      }
+      
       content_data = `<div style="width:300px; height:300px;">
                         <a data-turbolinks = "false" href="${ markerData[i]['post_url'] }">
-                          <img src="${ markerData[i]['image_url'] }" width="100%" />
+                          <img src="${ info_window_image }" width="100%" />
                         </a>
                         <p style="font-size:20px;">${ markerData[i]['title']}</p>
                       </div>`
