@@ -50,4 +50,13 @@ class User < ApplicationRecord
     self.raw_info = raw_info.to_json
     self.save!
   end
+
+  def self.guest
+    find_or_create_by!(email: 'gest@gest.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.name = 'ゲスト'
+      user.admin = true
+    end
+  end
 end
