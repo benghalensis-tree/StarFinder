@@ -16,6 +16,7 @@
   let infoWindow = []; 
   let markerData = gon.posts; 
   let light_pollutions = gon.light_pollutions;
+  let weather_forecasts = gon.weather_forecasts;
   
   function initMap() {
     geocoder = new google.maps.Geocoder()
@@ -36,6 +37,55 @@
       }
     });
 
+    if(weather_forecasts){
+
+    for (var i = 0; i < weather_forecasts.length; i++) {
+      let id = weather_forecasts[i]['id']
+
+      markerLatLng = new google.maps.LatLng({
+        lat: weather_forecasts[i]['latitude'],
+        lng: weather_forecasts[i]['longitude']
+      });
+
+      let weather_icon
+      if (weather_forecasts[i]['icon'] == '01d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/01d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '02d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/02d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '03d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/03d04d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '04d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/03d04d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '09d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/09d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '10d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/10d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '11d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/11d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '13d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/13d.png' %>'
+        }
+      else {
+        weather_icon = '<%= asset_path 'weather_icons3/01d.png' %>'
+        }
+      
+      markers[i] = new google.maps.Marker({
+        position: markerLatLng,
+        map: map,
+        icon: {
+          url: weather_icon,
+          scaledSize: new google.maps.Size(50, 25),
+           }
+      });
+    }
+    }
     for (var i = 0; i < light_pollutions.length; i++) {
       let id = light_pollutions[i]['id']
 
