@@ -35,6 +35,7 @@ gem 'mk_calendar'
 gem 'rest-client'
 gem 'httpclient'
 gem 'rakuten_web_service'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
