@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_04_022647) do
+ActiveRecord::Schema.define(version: 2023_08_04_024926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,22 @@ ActiveRecord::Schema.define(version: 2023_08_04_022647) do
     t.index ["user_id"], name: "index_view_counts_on_user_id"
   end
 
+  create_table "weather_forecasts", force: :cascade do |t|
+    t.bigint "city_id", null: false
+    t.integer "weather_id"
+    t.integer "clouds"
+    t.string "icon"
+    t.float "temp_min"
+    t.float "temp_max"
+    t.integer "humidity"
+    t.float "wind_speed"
+    t.float "pop"
+    t.datetime "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_weather_forecasts_on_city_id"
+  end
+
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "posts"
@@ -120,4 +136,5 @@ ActiveRecord::Schema.define(version: 2023_08_04_022647) do
   add_foreign_key "ratings", "posts"
   add_foreign_key "view_counts", "posts"
   add_foreign_key "view_counts", "users"
+  add_foreign_key "weather_forecasts", "cities"
 end
