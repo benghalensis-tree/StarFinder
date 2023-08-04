@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_04_024926) do
+ActiveRecord::Schema.define(version: 2023_08_04_043850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2023_08_04_024926) do
     t.integer "humidity"
     t.float "wind_speed"
     t.float "pop"
-    t.datetime "date"
+    t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["city_id"], name: "index_weather_forecasts_on_city_id"
