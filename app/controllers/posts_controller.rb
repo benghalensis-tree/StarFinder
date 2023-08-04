@@ -32,6 +32,16 @@ class PostsController < ApplicationController
         limiting_mag: light_pollution.limiting_mag,
       }
     end
+    if params[:date].present?
+      @weather_forecasts = WeatherForecast.where(date: params[:date])
+      gon.weather_forecasts = @weather_forecasts.map do |weather_forecast|
+        {
+          icon: weather_forecast.icon,
+          latitude: weather_forecast.city.latitude,
+          longitude: weather_forecast.city.longitude,
+        }
+      end
+    end
   end
 
   def show
