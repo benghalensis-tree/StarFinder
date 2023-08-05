@@ -7,12 +7,6 @@ class PostsController < ApplicationController
     @q = Post.ransack(params[:q])
     @q.sorts = ['view_count desc', 'favorite_count desc'] if @q.sorts.empty? 
     @posts = @q.result
-  end
-
-  def map
-    @bests = Post.order(view_count: :desc).limit(5)
-    @q = Post.ransack(params[:q])
-    @posts = @q.result
     gon.posts = @posts.map do |post|
       {
         title: post.title,

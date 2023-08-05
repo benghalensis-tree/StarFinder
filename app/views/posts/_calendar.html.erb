@@ -1,7 +1,7 @@
 <%= month_calendar attribute: :access_date, events: posts do |date, posts| %>
   
   <p>
-    <%=link_to date.day, map_posts_path(date: date) %>
+    <%=link_to date.day, posts_path(date: date) %>
   </p>
   <% posts.each do |post| %>
       <%= post.title %>
