@@ -12,6 +12,8 @@ Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
 
+import "./scripts"
+
 $(function() {
   $('.images').slick({
       dots: true,
