@@ -2,10 +2,14 @@
     <div class="container px-4 px-lg-5 text-center">
         <h2 class="mb-1">Star Finder</h2>
         
-        <a class="btn btn-primary  " href="#about">Find</a>
+        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#example1" aria-expanded="false" aria-controls="example1" >Find</a>
     </div>
 </header>
-
+<!-- Callout-->
+<div class="collapse" id="example1">
+    <%= render 'search', q: @q, url: posts_path %>
+    <%= render 'calendar', posts: @posts%>
+</div>
 
 <!-- Map-->
 <div class="map bg-black" id="contact">
@@ -16,10 +20,7 @@
 <section class="content-section bg-black" id="portfolio">
 
     <div class="container px-4 px-lg-5">
-        <div class="content-section-heading text-center">
-            <h3 class="text-secondary mb-0">Portfolio</h3>
-            <h2 class="mb-5">Recent Projects</h2>
-        </div>
+        
         <div class="row gx-0">
           <%= render 'list', posts: @posts %>
         </div>
@@ -33,15 +34,8 @@
         <a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
     </div>
 </section>
-<!-- Callout-->
-<section class="callout">
-    <%= render 'calendar', posts: @posts%>
-    <div class="container px-4 px-lg-5 text-center">
-        <h2 class="mx-auto mb-5">
-        </h2>
-    </div>
-</section>
-<%= render 'search', q: @q, url: posts_path %>
+
+
 <%= render 'topimage', bests: @bests %>
 
  <!-- Services-->
