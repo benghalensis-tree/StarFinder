@@ -54,6 +54,21 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         }
     })
+
+
+    $(function () {
+        var parallaxContent = $(".masthead");
+        var parallaxNum = parallaxContent.offset().top;
+        var parallaxFactor = 0.5;
+        var windowHeight = $(window).height();
+        var scrollYStart = parallaxNum - windowHeight;
+        $(window).on('scroll', function () {
+            var scrollY = $(this).scrollTop();
+            if (scrollY > scrollYStart) {
+                parallaxContent.css('background-position-y', (scrollY - parallaxNum) * parallaxFactor + 'px');
+            } 
+        });
+    });
 })
 
 function fadeOut(el) {
