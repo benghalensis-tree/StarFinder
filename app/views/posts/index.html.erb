@@ -2,11 +2,21 @@
     <div class="container px-4 px-lg-5 text-center">
         <h2 class="mb-1">Star Finder</h2>
         
-        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#example1" aria-expanded="false" aria-controls="example1" >Find</a>
+        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#example1" aria-expanded="false" aria-controls="example1" >探す</a>
     </div>
 </header>
+<div class="masthead d-flex align-items-center bg-black" >
+    <div class="container px-4 px-lg-5 text-center">
+        <h2 class="mb-1"><%= @day %></h2>
+        <p class="mb-1">
+        <% @moon_time.each do |moon| %>
+            <%= moon %>
+        <% end %>
+        </p>
+    </div>
+</div>
 <!-- Callout-->
-<div class="collapse" id="example1">
+<div class="find-wrapper collapse" id="example1">
     <%= render 'search', q: @q, url: posts_path %>
     <%= render 'calendar', posts: @posts%>
 </div>
