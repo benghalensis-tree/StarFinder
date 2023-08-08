@@ -11032,26 +11032,33 @@ footer.footer .social-link:hover {
   margin: 0;
   padding: 0;
 }
-@media (min-width: 992px) {
+
+@media(min-width: 980px){
   .masthead {
-    height: 80vh;
-  }
-  .masthead h1, .masthead .h1 {
-    font-size: 5.5rem;
+    display:none !important;
   }
 }
+
 .middlehead {
-  min-height: 20rem;
+  min-height: 5rem;
   position: relative;
   display: table;
   width: 100%;
-  height: 5rem;
+  height: 20rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+@media(min-width: 980px){
+  .middlehead {
+    height: 10px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 }
 
 .portfolio-item {
