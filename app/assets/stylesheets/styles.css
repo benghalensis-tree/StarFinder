@@ -11040,6 +11040,19 @@ footer.footer .social-link:hover {
     font-size: 5.5rem;
   }
 }
+.middlehead {
+  min-height: 20rem;
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .portfolio-item {
   display: block;
