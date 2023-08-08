@@ -11149,3 +11149,11 @@ footer.footer .social-link:hover {
   visibility: visible;
   transform: translateX(0);
 }
+
+.chart-center{
+  
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 100%;
+}

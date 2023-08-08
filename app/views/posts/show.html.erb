@@ -52,10 +52,7 @@
   <%= @post.favorite_count %>
 </p>
 
-<%= javascript_pack_tag 'radar_chart' %>
-
-<canvas id="myChart"></canvas>
-
+<%= render 'radar_chart' %>
 <%= render 'weather', weather_data: @weather_data %>
 <%= render 'comment', comments: @comments %>
 <%= render 'hotel', hotels: @hotels %>
