@@ -10,6 +10,7 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
 :root {
   --bs-blue: #1D809F;
   --bs-indigo: #6610f2;
@@ -90,6 +91,7 @@
     scroll-behavior: smooth;
   }
 }
+
 
 body {
   margin: 0;
@@ -485,6 +487,8 @@ progress {
 [hidden] {
   display: none !important;
 }
+
+.index, .new, .edit, .show{
 
 .lead {
   font-size: 1.25rem;
@@ -11160,7 +11164,7 @@ footer.footer .social-link:hover {
   margin: auto;
   height: 100%;
 }
-
+}
 #img_prev{
   max-width: 100%;
   height: auto;
