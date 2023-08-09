@@ -43,7 +43,7 @@
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
   --bs-primary-rgb: 29, 128, 159;
-  --bs-secondary-rgb: 236, 184, 7;
+  --bs-secondary-rgb: 40, 40, 50;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
   --bs-warning-rgb: 236, 184, 7;
@@ -11151,9 +11151,13 @@ footer.footer .social-link:hover {
 }
 
 .chart-center{
-  
   left: 0;
   right: 0;
   margin: auto;
   height: 100%;
+}
+
+#img_prev{
+  max-width: 100%;
+  height: auto;
 }
