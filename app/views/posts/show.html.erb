@@ -1,5 +1,10 @@
-<%= render 'post_data', post: @post, favorite: @favorite %>
-<%= render 'radar_chart' %>
-<%= render 'weather', weather_data: @weather_data %>
-<%= render 'comment', comments: @comments %>
-<%= render 'hotel', hotels: @hotels %>
+<section class="conntent-section d-flex align-items-center bg-black" >
+    <div class="container px-4 mt-5 px-lg-5 text-center">
+        <h1 class="mb-1 text-left">詳細</h1>
+        <%= render 'post_data', post: @post, favorite: @favorite %>
+        <%= render 'radar_chart' %>
+        <%= render 'weather', weather_data: @weather_data %>
+        <%= render 'comment', comments: @comments %>
+        <%= render 'hotel', hotels: @hotels %>
+        </div>
+</section>
