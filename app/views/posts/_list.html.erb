@@ -1,21 +1,29 @@
-<% posts.each do |post| %>
-  <div class="col-lg-6 fadein">
-      <a class="portfolio-item" href = "<%= post_path(post) %>">
-          <div class="caption">
-              <div class="caption-content">
-                  <div class="h2"><%= post.title %></div>
-                  <p class="mb-0"><%= post.content %></p>
-                  <p class="mb-0">
-                  <%= post.view_count %>
-                  <%= post.favorite_count %>
-                  </p>
-              </div>
+<section class="content-section bg-black" id="portfolio">
+
+    <div class="container px-4 px-lg-5">
+        
+        <div class="row gx-0">
+        <% posts.each do |post| %>
+          <div class="col-lg-6 fadein">
+              <a class="portfolio-item" href = "<%= post_path(post) %>">
+                  <div class="caption">
+                      <div class="caption-content">
+                          <div class="h2"><%= post.title %></div>
+                          <p class="mb-0"><%= post.content %></p>
+                          <p class="mb-0">
+                          <%= post.view_count %>
+                          <%= post.favorite_count %>
+                          </p>
+                      </div>
+                  </div>
+                  <% if post.image? %>
+                    <%= image_tag post.image.url, class: 'img-fluid', alt: "..." %>
+                  <% else %>
+                    <%= image_tag "no-image.png", class: 'img-fluid', alt: "..." %>
+                  <% end %>
+              </a>
           </div>
-          <% if post.image? %>
-            <%= image_tag post.image.url, class: 'img-fluid', alt: "..." %>
-          <% else %>
-            <%= image_tag "no-image.png", class: 'img-fluid', alt: "..." %>
-          <% end %>
-      </a>
-  </div>
-<% end %>
+        <% end %>
+     </div>
+     </div>
+</section>
