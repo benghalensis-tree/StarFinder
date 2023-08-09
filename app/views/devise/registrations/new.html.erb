@@ -38,6 +38,15 @@
           <%= f.submit t('.sign_up'), class: "btn btn-primary" %>
         </div>
       <% end %>
-      <%= render "devise/shared/links" %>
+      <div class='mt-4'>
+        <%= link_to user_google_omniauth_authorize_path, method: :post do %>
+          <%= image_tag "google_icon.png", style: "width:35%;" %>
+        <% end %>
+      </div>
+      <div class='mt-4'>
+        <%= link_to user_line_omniauth_authorize_path, method: :post do %>
+          <%= image_tag "line_icon.png", style: "width:30%;" %>
+        <% end %>
+      </div>
     </div>
 </section>
