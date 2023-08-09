@@ -11033,32 +11033,36 @@ footer.footer .social-link:hover {
   padding: 0;
 }
 
-@media(min-width: 980px){
+@media(max-width: 780px){
   .masthead {
+    display:flex !important;
+  }
+  .masthead_2 {
     display:none !important;
   }
 }
 
-.middlehead {
+@media(min-width: 779px){
+  .masthead {
+    display:none !important;
+  }
+  .masthead_2 {
+    display:flex !important;
+  }
+}
+
+.masthead_2 {
   min-height: 5rem;
   position: relative;
-  display: table;
+  display: none ;
   width: 100%;
-  height: 20rem;
+  height: 8rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-@media(min-width: 980px){
-  .middlehead {
-    height: 10px;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
 }
 
 .portfolio-item {

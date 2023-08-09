@@ -5,8 +5,21 @@
         <a class="btn btn-primary" role="button" data-toggle="collapse" href="#example1" aria-expanded="false" aria-controls="example1" >探す</a>
     </div>
 </header>
-<div class="middlehead d-flex align-items-center bg-black" >
+
+<div class="masthead d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center">
+        <h2 class="mb-1"><%= @day %></h2>
+        <p class="mb-1">
+        <% @moon_time.each do |moon| %>
+            <%= moon %>
+        <% end %>
+        </p>
+    </div>
+</div>
+
+<div class="masthead_2 d-flex align-items-center bg-black" >
+    <div class="container px-4 px-lg-5 text-center">
+        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#example1" aria-expanded="false" aria-controls="example1" >探す</a>
         <h2 class="mb-1"><%= @day %></h2>
         <p class="mb-1">
         <% @moon_time.each do |moon| %>
