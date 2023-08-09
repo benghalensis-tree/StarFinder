@@ -102,6 +102,9 @@ window.addEventListener('DOMContentLoaded', event => {
         $("#post_img").change(function(){
             readURL(this);
         });
+        $("#user_img").change(function(){
+            readURL(this);
+        });
       });
 })
 
