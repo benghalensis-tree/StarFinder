@@ -3,6 +3,9 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destory]
 
+  def top
+  end
+
   def index
     @bests = Post.order(view_count: :desc).limit(5)
     @q = Post.ransack(params[:q])
