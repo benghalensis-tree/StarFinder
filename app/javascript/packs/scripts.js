@@ -71,7 +71,7 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
     $(function () {
-        $(window).scroll(function () {
+        function checkFadeIn() {
           const windowHeight = $(window).height();
           const scroll = $(window).scrollTop();
       
@@ -81,6 +81,11 @@ window.addEventListener('DOMContentLoaded', event => {
               $(this).addClass("is-fadein");
             }
           });
+        }
+        checkFadeIn();
+
+        $(window).scroll(function () {
+          checkFadeIn();
         });
       });
 
