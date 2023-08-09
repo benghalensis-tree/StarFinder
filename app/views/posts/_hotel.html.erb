@@ -1,0 +1,30 @@
+<section class="content-section bg-black" id="portfolio">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-0">
+          <% begin %>
+            <% hotels.each do |hotel| %>
+              <% info = hotel["hotelBasicInfo"] %>
+              <div class="col-lg-6 fadein">
+                <a class="portfolio-item" href = "<%= info["hotelInformationUrl"] %>" target="_blank">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <div class="h2"><%= info['hotelName'] %></div>
+                            <p class="mb-0">★<%= info["reviewAverage"] %></p>
+                            <p class="mb-0">レビュー数<%= info["reviewCount"] %></p>
+                            <p class="mb-0"><%= info["access"] %></p>
+                        </div>
+                    </div>
+                    <% if info["roomImageUrl"].present? %>
+                      <img src="<%= info["roomImageUrl"] %>" class='img-fluid ' alt="...">
+                    <% else %>
+                      <img src="<%= info["hotelImageUrl"] %>" class='img-fluid ' alt="...">
+                    <% end %>
+                </a>
+              </div>
+            <% end %>
+          <% rescue RakutenWebService::NotFound %>
+            <strong> ホテルが見つかりませんでした </strong>
+          <% end %>
+      </div>
+    </div>
+</section>

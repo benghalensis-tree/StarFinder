@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include PostsHelper
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destory]
 
@@ -6,12 +7,6 @@ class PostsController < ApplicationController
     @bests = Post.order(view_count: :desc).limit(5)
     @q = Post.ransack(params[:q])
     @q.sorts = ['view_count desc', 'favorite_count desc'] if @q.sorts.empty? 
-    @posts = @q.result
-  end
-
-  def map
-    @bests = Post.order(view_count: :desc).limit(5)
-    @q = Post.ransack(params[:q])
     @posts = @q.result
     gon.posts = @posts.map do |post|
       {
@@ -32,6 +27,7 @@ class PostsController < ApplicationController
         limiting_mag: light_pollution.limiting_mag,
       }
     end
+   
     if params[:date].present?
       @weather_forecasts = WeatherForecast.where(date: params[:date])
       gon.weather_forecasts = @weather_forecasts.map do |weather_forecast|
@@ -41,6 +37,13 @@ class PostsController < ApplicationController
           longitude: weather_forecast.city.longitude,
         }
       end
+      @date = params[:date].to_date
+      @moon_time = moon_time(@date)
+      @day = "#{@date.month}/#{@date.day}"
+    else
+      @date = Date.today
+      @moon_time = moon_time(@date)
+      @day = "#{@date.month}/#{@date.day}"
     end
   end
 

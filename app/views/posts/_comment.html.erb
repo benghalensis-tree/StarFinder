@@ -1,0 +1,38 @@
+<div class="conntent-section d-flex align-items-center bg-black fadein" >
+    <div class="container px-4 px-lg-5 text-left">
+    <p>
+    <h2 class="mb-1 text-center"><strong>コメント</strong></h2>
+      <% comments.each do |comment|%>
+        <% if comment.id.present? %>
+          <p class="mb-1">
+            <% if comment.user.image.present? %>
+              <%= link_to image_tag(comment.user.image.thumb.url, class: 'img-icon-post-show'), my_page_path(comment.user) %>
+            <% else %>
+              <%= link_to image_tag("default.jpg", class: 'img-icon-post-show'), my_page_path(comment.user) %>
+            <% end %>
+            <%= comment.content %>
+            <% if comment.image.present? %>
+              <%= image_tag comment.image.url, class:'img-comment-show'%>
+            <% end %>
+            <%= link_to '削除', post_comment_path(@post, comment), method: :delete %>
+          </p>
+        <% end %>
+      <% end %>
+    </p>
+
+    <% if user_signed_in? %>
+      <%= form_with(model: [@post, @comment]) do |form| %>
+
+        <div class="field">
+          <%= form.text_area :content %>
+        </div>
+        <div class="field">
+          <%= form.file_field :image %>
+        </div>
+        <div>
+          <%= form.submit %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

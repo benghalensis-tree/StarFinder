@@ -1,12 +1,24 @@
-<% if @user.image? %>
-  <%= image_tag @user.image.thumb.url, class: 'img-icon' %>
-<% else %>
-  <%= image_tag "default.jpg", class: 'img-icon' %>
-<% end %>
+<section class="conntent-section d-flex align-items-center bg-black" >
+    <div class="container mb-1 px-4 mt-5 px-lg-5 text-center">
+      <% if @user.image? %>
+        <%= image_tag @user.image.thumb.url, class: 'img-icon' %>
+      <% else %>
+        <%= image_tag "default.jpg", class: 'img-icon' %>
+      <% end %>
 
-<h1><%= @user.name %></h1>
-<h2><%= @user.content %></h2>
-<%= link_to '編集',  edit_my_page_path %>
-<%= link_to '投稿',  my_page_path(@user) %>
-<%= link_to 'コメント', post_comment_path(@user) %>
-<%= link_to 'お気に入り',  favorite_path(@user) %>
+      <h1><%= @user.name %></h1>
+      <div><%= link_to '編集',  edit_my_page_path, class: 'btn btn-primary btn-sm' %></div>
+      <div><%= @user.content %></div>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+        <%= link_to '投稿',  my_page_path(@user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'コメント', post_comment_path(@user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'お気に入り',  favorite_path(@user), class: "nav-link" %>
+        </li>
+        </ul>
+    </div>
+</section>

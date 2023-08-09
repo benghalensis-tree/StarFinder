@@ -1,0 +1,59 @@
+<section class="conntent-section d-flex align-items-center bg-black" >
+  <% if post.image? %>
+    <%= image_tag post.image.url, class: 'img-show' %>
+  <% else %>
+    <%= image_tag "no-image.png", class: 'img-show' %>
+  <% end %>
+
+  <div class="container px-4 px-lg-5">
+    <div class="mb-1 text-center">
+      <% if user_signed_in?%>
+        <% if favorite.present? %>
+          <%= link_to 'お気に入り解除', favorite_path(favorite.id, post_id: post.id), method: :delete %> 
+        <% else %>
+          <%= link_to 'お気に入り', favorites_path(post_id: post.id), method: :post %> 
+        <% end %>
+      <% else %>
+        <%= link_to 'お気に入り',  new_user_registration_path%> 
+      <% end %>
+
+      <%= link_to 'Edit', edit_post_path(post) %> 
+
+      <p>
+        <strong>訪れた日</strong>
+        <%= post.access_date %>
+      </p>
+
+      <p>
+        <strong>場所</strong>
+        <%= post.address %>
+      </p>
+
+      <p>
+        <strong>投稿者</strong>
+        <%= link_to post.user.name, my_page_path(post.user) %>
+      </p>
+
+      <p>
+        <strong>閲覧数</strong>
+        <%= post.view_count %>
+      </p>
+
+      <p>
+        <strong>お気に入り数</strong>
+        <%= post.favorite_count %>
+      </p>
+    </div>
+  </div>
+</section>
+<div class="conntent-section d-flex align-items-center bg-black" >
+  <div class="container px-4 px-lg-5">
+    <h2 class="mb-1 text-left">
+      <%= post.title %>
+    </h2>
+
+    <div class="mb-1 text-left"> 
+      <%= post.content %>
+    </div>
+  </div>
+</div>
