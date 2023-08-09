@@ -1,6 +1,10 @@
-<%= search_form_for @q, url: url do |f| %>
-   <%= f.search_field :title_or_address_cont%>
-   <%= f.submit '検索' %>
-<% end %>
+<form class="form-inline">
+   <%= search_form_for @q, url: url do |f| %>
+      <div class="form-group">
+         <%= f.search_field :title_or_address_cont, class: "form-control bg-secondary text-white", placeholder: "検索"%>
+      </div>
+         <%= f.submit '検索', class: "btn btn-primary" %>
+      <% end %>   
+</form>
 <%= sort_link(@q, :view_count, "閲覧数の多い順") %>
 <%= sort_link(@q, :favorite_count, "お気に入りの多い順") %>
