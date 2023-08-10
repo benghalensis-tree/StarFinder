@@ -1,4 +1,7 @@
 class MyPagesController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
+  
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
@@ -22,4 +25,10 @@ class MyPagesController < ApplicationController
     params.require(:user).permit(:name, :content, :image, :image_cache)
   end
 
+  def correct_user
+    unless current_user == @user
+      flash[:alert] = '権限がありません'
+      redirect_to posts_path
+    end
+  end
 end

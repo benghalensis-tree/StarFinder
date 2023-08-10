@@ -6,8 +6,11 @@
         <%= image_tag "default.jpg", class: 'img-icon' %>
       <% end %>
 
+      <% if current_user == @user %>
+        <div><%= link_to '編集',  edit_my_page_path, class: 'btn btn-primary btn-sm' %></div>
+      <% end %>
+
       <h1><%= @user.name %></h1>
-      <div><%= link_to '編集',  edit_my_page_path, class: 'btn btn-primary btn-sm' %></div>
       <div><%= @user.content %></div>
       <ul class="nav nav-tabs">
         <li class="nav-item">
