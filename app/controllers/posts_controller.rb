@@ -3,6 +3,17 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destory]
 
+  def top
+    @date = Date.today
+    @moon_time = moon_time(@date)
+    @day = "#{@date.month}/#{@date.day}"
+    tokyo = City.find(13)
+    @weather = tokyo.weather_forecasts.where(date: Date.today)[0].icon
+    lat_sec = tokyo.latitude * 3600
+    lon_sec = tokyo.longitude * 3600
+    @hotels = RakutenWebService::Travel::Hotel.search(latitude: lat_sec.round(2), longitude: lon_sec.round(2), searchRadius: 3).first(2)
+  end
+
   def index
     @bests = Post.order(view_count: :desc).limit(5)
     @q = Post.ransack(params[:q])
