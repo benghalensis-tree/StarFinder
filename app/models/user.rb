@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_posts, through: :favorites, source: :post
   has_many :comments, dependent: :destroy
-  has_many :view_counts
+  has_many :view_counts, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i(google line)
@@ -52,10 +52,23 @@ class User < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(email: 'gest@gest.com') do |user|
+    find_or_create_by!(email: 'guest@guest.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
+      user.uid = SecureRandom.uuid
+      user.provider = SecureRandom.uuid
       user.name = 'ゲスト'
+      user.admin = false
+    end
+  end
+
+  def self.guest_admin
+    find_or_create_by!(email: 'admin@admin.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.uid = SecureRandom.uuid
+      user.provider = SecureRandom.uuid
+      user.name = '管理者'
       user.admin = true
     end
   end

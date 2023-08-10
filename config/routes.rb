@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+    post 'users/guest_admin_sign_in', to: 'users/sessions#new_guest_admin'
   end
   resources :my_pages, only:[:show, :edit, :update]
   resources :favorites, only:[:create, :destroy, :show]
