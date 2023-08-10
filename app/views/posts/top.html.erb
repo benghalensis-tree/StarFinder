@@ -1,12 +1,19 @@
-<!-- Header-->
-        <header class="masthead d-flex align-items-center"  style="background-image: url(<%= asset_path 'galaxy.jpg' %>) ">
+<header class="masthead d-flex align-items-center"  style="background-image: url(<%= asset_path 'galaxy.jpg' %>) ">
     <div class="container px-4 px-lg-5 text-center">
         <h2 class="mb-1">Star Finder</h2>
         
         <a class="btn btn-primary" role="button" data-toggle="collapse" href="#example1" aria-expanded="false" aria-controls="example1" >探す</a>
     </div>
 </header>
-
+<div class="masthead d-flex align-items-center bg-black" >
+    <div class="container px-4 px-lg-5 text-center fadein">
+        <h2 class="mb-1">星がよく見える場所</h2>
+        <div class="row justify-content-center">
+        <p><%= image_tag(asset_path("limiting_mag_icons/icon_6.png"),class: 'limiting-mag-icon') %></p>
+        </div>
+        <p class="mb-1">その地点の星の明るさをアイコンで表示しています。</p>
+    </div>
+</div>
 <div class="masthead d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center fadein">
         <h2 class="mb-1">月齢機能</h2>
@@ -21,8 +28,30 @@
 <div class="masthead d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center fadein">
         <h2 class="mb-1">天気予報機能</h2>
-        <p><%=image_tag asset_path "weather_icons3/#{@weather}.png" %></p>
+        <p><%= image_tag asset_path "weather_icons3/#{@weather}.png" %></p>
         <p class="mb-1">今日の東京の天気</p>
+    </div>
+</div>
+<div class="masthead d-flex align-items-center bg-black" >
+    <div class="container px-4 px-lg-5 text-center fadein">
+        <h2 class="mb-1">周辺ホテル表示機能</h2>
+        <% begin %>
+        <div class="row justify-content-center">
+            <% @hotels.each do |hotel| %>
+              <% info = hotel["hotelBasicInfo"] %>
+              <div class="col-2 fadein">
+                <% if info["roomImageUrl"].present? %>
+                    <img src="<%= info["roomImageUrl"] %>" class='img-fluid ' alt="...">
+                <% else %>
+                    <img src="<%= info["hotelImageUrl"] %>" class='img-fluid ' alt="...">
+                <% end %>
+              </div>
+            <% end %>
+          <% rescue RakutenWebService::NotFound %>
+            <strong> ホテルが見つかりませんでした </strong>
+          <% end %>
+          <p class="mb-1">東京周辺のホテル</p>
+        </div>
     </div>
 </div>
         <!-- Services-->

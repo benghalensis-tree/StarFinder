@@ -7,7 +7,11 @@ class PostsController < ApplicationController
     @date = Date.today
     @moon_time = moon_time(@date)
     @day = "#{@date.month}/#{@date.day}"
-    @weather = City.find(13).weather_forecasts.where(date: Date.today)[0].icon
+    tokyo = City.find(13)
+    @weather = tokyo.weather_forecasts.where(date: Date.today)[0].icon
+    lat_sec = tokyo.latitude * 3600
+    lon_sec = tokyo.longitude * 3600
+    @hotels = RakutenWebService::Travel::Hotel.search(latitude: lat_sec.round(2), longitude: lon_sec.round(2), searchRadius: 3).first(2)
   end
 
   def index
