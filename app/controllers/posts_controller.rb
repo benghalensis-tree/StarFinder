@@ -4,6 +4,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destory]
 
   def top
+    @date = Date.today
+    @moon_time = moon_time(@date)
+    @day = "#{@date.month}/#{@date.day}"
+    @weather = City.find(13).weather_forecasts.where(date: Date.today)[0].icon
   end
 
   def index

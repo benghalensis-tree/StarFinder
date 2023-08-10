@@ -1,27 +1,30 @@
 <!-- Header-->
-        <header class="masthead d-flex align-items-center">
-            <div class="container px-4 px-lg-5 text-center">
-                <h1 class="mb-1">Stylish Portfolio</h1>
-                <h3 class="mb-5"><em>A Free Bootstrap Theme by Start Bootstrap</em></h3>
-                <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
-            </div>
-        </header>
-        <!-- About-->
-        <section class="content-section bg-light" id="about">
-            <div class="container px-4 px-lg-5 text-center">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-10">
-                        <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
-                        <p class="lead mb-5">
-                            This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at
-                            <a href="https://unsplash.com/">Unsplash</a>
-                            !
-                        </p>
-                        <a class="btn btn-dark btn-xl" href="#services">What We Offer</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <header class="masthead d-flex align-items-center"  style="background-image: url(<%= asset_path 'galaxy.jpg' %>) ">
+    <div class="container px-4 px-lg-5 text-center">
+        <h2 class="mb-1">Star Finder</h2>
+        
+        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#example1" aria-expanded="false" aria-controls="example1" >探す</a>
+    </div>
+</header>
+
+<div class="masthead d-flex align-items-center bg-black" >
+    <div class="container px-4 px-lg-5 text-center fadein">
+        <h2 class="mb-1">月齢機能</h2>
+        <p class="mb-1"><%= @day %></p>
+        <p class="mb-1">
+        <% @moon_time.each do |moon| %>
+            <%= moon %>
+        <% end %>
+        </p>
+    </div>
+</div>
+<div class="masthead d-flex align-items-center bg-black" >
+    <div class="container px-4 px-lg-5 text-center fadein">
+        <h2 class="mb-1">天気予報機能</h2>
+        <p><%=image_tag asset_path "weather_icons3/#{@weather}.png" %></p>
+        <p class="mb-1">今日の東京の天気</p>
+    </div>
+</div>
         <!-- Services-->
         <section class="content-section bg-primary text-white text-center" id="services">
             <div class="container px-4 px-lg-5">

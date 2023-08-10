@@ -10533,7 +10533,7 @@
     position: relative;
     display: table;
     width: 100%;
-    height: 5rem;
+    height: 40rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
     
@@ -10545,38 +10545,6 @@
     font-size: 4rem;
     margin: 0;
     padding: 0;
-  }
-  
-  @media(max-width: 780px){
-    .masthead {
-      display:flex !important;
-    }
-    .masthead_2 {
-      display:none !important;
-    }
-  }
-  
-  @media(min-width: 779px){
-    .masthead {
-      display:none !important;
-    }
-    .masthead_2 {
-      display:flex !important;
-    }
-  }
-  
-  .masthead_2 {
-    min-height: 5rem;
-    position: relative;
-    display: none ;
-    width: 100%;
-    height: 8rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
   }
   
   .portfolio-item {
