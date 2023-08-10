@@ -55,6 +55,8 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'guest@guest.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
+      user.uid = SecureRandom.uuid
+      user.provider = SecureRandom.uuid
       user.name = 'ゲスト'
       user.admin = false
     end
@@ -64,6 +66,8 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'admin@admin.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
+      user.uid = SecureRandom.uuid
+      user.provider = SecureRandom.uuid
       user.name = '管理者'
       user.admin = true
     end
