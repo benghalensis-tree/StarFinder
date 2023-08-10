@@ -11,7 +11,7 @@
   <% end %>
 
   <% if post.image.present? %>
-    <%= image_tag post.image, id: :img_prev, size: '300x200' %>
+    <%= image_tag post.image.url, id: :img_prev, size: '300x200' %>
   <% else %>
     <%= image_tag "no-image.png", id: :img_prev %>
   <% end %>
