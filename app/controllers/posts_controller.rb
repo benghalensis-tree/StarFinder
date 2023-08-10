@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   include PostsHelper
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destory]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def top
     @date = Date.today
@@ -124,5 +125,12 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:title, :content, :access_date, :address, :latitude, :longitude, :image, :image_cache, :view_count,rating_attributes: [:id, :sky_light,:sky_clear,:sky_extent, :accessiblity, :convenient])
+    end
+
+    def correct_user
+      unless current_user == @post.user
+        flash[:alert] = '権限がありません'
+        redirect_to posts_path
+      end
     end
 end
