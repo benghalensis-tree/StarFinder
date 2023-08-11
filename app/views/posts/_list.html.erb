@@ -1,6 +1,8 @@
 <section class="content-section bg-black" id="portfolio">
     <div class="container px-4 px-lg-5">
-        <div class="row gx-0">
+        <div class="row justify-content-center gx-0">
+        <%= sort_link(@q, :view_count, "閲覧数の多い順", class: 'col-4 btn btn-primary mt-3')%>
+        <%= sort_link(@q, :favorite_count, "お気に入りの多い順", class: 'col-4 btn btn-primary mt-3') %> 
         <% posts.each do |post| %>
           <div class="col-lg-6 fadein">
               <a class="portfolio-item" href = "<%= post_path(post) %>">
