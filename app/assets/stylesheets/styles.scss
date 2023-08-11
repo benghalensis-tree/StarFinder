@@ -92,6 +92,11 @@
   }
 }
 
+@media (min-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+}
 
 body {
   margin: 0;
@@ -488,7 +493,7 @@ progress {
   display: none !important;
 }
 
-.index, .new, .edit, .show{
+.index, .new, .create, .edit, .show{
 
 .lead {
   font-size: 1.25rem;
@@ -10959,6 +10964,17 @@ html {
   background: #343a40;
 }
 
+.menu-header {
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .btn-xl {
   padding: 1.25rem 2.5rem;
 }
@@ -10998,7 +11014,7 @@ footer.footer .social-link:hover {
 }
 
 .map {
-  height: 30rem;
+  height: 35rem;
 }
 .map iframe {
   pointer-events: none;
@@ -11050,13 +11066,14 @@ footer.footer .social-link:hover {
 }
 
 .masthead_2 {
-  position: relative;
+  position: absolute;
+  z-index: 1;
   display: none ;
   width: 100%;
   height: 6rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  
+  background-color:rgba(0,0,0,0.3);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11151,12 +11168,12 @@ footer.footer .social-link:hover {
   transform: translateX(0);
 }
 
-.toggle-menu{
+.toggle-calender{
   display: none;
   list-style: none;
 }
 
-.toggle-menu a{
+.toggle-calender a{
   display: block;
 }
 
@@ -11221,29 +11238,30 @@ footer.footer .social-link:hover {
   .next-month {}
   .current-month {}
   .has-events {}
-  .super_good{
-    background: #008cff;
-    height: 100px;
-  }
-  .good{
-    background: #33a2fd;
-    height: 100px;
-  }
-  .normal{
-    background: #82c7ff;
-    height: 100px;
-  }
-  .short{
-    background: #d8ebfa;
-    height: 100px;
-  }
-  .bad{
-    background: #ffffff;
-    height: 100px;
-  }
-  .today {
-    background: #9dffeb;
-  }
+  
+.super_good{
+  background: #008cff;
+  height: 100px;
+}
+.good{
+  background: #0072cf;
+  height: 100px;
+}
+.normal{
+  background: #005eaa;
+  height: 100px;
+}
+.short{
+  background: #003967;
+  height: 100px;
+}
+.bad{
+  background: #00213b;
+  height: 100px;
+}
+.today {
+  background: #9dffeb;
+}
 }
 
 }

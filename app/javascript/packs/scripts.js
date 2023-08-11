@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
       $(function() {
         $('.toggle-btn').on('click', function() {
-          $('.toggle-menu').slideToggle();
+          $('.toggle-calender').slideToggle();
         });
       });
 })
