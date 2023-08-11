@@ -92,6 +92,11 @@
   }
 }
 
+@media (min-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+}
 
 body {
   margin: 0;
@@ -10959,6 +10964,17 @@ html {
   background: #343a40;
 }
 
+.menu-header {
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .btn-xl {
   padding: 1.25rem 2.5rem;
 }
@@ -11050,13 +11066,14 @@ footer.footer .social-link:hover {
 }
 
 .masthead_2 {
-  position: relative;
+  position: absolute;
+  z-index: 1;
   display: none ;
   width: 100%;
   height: 6rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  
+  background-color:rgba(0,0,0,0.3);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
