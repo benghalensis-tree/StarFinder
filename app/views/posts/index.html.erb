@@ -8,7 +8,7 @@
 
 <div class="masthead d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center">
-    <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"),class: 'limiting-mag-icon', style: 'width: 50px;') %>
+    <%= image_tag(asset_path("moon_icons/15.png"), style: 'width: 50px;') %>
         <h2 class="mb-1"><%= @day %></h2>
         <p class="mb-1">
         <% @moon_time.each do |moon| %>
@@ -20,19 +20,22 @@
 
 <div class="masthead_2 d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center">
-        <div class="row">
+        <div class="row justify-content-between">
             <div class="col-4">
-                <%= render 'search', q: @q, url: posts_path %>
+                <a class="btn btn-dark btn-lg" role="button" data-toggle="collapse" href="#example1" aria-expanded="false" aria-controls="example1" >
+                    <h3><%= @day %></h3>
+                </a>
             </div>
-            <div class="col-5">
-                <a class="btn btn-primary" role="button" data-toggle="collapse" href="#example1" aria-expanded="false" aria-controls="example1" >
-                    <h2><%= @day %></h2>
+            <div class="col-4">    
+                <%= image_tag(asset_path("moon_icons/15.png"), style: 'width: 30px;') %>
                 <p class="mb-1">
                 <% @moon_time.each do |moon| %>
                     <%= moon %>
                 <% end %>
                 </p>
-                </a>    
+            </div>
+            <div class="col-4">
+                <%= render 'search', q: @q, url: posts_path %>
             </div>
         </div>
     </div>
