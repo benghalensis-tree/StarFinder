@@ -11158,6 +11158,15 @@ footer.footer .social-link:hover {
   transform: translateX(0);
 }
 
+.toggle-menu{
+  display: none;
+  list-style: none;
+}
+
+.toggle-menu a{
+  display: block;
+}
+
 .chart-center{
   left: 0;
   right: 0;

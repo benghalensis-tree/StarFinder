@@ -106,6 +106,12 @@ window.addEventListener('DOMContentLoaded', event => {
             readURL(this);
         });
       });
+
+      $(function() {
+        $('.toggle-btn').on('click', function() {
+          $('.toggle-menu').slideToggle();
+        });
+      });
 })
 
 function fadeOut(el) {

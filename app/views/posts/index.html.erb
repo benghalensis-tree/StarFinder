@@ -22,7 +22,7 @@
     <div class="container px-4 px-lg-5 text-center">
         <div class="row justify-content-between">
             <div class="col-4">
-                <a class="btn btn-dark btn-lg" role="button" data-toggle="collapse" href="#example1" aria-expanded="false" aria-controls="example1" >
+                <a class="btn btn-dark btn-lg toggle-btn"  href="#"  >
                     <h3><%= @day %></h3>
                 </a>
             </div>
@@ -41,7 +41,7 @@
     </div>
 </div>
 <!-- Callout-->
-<div class="find-wrapper collapse" id="example1">
+<div class="find-wrapper toggle-menu">
     <%= render 'search', q: @q, url: posts_path %>
     <%= sort_link(@q, :view_count, "閲覧数の多い順", class: 'btn btn-primary mt-3')%>
     <%= sort_link(@q, :favorite_count, "お気に入りの多い順", class: 'btn btn-primary mt-3') %>
