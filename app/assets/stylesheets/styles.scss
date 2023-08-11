@@ -11238,29 +11238,30 @@ footer.footer .social-link:hover {
   .next-month {}
   .current-month {}
   .has-events {}
-  .super_good{
-    background: #008cff;
-    height: 100px;
-  }
-  .good{
-    background: #33a2fd;
-    height: 100px;
-  }
-  .normal{
-    background: #82c7ff;
-    height: 100px;
-  }
-  .short{
-    background: #d8ebfa;
-    height: 100px;
-  }
-  .bad{
-    background: #ffffff;
-    height: 100px;
-  }
-  .today {
-    background: #9dffeb;
-  }
+  
+.super_good{
+  background: #008cff;
+  height: 100px;
+}
+.good{
+  background: #0072cf;
+  height: 100px;
+}
+.normal{
+  background: #005eaa;
+  height: 100px;
+}
+.short{
+  background: #003967;
+  height: 100px;
+}
+.bad{
+  background: #00213b;
+  height: 100px;
+}
+.today {
+  background: #9dffeb;
+}
 }
 
 }
