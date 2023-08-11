@@ -44,10 +44,9 @@
 <div class="toggle-calender">
     <section class="conntent-section d-flex align-items-center bg-secondary" >
         <div class="container mt-5 text-center">
-        <div class="container px-4 mt-5 mb-5 px-lg-5 text-center">
-
-        <%= render 'calendar', posts: @posts%>
-        </div>
+            <div class="container px-4 mt-5 mb-5 px-lg-5 text-center">
+            <%= render 'calendar', posts: @posts%>
+            </div>
         </div>
     </section>
 </div>
@@ -58,4 +57,8 @@
 </div>
 
 <!-- リスト-->
+<div class='row justify-content-center'>
+    <%= sort_link(@q, :view_count, "閲覧数の多い順", class: 'col-4 btn btn-primary mt-3')%>
+    <%= sort_link(@q, :favorite_count, "お気に入りの多い順", class: 'col-4 btn btn-primary mt-3') %> 
+</div>
 <%= render 'list', posts: @posts %>
