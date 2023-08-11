@@ -8,6 +8,7 @@
 
 <div class="masthead d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center">
+    <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"),class: 'limiting-mag-icon', style: 'width: 50px;') %>
         <h2 class="mb-1"><%= @day %></h2>
         <p class="mb-1">
         <% @moon_time.each do |moon| %>

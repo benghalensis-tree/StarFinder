@@ -6,7 +6,7 @@ module PostsHelper
   def moon_age(date)
     date_time = date.strftime('%Y%m%d')
     day = MkCalendar.new("#{date_time}")
-    # binding.pry
+    
     if day.moonage > 27 || 3 > day.moonage 
       'super_good'
     elsif day.moonage > 25 || 5 > day.moonage 
