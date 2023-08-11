@@ -493,7 +493,7 @@ progress {
   display: none !important;
 }
 
-.index, .new, .edit, .show{
+.index, .new, .create, .edit, .show{
 
 .lead {
   font-size: 1.25rem;
@@ -11014,7 +11014,7 @@ footer.footer .social-link:hover {
 }
 
 .map {
-  height: 30rem;
+  height: 35rem;
 }
 .map iframe {
   pointer-events: none;
