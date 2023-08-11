@@ -8,7 +8,7 @@
 
 <div class="masthead d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center">
-    <%= image_tag(asset_path("moon_icons/15.png"), style: 'width: 50px;') %>
+    <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 50px;') %>
         <h2 class="mb-1"><%= @day %></h2>
         <p class="mb-1">
         <% @moon_time.each do |moon| %>
@@ -27,7 +27,7 @@
                 </a>
             </div>
             <div class="col-4">    
-                <%= image_tag(asset_path("moon_icons/15.png"), style: 'width: 30px;') %>
+                <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 30px;') %>
                 <p class="mb-1">
                 <% @moon_time.each do |moon| %>
                     <%= moon %>

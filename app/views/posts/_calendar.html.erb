@@ -1,7 +1,9 @@
 <%= month_calendar attribute: :access_date, events: posts do |date, posts| %>
   
   <p><%= link_to date.day, posts_path(date: date), class: 'btn btn-info' %></p>
-  <p class='row justify-content-center'><%= image_tag(asset_path("moon_icons/16.png"), style: 'width: 80px;') %></p>
+  <% date_time = date.strftime('%Y%m%d')%>
+  <% @moon_age = MkCalendar.new("#{date_time}").moonage.round%>
+  <p class='row justify-content-center'><%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 80px;') %></p>
 
   <% posts.each do |post| %>
       <%= post.title %>
