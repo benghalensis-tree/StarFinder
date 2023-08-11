@@ -6,6 +6,8 @@ class PostsController < ApplicationController
 
   def top
     @date = Date.today
+    date_time = @date.strftime('%Y%m%d')
+    @moon_age = MkCalendar.new("#{date_time}").moonage.round
     @moon_time = moon_time(@date)
     @day = "#{@date.month}/#{@date.day}"
     tokyo = City.find(13)
@@ -50,13 +52,14 @@ class PostsController < ApplicationController
         }
       end
       @date = params[:date].to_date
-      @moon_time = moon_time(@date)
-      @day = "#{@date.month}/#{@date.day}"
+      
     else
       @date = Date.today
-      @moon_time = moon_time(@date)
-      @day = "#{@date.month}/#{@date.day}"
     end
+    @moon_time = moon_time(@date)
+    @day = "#{@date.month}/#{@date.day}"
+    date_time = @date.strftime('%Y%m%d')
+    @moon_age = MkCalendar.new("#{date_time}").moonage.round
   end
 
   def show
