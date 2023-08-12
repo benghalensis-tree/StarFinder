@@ -58,7 +58,7 @@
 
 <!-- リスト-->
 <div class='row justify-content-center'>
-    <%= sort_link(@q, :view_count, "閲覧数の多い順", class: 'col-4 btn btn-primary mt-3')%>
-    <%= sort_link(@q, :favorite_count, "お気に入りの多い順", class: 'col-4 btn btn-primary mt-3') %> 
+    <%= sort_link(@q, :view_count, "閲覧数の多い順", class: 'col-4 btn btn-dark mt-3')%>
+    <%= sort_link(@q, :favorite_count, "お気に入りの多い順", class: 'col-4 btn btn-dark mt-3') %> 
 </div>
 <%= render 'list', posts: @posts %>
