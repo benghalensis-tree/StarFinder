@@ -26,9 +26,7 @@ require 'gimei'
       title: Faker::Lorem.paragraph(sentence_count: 1),
       content: Faker::Lorem.paragraph(sentence_count: 7),
       access_date: 20230720,
-      address: Gimei.address.kanji,
-      latitude: Faker::Number.between(from: 24.0, to: 46.0),
-      longitude: Faker::Number.between(from: 123.0, to: 154.0),
+      address: Gimei.address.prefecture.kanji,
       image:File.open("./public/images/image1.jpg"),
       user_id: user.id,
       view_count: rand(3000)
