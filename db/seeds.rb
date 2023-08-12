@@ -42,8 +42,26 @@ require 'gimei'
       )
     end
 
-    5.times do |i|
+    Post.all.each do |post|
+      Rating.create!(
+        sky_light: rand(0..5),
+        sky_clear: rand(0..5),
+        sky_extent: rand(0..5),
+        accessiblity: rand(0..5),
+        convenient: rand(0..5),
+        post_id: post.id
+      )
+    end
+
+    50.times do |i|
       ViewCount.create(
+        user_id: User.all.sample.id, 
+        post_id: Post.all.sample.id
+      )
+    end
+
+    50.times do |i|
+      Favorite.create(
         user_id: User.all.sample.id, 
         post_id: Post.all.sample.id
       )
