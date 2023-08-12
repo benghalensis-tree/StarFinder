@@ -85,3 +85,11 @@ namespace :import do
     end
   end
 end
+
+namespace :import do
+  desc "Import all GaN data from csv"
+  task light_pollutions: [:environment, :GaN2022, :GaN2021, :GaN2020, :GaN2019] do
+    puts "All GaN data imported successfully!"
+  end
+end
+
