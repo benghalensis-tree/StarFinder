@@ -32,4 +32,12 @@ require 'gimei'
       image:File.open("./public/images/image1.jpg"),
       user_id: user.id
     )
+
+    Post.all.each do |post|
+      Comment.create!(
+        content: Faker::Lorem.paragraph(sentence_count: 7),
+        user_id: User.all.sample.id,
+        post_id: post.id
+      )
+    end
   end
