@@ -30,7 +30,8 @@ require 'gimei'
       latitude: Faker::Number.between(from: 24.0, to: 46.0),
       longitude: Faker::Number.between(from: 123.0, to: 154.0),
       image:File.open("./public/images/image1.jpg"),
-      user_id: user.id
+      user_id: user.id,
+      view_count: rand(3000)
     )
 
     Post.all.each do |post|
@@ -38,6 +39,13 @@ require 'gimei'
         content: Faker::Lorem.paragraph(sentence_count: 7),
         user_id: User.all.sample.id,
         post_id: post.id
+      )
+    end
+
+    5.times do |i|
+      ViewCount.create(
+        user_id: User.all.sample.id, 
+        post_id: Post.all.sample.id
       )
     end
   end
