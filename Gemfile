@@ -36,6 +36,9 @@ gem 'rest-client'
 gem 'httpclient'
 gem 'rakuten_web_service'
 gem 'whenever', require: false
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

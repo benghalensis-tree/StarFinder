@@ -404,6 +404,9 @@ DEPENDENCIES
   mini_magick
   mk_calendar
   mk_sunmoon
+  net-imap
+  net-pop
+  net-smtp
   omniauth
   omniauth-google-oauth2
   omniauth-line
