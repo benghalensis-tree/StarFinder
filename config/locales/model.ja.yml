@@ -2,8 +2,44 @@ ja:
   activerecord:
     models:
       post: 投稿
-      
+      comment: コメント
+      view_count: 閲覧数
+      favorite: お気に入り
+      rating: 評価
+      light_pollution: 光害
+      city: 都道府県
+      weather_forecast: 天気予報
+
     attributes:
       post:
         title: タイトル
         content: 内容
+        access_date: 訪れた日
+        address: 訪れた場所
+        latitude: 緯度
+        longitude: 経度
+        image: 画像
+        view_count: 閲覧数
+        favorite_count: お気に入り数
+        favorites: お気に入り
+        comments: コメント
+        rating: 評価
+      comment:
+        content: コメント
+        image: 画像
+      rating:
+        sky_light: 空の暗さ
+        sky_clear: 空の透明度
+        sky_extent: 視界の広さ
+        accessiblity: アクセスの良さ
+        convenient: 便利さ
+      weather_forecast:
+        weather_id: 天気ID
+        clouds: 曇り度
+        icon: 天気アイコン
+        temp_min: 最低気温
+        temp_max: 最高気温
+        humidity: 湿度
+        wind_speed: 風速
+        pop: 降水確率
+        date: 日にち
