@@ -21,6 +21,16 @@
     </p>
 
     <% if user_signed_in? %>
+        <% if @comment.errors.any? %>
+          <div id="error_explanation">
+            <h2 class='mb-1'><%= pluralize(@comment.errors.count, '件') %> のエラー</h2>
+            <ul>
+              <% @comment.errors.each do |error| %>
+                <li class='mb-1'><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
       <%= form_with(model: [@post, @comment]) do |form| %>
 
         <div class="field">
