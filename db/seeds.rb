@@ -21,19 +21,20 @@ require 'gimei'
     )
   end
   
-  100.times do |i|
+  50.times do |i|
     Post.create!(
       title: Faker::Lorem.paragraph(sentence_count: 1),
       content: Faker::Lorem.paragraph(sentence_count: 7),
       access_date: 20230720,
       address: Gimei.address.prefecture.kanji,
-      image:File.open("./public/images/image1.jpg"),
+      image:File.open("./public/images/star_images/image#{rand(1..7)}.jpg"),
       user_id: User.all.sample.id,
-      view_count: rand(3000)
+      view_count: rand(3000),
+      favorite_count: rand(500)
     )
   end
 
-  500.times do |i|
+  100.times do |i|
     Comment.create!(
       content: Faker::Lorem.paragraph(sentence_count: 7),
       user_id: User.all.sample.id,
