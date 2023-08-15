@@ -1,20 +1,21 @@
 <header class="masthead d-flex align-items-center"  style="background-image: url(<%= asset_path 'galaxy.jpg' %>) ">
     <div class="container px-4 px-lg-5 text-center">
         <h2 class="mb-1">Star Finder</h2>
-        
-        <a class="btn btn-primary" role="button" data-toggle="collapse" href="#example1" aria-expanded="false" aria-controls="example1" >探す</a>
     </div>
 </header>
 
 <div class="masthead d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center">
     <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 50px;') %>
-        <h2 class="mb-1"><%= @day %></h2>
+        <br>
         <p class="mb-1">
         <% @moon_time.each do |moon| %>
             <%= moon %>
         <% end %>
         </p>
+        <a class="btn btn-dark btn-lg toggle-btn"  href="#"  >
+           <%= @day %>
+        </a>
     </div>
 </div>
 

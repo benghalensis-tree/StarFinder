@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_12_154214) do
+ActiveRecord::Schema.define(version: 2023_08_15_064231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,11 +69,11 @@ ActiveRecord::Schema.define(version: 2023_08_12_154214) do
 
   create_table "ratings", force: :cascade do |t|
     t.bigint "post_id", null: false
-    t.integer "sky_light", default: 0
-    t.integer "sky_clear", default: 0
-    t.integer "sky_extent", default: 0
-    t.integer "accessiblity", default: 0
-    t.integer "convenient", default: 0
+    t.integer "sky_light", default: 3
+    t.integer "sky_clear", default: 3
+    t.integer "sky_extent", default: 3
+    t.integer "accessiblity", default: 3
+    t.integer "convenient", default: 3
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_ratings_on_post_id"

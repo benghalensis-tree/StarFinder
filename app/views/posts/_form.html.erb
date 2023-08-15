@@ -28,12 +28,15 @@
 
   <div class="form-group mb-1 text-left">
     <%= form.label :address %>
-    <%= form.text_field :address, class: "form-control bg-secondary text-white", placeholder: "場所"  %>
+    <div id='map'></div>
   </div>
+
+  <%= form.hidden_field :latitude, id: "latitude-input" %>
+  <%= form.hidden_field :longitude, id: "longitude-input" %>
 
   <div class="form-group mb-1 text-left">
     <%= form.label :access_date, '訪れた日' %>
-    <%= form.date_field :access_date, class: 'form-control bg-secondary text-white' %>
+    <%= form.date_field :access_date, class: 'form-control bg-secondary text-white', value: ( post.new_record? ? Date.today : post.access_date ) %>
   </div>
 
   <div class="form-group mb-1 text-left">
@@ -42,26 +45,83 @@
   </div>
 
   <%= form.fields_for :rating do |rating_form| %>
-    <div class="form-inline">
-      <div class="form-group mb-1 text-left">
-        <p><%= rating_form.label :sky_light %></p>
-        <p><%= rating_form.number_field :sky_light, class: 'form-control bg-secondary text-white' %></p>
+    <div class="form-group mb-1 text-left">
+      <%= rating_form.label :sky_light %>
+      <div class="rating_form">
+        <%= rating_form.radio_button :sky_light , 5, id: 'sky_light5' %>
+        <label for="sky_light5"><span class="text">5</span>★</label>
+        <%= rating_form.radio_button :sky_light , 4, id: 'sky_light4' %>
+        <label for="sky_light4"><span class="text">4</span>★</label>
+        <%= rating_form.radio_button :sky_light , 3, id: 'sky_light3' %>
+        <label for="sky_light3"><span class="text">3</span>★</label>
+        <%= rating_form.radio_button :sky_light , 2, id: 'sky_light2' %>
+        <label for="sky_light2"><span class="text">2</span>★</label>
+        <%= rating_form.radio_button :sky_light , 1, id: 'sky_light1' %>
+        <label for="sky_light1"><span class="text">1</span>★</label>
       </div>
-      <div class="form-group mb-1 text-left">
-        <p><%= rating_form.label :sky_clear %></p>
-        <p><%= rating_form.number_field :sky_clear, class: 'form-control bg-secondary text-white' %></p>
+    </div>
+    <br>
+    <div class="form-group mb-1 text-left">
+      <%= rating_form.label :sky_clear %>
+      <div class="rating_form">
+        <%= rating_form.radio_button :sky_clear , 5, id: 'sky_clear5' %>
+        <label for="sky_clear5"><span class="text">5</span>★</label>
+        <%= rating_form.radio_button :sky_clear , 4, id: 'sky_clear4' %>
+        <label for="sky_clear4"><span class="text">4</span>★</label>
+        <%= rating_form.radio_button :sky_clear , 3, id: 'sky_clear3' %>
+        <label for="sky_clear3"><span class="text">3</span>★</label>
+        <%= rating_form.radio_button :sky_clear , 2, id: 'sky_clear2' %>
+        <label for="sky_clear2"><span class="text">2</span>★</label>
+        <%= rating_form.radio_button :sky_clear , 1, id: 'sky_clear1' %>
+        <label for="sky_clear1"><span class="text">1</span>★</label>
       </div>
-      <div class="form-group mb-1 text-left">
-        <p><%= rating_form.label :sky_extent %></p>
-        <p><%= rating_form.number_field :sky_extent, class: 'form-control bg-secondary text-white' %></p>
+    </div>
+    <br>
+    <div class="form-group mb-1 text-left">
+      <%= rating_form.label :sky_extent %>
+      <div class="rating_form">
+        <%= rating_form.radio_button :sky_extent , 5, id: 'sky_extent5' %>
+        <label for="sky_extent5"><span class="text">5</span>★</label>
+        <%= rating_form.radio_button :sky_extent , 4, id: 'sky_extent4' %>
+        <label for="sky_extent4"><span class="text">4</span>★</label>
+        <%= rating_form.radio_button :sky_extent , 3, id: 'sky_extent3' %>
+        <label for="sky_extent3"><span class="text">3</span>★</label>
+        <%= rating_form.radio_button :sky_extent , 2, id: 'sky_extent2' %>
+        <label for="sky_extent2"><span class="text">2</span>★</label>
+        <%= rating_form.radio_button :sky_extent , 1, id: 'sky_extent1' %>
+        <label for="sky_extent1"><span class="text">1</span>★</label>
       </div>
-      <div class="form-group mb-1 text-left">
-        <p><%= rating_form.label :accessiblity %></p>
-        <p><%= rating_form.number_field :accessiblity, class: 'form-control bg-secondary text-white' %></p>
+    </div>
+    <br>
+    <div class="form-group mb-1 text-left">
+      <%= rating_form.label :accessiblity %>
+      <div class="rating_form">
+        <%= rating_form.radio_button :accessiblity , 5, id: 'accessiblity5' %>
+        <label for="accessiblity5"><span class="text">5</span>★</label>
+        <%= rating_form.radio_button :accessiblity , 4, id: 'accessiblity4' %>
+        <label for="accessiblity4"><span class="text">4</span>★</label>
+        <%= rating_form.radio_button :accessiblity , 3, id: 'accessiblity3' %>
+        <label for="accessiblity3"><span class="text">3</span>★</label>
+        <%= rating_form.radio_button :accessiblity , 2, id: 'accessiblity2' %>
+        <label for="accessiblity2"><span class="text">2</span>★</label>
+        <%= rating_form.radio_button :accessiblity , 1, id: 'accessiblity1' %>
+        <label for="accessiblity1"><span class="text">1</span>★</label>
       </div>
-      <div class="form-group mb-1 text-left">
-        <p><%= rating_form.label :convenient %></p>
-        <p><%= rating_form.number_field :convenient, class: 'form-control bg-secondary text-white' %></p>
+    </div>
+    <br>
+    <div class="form-group mb-1 text-left">
+      <%= rating_form.label :convenient %>
+      <div class="rating_form">
+        <%= rating_form.radio_button :convenient , 5, id: 'convenient5' %>
+        <label for="convenient5"><span class="text">5</span>★</label>
+        <%= rating_form.radio_button :convenient , 4, id: 'convenient4' %>
+        <label for="convenient4"><span class="text">4</span>★</label>
+        <%= rating_form.radio_button :convenient , 3, id: 'convenient3' %>
+        <label for="convenient3"><span class="text">3</span>★</label>
+        <%= rating_form.radio_button :convenient , 2, id: 'convenient2' %>
+        <label for="convenient2"><span class="text">2</span>★</label>
+        <%= rating_form.radio_button :convenient , 1, id: 'convenient1' %>
+        <label for="convenient1"><span class="text">1</span>★</label>
       </div>
     </div>
   <% end %>
@@ -71,3 +131,49 @@
   </div>
 <% end %>
 
+<style>
+#map {
+  height: 300px;
+  width: 400px;
+}
+</style>
+
+<script>
+  let map;
+  let marker
+  let lat = 35.6585
+  let lng = 139.7486
+  function initMap() {
+      geocoder = new google.maps.Geocoder()
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: lat, lng: lng }, 
+        zoom: 5,
+        mapId: "<%=ENV['MAP_ID']%>",
+        scrollwheel: true,
+        streetViewControl: false,
+        mapTypeControl: false, 
+        restriction: {
+          latLngBounds: {
+            north: 49.55, 
+            south: 20.25, 
+            west: 122.935, 
+            east: 153.986
+          },
+          strictBounds: false
+        }
+      });
+
+       map.addListener('click', function(e) {
+        let latLng = e.latLng.toJSON();   
+        document.getElementById('latitude-input').value = latLng.lat;
+        document.getElementById('longitude-input').value = latLng.lng;
+        if (marker) {
+            marker.setMap(null);
+        }
+        marker = new google.maps.Marker({
+            position: e.latLng,
+            map: map
+        });
+    });
+  }
+</script>
