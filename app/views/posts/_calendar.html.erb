@@ -1,4 +1,4 @@
-<%= month_calendar attribute: :access_date, events: posts do |date, posts| %>
+<%= month_calendar attribute: :access_date do |date| %>
   
   <p>
     <%= link_to date.day, posts_path(date: date), class: 'btn border mb-1' %>
@@ -10,7 +10,4 @@
     <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 80px;') %>
   </p>
 
-  <% posts.each do |post| %>
-      <%= post.title %>  
-  <% end %>
 <% end %>
