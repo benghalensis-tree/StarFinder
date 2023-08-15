@@ -28,8 +28,11 @@
 
   <div class="form-group mb-1 text-left">
     <%= form.label :address %>
-    <%= form.text_field :address, class: "form-control bg-secondary text-white", placeholder: "場所"  %>
+    <div id='map'></div>
   </div>
+
+  <%= form.hidden_field :latitude, id: "latitude-input" %>
+  <%= form.hidden_field :longitude, id: "longitude-input" %>
 
   <div class="form-group mb-1 text-left">
     <%= form.label :access_date, '訪れた日' %>
@@ -71,3 +74,49 @@
   </div>
 <% end %>
 
+<style>
+#map {
+  height: 300px;
+  width: 400px;
+}
+</style>
+
+<script>
+  let map;
+  let marker
+  let lat = 35.6585
+  let lng = 139.7486
+  function initMap() {
+      geocoder = new google.maps.Geocoder()
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: lat, lng: lng }, 
+        zoom: 5,
+        mapId: "<%=ENV['MAP_ID']%>",
+        scrollwheel: true,
+        streetViewControl: false,
+        mapTypeControl: false, 
+        restriction: {
+          latLngBounds: {
+            north: 49.55, 
+            south: 20.25, 
+            west: 122.935, 
+            east: 153.986
+          },
+          strictBounds: false
+        }
+      });
+
+       map.addListener('click', function(e) {
+        let latLng = e.latLng.toJSON();   
+        document.getElementById('latitude-input').value = latLng.lat;
+        document.getElementById('longitude-input').value = latLng.lng;
+        if (marker) {
+            marker.setMap(null);
+        }
+        marker = new google.maps.Marker({
+            position: e.latLng,
+            map: map
+        });
+    });
+  }
+</script>
