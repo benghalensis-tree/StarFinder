@@ -33,7 +33,7 @@
 
   <div class="form-group mb-1 text-left">
     <%= form.label :access_date, '訪れた日' %>
-    <%= form.date_field :access_date, class: 'form-control bg-secondary text-white' %>
+    <%= form.date_field :access_date, class: 'form-control bg-secondary text-white', value: ( post.new_record? ? Date.today : post.access_date ) %>
   </div>
 
   <div class="form-group mb-1 text-left">
