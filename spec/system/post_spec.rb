@@ -44,4 +44,21 @@ RSpec.describe '投稿機能', type: :system do
       end
     end
  end
+  describe '投稿ソート・検索機能' do
+    before do
+      user = FactoryBot.create(:user)
+      post = FactoryBot.create(:post, user: user, title: '投稿1')
+      post_2 = FactoryBot.create(:post, user: user, title: '投稿2')
+    end
+    context 'キーワードで検索した場合' do
+      it 'キーワードを含む投稿が表示される' do
+        visit posts_path
+        fill_in 'q_title_or_address_cont', with: '投稿1'  
+        click_on '検索'
+        execute_script('window.scrollBy(0,10000)')
+        expect(page).to have_content '投稿1'
+        expect(page).not_to have_content '投稿2'
+      end
+    end
+ end
 end
