@@ -6,12 +6,10 @@
           <div class="col-lg-6 fadein">
               <a class="portfolio-item" href = "<%= post_path(post) %>">
                   <div class="caption">
-                      <div class="caption-content">
-                          <div class="h2"><%= post.title %></div>
-                          <p class="mb-0"><%= post.content %></p>
-                          <p class="mb-0">
-                          <%= post.view_count %>
-                          <%= post.favorite_count %>
+                      <div class="caption-content mb-0">
+                          <p><%= post.title %></p>
+                          <p>☑︎:<%= post.view_count %>回</p>
+                          <p>♡:<%= post.favorite_count %>個</p>
                           </p>
                       </div>
                   </div>

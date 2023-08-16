@@ -47,8 +47,8 @@ RSpec.describe '投稿機能', type: :system do
   describe '投稿ソート・検索機能' do
     before do
       user = FactoryBot.create(:user)
-      post = FactoryBot.create(:post, user: user, title: '投稿1')
-      post_2 = FactoryBot.create(:post, user: user, title: '投稿2')
+      @post = FactoryBot.create(:post, user: user, title: '投稿1', view_count: 1111)
+      @post_2 = FactoryBot.create(:post, user: user, title: '投稿2', view_count: 2222)
     end
     context 'キーワードで検索した場合' do
       it 'キーワードを含む投稿が表示される' do
@@ -58,6 +58,15 @@ RSpec.describe '投稿機能', type: :system do
         execute_script('window.scrollBy(0,10000)')
         expect(page).to have_content '投稿1'
         expect(page).not_to have_content '投稿2'
+      end
+    end
+    context '閲覧数ソートボタンを押した場合' do
+      it '閲覧数の多い投稿が1番目にくる' do
+        visit posts_path
+        click_on 'view_count_sort'
+        sleep 0.5
+        execute_script('window.scrollBy(0,10000)')
+        expect(page.text).to match(/#{@post_2.title}[\s\S]*#{@post.title}/)
       end
     end
  end
