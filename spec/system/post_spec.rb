@@ -35,4 +35,13 @@ RSpec.describe '投稿機能', type: :system do
       end
     end
   end
+  describe '詳細表示機能' do
+    context '任意の投稿詳細画面に遷移した場合' do
+      it '該当投稿の内容が表示される' do
+        post = FactoryBot.create(:post)
+        visit post_path(post)
+        expect(page).to have_content '投稿のタイトル1'
+      end
+    end
+ end
 end
