@@ -14,6 +14,15 @@ module StarFinder
     Faker::Config.locale = :ja
     config.paths.add 'lib', eager_load: true
     config.time_zone = 'Tokyo'
+    config.generators do |g|
+      g.test_framework :rspec,
+                       model_specs: true,
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       controller_specs: false,
+                       request_specs: false
+    end
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
