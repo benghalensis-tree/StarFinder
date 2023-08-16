@@ -25,4 +25,17 @@ RSpec.describe 'ユーザー機能', type: :system do
       end
     end
   end
+  describe 'ログアウト機能' do
+    context 'ユーザーがログアウトした場合' do
+      it 'フラッシュメッセージが表示される' do
+        @user = FactoryBot.create(:user)
+        visit new_user_session_path
+        fill_in 'user_email', with: 'user1@test.com'
+        fill_in 'user_password', with: 111111 
+        click_on 'commit'
+        click_on 'ログアウト'
+        expect(page).to have_content 'ログアウトしました。'
+      end
+    end
+  end
 end
