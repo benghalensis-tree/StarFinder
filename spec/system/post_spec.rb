@@ -47,14 +47,19 @@ RSpec.describe '投稿機能', type: :system do
   describe '投稿ソート・検索機能' do
     before do
       user = FactoryBot.create(:user)
-      @post = FactoryBot.create(:post, user: user, title: '投稿1', view_count: 1111)
-      @post_2 = FactoryBot.create(:post, user: user, title: '投稿2', view_count: 2222)
+      @post = FactoryBot.create(:post, user: user, title: '投稿1', view_count: 1111, favorite_count: 111)
+      sleep 1
+      @post_2 = FactoryBot.create(:post, user: user, title: '投稿2', view_count: 2222, favorite_count: 22)
+      sleep 1
+      @post_3 = FactoryBot.create(:post, user: user, title: '投稿3', view_count: 3333, favorite_count: 3)
+      sleep 1
     end
     context 'キーワードで検索した場合' do
       it 'キーワードを含む投稿が表示される' do
         visit posts_path
         fill_in 'q_title_or_address_cont', with: '投稿1'  
         click_on '検索'
+        sleep 1
         execute_script('window.scrollBy(0,10000)')
         expect(page).to have_content '投稿1'
         expect(page).not_to have_content '投稿2'
@@ -64,10 +69,19 @@ RSpec.describe '投稿機能', type: :system do
       it '閲覧数の多い投稿が1番目にくる' do
         visit posts_path
         click_on 'view_count_sort'
-        sleep 0.5
+        sleep 1
         execute_script('window.scrollBy(0,10000)')
-        expect(page.text).to match(/#{@post_2.title}[\s\S]*#{@post.title}/)
+        expect(page.text).to match(/#{@post_3.title}[\s\S]*#{@post_2.title}/)
       end
     end
- end
+    context 'お気に入りソートボタンを押した場合' do
+      it 'お気に入りの多い投稿が1番目にくる' do
+        visit posts_path
+        click_on 'favorite_count_sort'
+        sleep 1
+        execute_script('window.scrollBy(0,10000)')
+        expect(page.text).to match(/#{@post.title}[\s\S]*#{@post_2.title}/)
+      end
+    end
+  end
 end
