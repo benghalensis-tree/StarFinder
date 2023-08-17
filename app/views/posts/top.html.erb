@@ -4,7 +4,8 @@
         <%= link_to 'はじめる', posts_path, class: "mt-5 btn btn-primary btn-xl"%>
     </div>
 </header>
-<div class="masthead d-flex align-items-center bg-black" >
+
+<div class="top-page-container d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center fadein">
         <h2 class="mb-1">星空を探す</h2>
         <div class="row justify-content-center mt-5">
@@ -13,20 +14,45 @@
         </p>
     </div>
 </div>
-<div class="masthead d-flex align-items-center bg-black" >
-    <div class="container px-4 px-lg-5 text-center fadein">
-    
-        <h2 class="mb-1">1.星の明るさ機能</h2>
-        
-        <div class="row justify-content-center mt-5">
-        <p><%= image_tag(asset_path("limiting_mag_icons/icon_6.png"),class: 'limiting-mag-icon') %></p>
+
+<section class="content-section bg-primary text-white text-center fadein" id="services">
+    <div class="container px-4 px-lg-5">
+        <div class="content-section-heading fadein">
+            <h3 class="text-secondary mb-0">Function</h3>
+            <h2 class="mb-5">機能</h2>
         </div>
-        <p class="mb-1 mt-5">その地点の星の明るさをアイコンで表示しています。</p>
+        <div class="row gx-4 gx-lg-5 fadein">
+            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-location-pin"></i></span>
+                <h4><strong>マップ機能</strong></h4>
+                <p class="text-faded mb-0">マップ上にレビューをマーカー表示します。</p>
+                <p class="text-faded mb-0">天気や星の明るさを表示。レビューを探す手助けをします。</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+                <h4><strong>投稿機能</strong></h4>
+                <p class="text-faded mb-0">レビューを投稿できます。</p>
+                <p class="text-faded mb-0">住所や評価を直感的に選択でき簡単に投稿できます。</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-heart"></i></span>
+                <h4><strong>お気に入り機能</strong></h4>
+                <p class="text-faded mb-0">レビューをお気に入りすることができます。</p>
+                <p class="text-faded mb-0">お気に入りしたものはマイページから閲覧が可能です。</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-magnifier"></i></span>
+                <h4><strong>検索・ソート機能</strong></h4>
+                <p class="text-faded mb-0">投稿をタイトルや住所などのキーワードで検索できます。</p>
+                <p class="text-faded mb-0">閲覧数やお気に入り数でソートすることができます。</p>
+            </div>
+        </div>
     </div>
-</div>
-<div class="masthead d-flex align-items-center bg-black" >
+</section>
+
+<div class="top-page-container d-flex align-items-center bg-black" >
     <div class="container  text-center fadein">
-        <h2 class="mb-1">2.月齢機能</h2>
+        <h2 class="mb-1">1.月齢機能</h2>
             <div class="row justify-content-center mt-5">
             <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"),class: 'limiting-mag-icon', style: 'width: 100px;') %>
             <p class="mb-1"><%= @day %></p>
@@ -44,17 +70,34 @@
         </div>
     </div>
 </div>
-<div class="masthead d-flex align-items-center bg-black" >
+
+<div class="top-page-container d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center fadein">
-        <h2 class="mb-1">3.天気予報機能</h2>
+        <h2 class="mb-1">2.天気予報機能</h2>
         <div class="row justify-content-center mt-5">
+            <% if @weather == '03d' || '04d' %>
+                <% @weather = '03d04d' %>
+            <% end %>
             <p><%= image_tag asset_path "weather_icons3/#{@weather}.png" %></p>
             <p class="mb-1">今日の東京の天気</p>
             <p class="mb-1 mt-5">7日先までの天気予報を確認することができます。</p>
         </div>
     </div>
 </div>
-<div class="masthead d-flex align-items-center bg-black" >
+
+<div class="top-page-container d-flex align-items-center bg-black" >
+    <div class="container px-4 px-lg-5 text-center fadein">
+    
+        <h2 class="mb-1">3.星の明るさ機能</h2>
+        
+        <div class="row justify-content-center mt-5">
+        <p><%= image_tag(asset_path("limiting_mag_icons/icon_6.png"),class: 'limiting-mag-icon') %></p>
+        </div>
+        <p class="mb-1 mt-5">その地点の星の明るさをアイコンで表示しています。</p>
+    </div>
+</div>
+
+<div class="top-page-container d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center fadein">
         <h2 class="mb-1">4.周辺ホテル表示機能</h2>
         <% begin %>
@@ -77,6 +120,7 @@
         </div>
     </div>
 </div>
+
 <section class="callout">
     <div class="container px-4 px-lg-5 text-center">
         <h2 class="mx-auto mb-5">  
