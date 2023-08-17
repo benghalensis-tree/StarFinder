@@ -20,5 +20,11 @@ RSpec.describe User, type: :model do
         expect(user).not_to be_valid
       end
     end
+    context 'ユーザーのパスワードが空の場合' do
+      it 'バリデーションにひっかる' do
+        user = FactoryBot.build(:user, password: '')
+        expect(user).not_to be_valid
+      end
+    end
   end
 end
