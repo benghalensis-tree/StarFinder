@@ -8,5 +8,12 @@ RSpec.describe Post, type: :model do
         expect(post).not_to be_valid
       end
     end
+    context '投稿のコンテントが空の場合' do
+      it 'バリデーションにひっかる' do
+        post = FactoryBot.build(:post, content: '')
+        expect(post).not_to be_valid
+      end
+    end
+
   end
 end
