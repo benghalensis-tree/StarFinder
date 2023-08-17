@@ -4,7 +4,7 @@ class MyPagesController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   
   def show
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per(40)
   end
 
   def edit
