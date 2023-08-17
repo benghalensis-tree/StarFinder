@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   describe 'バリデーションのテスト' do
+    context 'FactoryBotで作成する場合' do
+      it 'バリデーションを通過する' do
+        post = FactoryBot.build(:post)
+        expect(post).to be_valid
+      end
+    end
     context '投稿のタイトルが空の場合' do
       it 'バリデーションにひっかる' do
         post = FactoryBot.build(:post, title: '')
