@@ -35,6 +35,26 @@ RSpec.describe '投稿機能', type: :system do
       end
     end
   end
+  describe '投稿編集機能' do
+    before do
+      @user = FactoryBot.create(:user)
+      @post = FactoryBot.create(:post, user: @user)
+      visit new_user_session_path
+      fill_in 'user_email', with: 'user1@test.com'  
+      fill_in 'user_password', with: 111111
+      click_on 'sign_in_btn'
+      sleep 0.5
+    end
+    context '投稿を編集した場合' do
+      it '編集したタイトルが表示される' do
+        visit edit_post_path(@post)
+        fill_in 'post_title', with: '編集したタイトル'  
+        click_button '登録'
+        execute_script('window.scrollBy(0,10000)')
+        expect(page).to have_content '編集したタイトル'
+      end
+    end
+  end
   describe '詳細表示機能' do
     context '任意の投稿詳細画面に遷移した場合' do
       it '該当投稿の内容が表示される' do
