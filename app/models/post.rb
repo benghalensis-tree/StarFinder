@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   
   mount_uploader :image, ImageUploader
   validates :title, presence: true
+  validates :content, presence: true
   validates :access_date, presence: true, date: {
     after: Date.new(1900, 1, 1)
   }
