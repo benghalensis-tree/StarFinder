@@ -39,7 +39,7 @@
             <li class="nav-item"><%= link_to '新規投稿', new_post_path, class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
             <% if current_user.admin? %>
-              <li class="nav-item"><%= link_to '管理画面', rails_admin_path %></li>
+              <li class="nav-item"><%= link_to '管理画面', rails_admin_path, class: 'nav-link', id: 'admin-screen-btn' %></li>
             <% end %>
           <% else %>
             <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %></li>

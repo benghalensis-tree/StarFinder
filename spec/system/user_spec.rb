@@ -24,6 +24,16 @@ RSpec.describe 'ユーザー機能', type: :system do
         expect(page).to have_content 'ログインしました。'
       end
     end
+    context '管理者がログインした場合' do
+      it 'フラッシュメッセージが表示される' do
+        @user = FactoryBot.create(:admin)
+        visit new_user_session_path
+        fill_in 'user_email', with: 'admin@test.com'
+        fill_in 'user_password', with: 111111 
+        click_on 'commit'
+        expect(page).to have_selector '#admin-screen-btn'
+      end
+    end
   end
   describe 'ログアウト機能' do
     context 'ユーザーがログアウトした場合' do

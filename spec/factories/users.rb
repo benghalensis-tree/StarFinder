@@ -8,4 +8,12 @@ FactoryBot.define do
     provider { "#{Faker::Number.between}" }
     uid { "#{Faker::Number.between}" }
   end
+  factory :admin, class: User do
+    name { '管理者' }
+    admin { true }
+    email { 'admin@test.com' }
+    password { 111111 }
+    provider { "#{Faker::Number.between}" }
+    uid { "#{Faker::Number.between}" }
+  end
 end
