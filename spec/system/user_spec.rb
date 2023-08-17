@@ -79,5 +79,12 @@ RSpec.describe 'ユーザー機能', type: :system do
         expect(page).to have_content 'ユーザーの更新に成功しました'
       end
     end
+    context 'ユーザーの削除をした場合' do
+      it 'フラッシュメッセージが表示される' do
+        visit "/admin/user/#{@user.id}/delete"
+        click_on '実行する'
+        expect(page).to have_content 'ユーザーの削除に成功しました'
+      end
+    end
   end
 end
