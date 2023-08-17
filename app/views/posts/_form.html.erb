@@ -2,10 +2,10 @@
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2 class='mb-1'><%= pluralize(post.errors.count, '件') %> のエラー</h2>
-      <ul>
+      <ul class='mb-1 text-center'>
         <% post.errors.each do |error| %>
-          <li class='mb-1'><%= error.full_message %></li>
-        <% end %>
+          <p ><%= error.full_message %></p>
+        <% end.join %>
       </ul>
     </div>
   <% end %>
