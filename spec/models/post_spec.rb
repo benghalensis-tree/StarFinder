@@ -14,6 +14,12 @@ RSpec.describe Post, type: :model do
         expect(post).not_to be_valid
       end
     end
+    context '緯度経度が空の場合' do
+      it 'バリデーションにひっかる' do
+        post = FactoryBot.build(:post, latitude: '', longitude: '')
+        expect(post).not_to be_valid
+      end
+    end
 
   end
 end
