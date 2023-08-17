@@ -50,7 +50,8 @@ RSpec.describe 'ユーザー機能', type: :system do
   end
   describe '管理者機能' do
     before do
-      @user = FactoryBot.create(:admin)
+      @user = FactoryBot.create(:user)
+      @admin = FactoryBot.create(:admin)
         visit new_user_session_path
         fill_in 'user_email', with: 'admin@test.com'
         fill_in 'user_password', with: 111111 
@@ -65,6 +66,17 @@ RSpec.describe 'ユーザー機能', type: :system do
         fill_in 'user_password_confirmation', with: 111111 
         click_on '_save'
         expect(page).to have_content 'ユーザーの作成に成功しました'
+      end
+    end
+    context 'ユーザーの編集をした場合' do
+      it 'フラッシュメッセージが表示される' do
+        visit "/admin/user/#{@user.id}/edit"
+        fill_in 'user_name', with: 'テストユーザー'
+        fill_in 'user_email', with: 'test@test.com'
+        fill_in 'user_password', with: 111111 
+        fill_in 'user_password_confirmation', with: 111111 
+        click_on '_save'
+        expect(page).to have_content 'ユーザーの更新に成功しました'
       end
     end
   end
