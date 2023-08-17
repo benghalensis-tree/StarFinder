@@ -14,5 +14,11 @@ RSpec.describe User, type: :model do
         expect(user).not_to be_valid
       end
     end
+    context 'ユーザーのメールアドレスが空の場合' do
+      it 'バリデーションにひっかる' do
+        user = FactoryBot.build(:user, email: '')
+        expect(user).not_to be_valid
+      end
+    end
   end
 end
