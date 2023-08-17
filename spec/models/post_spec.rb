@@ -26,6 +26,12 @@ RSpec.describe Post, type: :model do
         expect(post).not_to be_valid
       end
     end
+    context '緯度経度に住所が存在しない場合' do
+      it 'バリデーションにひっかる' do
+        post = FactoryBot.build(:post, latitude: 36, longitude: 150)
+        expect(post).not_to be_valid
+      end
+    end
     context '適切に入力されている場合' do
       it 'バリデーションが通る' do
         user = FactoryBot.create(:user)
