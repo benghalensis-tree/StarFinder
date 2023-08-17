@@ -20,6 +20,13 @@ RSpec.describe Post, type: :model do
         expect(post).not_to be_valid
       end
     end
+    context '適切に入力されている場合' do
+      it 'バリデーションが通る' do
+        user = FactoryBot.create(:user)
+        post = Post.new(title: '成功テスト', content: '成功テスト', access_date: Date.today, latitude: 36, longitude: 138, user: user )
+        expect(post).to be_valid
+      end
+    end
 
   end
 end
