@@ -1,26 +1,26 @@
 <section class="content-section bg-black">
     <div class="container px-4">
-        <div class="row justify-content-center">
-        
-        <% posts.each do |post| %>
-          <div class="col-lg-6 fadein">
-              <a class="portfolio-item" href = "<%= post_path(post) %>">
-                  <div class="caption">
-                      <div class="caption-content mb-0">
-                          <p><%= post.title %></p>
-                          <p>☑︎:<%= post.view_count %>回</p>
-                          <p>♡:<%= post.favorite_count %>個</p>
-                          </p>
+        <div class="row justify-content-center">    
+            <% posts.each do |post| %>
+              <div class="col-lg-6 fadein">
+                  <a class="portfolio-item" href = "<%= post_path(post) %>">
+                      <div class="caption">
+                          <div class="caption-content mb-0">
+                              <p><%= post.title %></p>
+                              <p>☑︎:<%= post.view_count %>回</p>
+                              <p>♡:<%= post.favorite_count %>個</p>
+                              </p>
+                          </div>
                       </div>
-                  </div>
-                  <% if post.image? %>
-                    <%= image_tag post.image.url, class: 'img-fluid', alt: "..." %>
-                  <% else %>
-                    <%= image_tag "no-image.png", class: 'img-fluid', alt: "..." %>
-                  <% end %>
-              </a>
-          </div>
-        <% end %>
-     </div>
+                      <% if post.image? %>
+                        <%= image_tag post.image.url, class: 'img-fluid', alt: "..." %>
+                      <% else %>
+                        <%= image_tag "no-image.png", class: 'img-fluid', alt: "..." %>
+                      <% end %>
+                  </a>
+              </div>
+            <% end %>
+            <%= paginate @posts %>
+        </div>
      </div>
 </section>

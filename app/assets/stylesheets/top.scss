@@ -10546,6 +10546,19 @@
     margin: 0;
     padding: 0;
   }
+
+  .top-page-container {
+    min-height: 20rem;
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 30rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   
   .portfolio-item {
     display: block;
@@ -10643,7 +10656,10 @@
     height: 100%;
   }
   .limiting-mag-icon {
-    width: 10%;
+    width: 40%;
+  }
+  .rakuten-hotel {
+    width: 150%;
   }
 
   }

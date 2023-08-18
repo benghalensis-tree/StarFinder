@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.favorite_posts
+    @posts = @user.favorite_posts.page(params[:page]).per(40)
   end
 
 end

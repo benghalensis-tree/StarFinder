@@ -33,6 +33,7 @@ class PostsController < ApplicationController
         post_url: post_url(post)
       }
     end
+    @posts = @posts.page(params[:page]).per(40)
     @light_pollutions = LightPollution.all
     gon.light_pollutions = @light_pollutions.map do |light_pollution|
       {
