@@ -87,4 +87,38 @@ RSpec.describe 'ユーザー機能', type: :system do
       end
     end
   end
+  describe 'アクセス制限' do
+    context '未ログイン者が新規投稿画面にアクセスした場合' do
+      it 'ログイン画面に遷移する' do
+        visit new_post_path
+        expect(page).to have_content 'ログインもしくはアカウント登録してください。'
+      end
+    end
+    context '一般ユーザが他人の投稿編集画面にアクセスした場合' do
+      it 'フラッシュメッセージが表示される' do
+        user = FactoryBot.create(:user)
+        user2 = FactoryBot.create(:user_2)
+        post = FactoryBot.create(:post, user: user2)
+        visit new_user_session_path
+        fill_in 'user_email', with: 'user1@test.com'
+        fill_in 'user_password', with: 111111 
+        click_on 'commit'
+        visit edit_post_path(post)
+        expect(page).to have_content '権限がありません'
+      end
+    end
+    context '一般ユーザが他人のマイページ編集画面にアクセスした場合' do
+      it 'フラッシュメッセージが表示される' do
+        user = FactoryBot.create(:user)
+        user2 = FactoryBot.create(:user_2)
+        visit new_user_session_path
+        fill_in 'user_email', with: 'user1@test.com'
+        fill_in 'user_password', with: 111111 
+        click_on 'commit'
+        visit edit_my_page_path(user2)
+        expect(page).to have_content '権限がありません'
+      end
+    end
+  
+  end
 end
