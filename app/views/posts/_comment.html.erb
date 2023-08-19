@@ -1,14 +1,14 @@
-<div class="conntent-section d-flex align-items-center bg-black fadein" >
+<div class="conntent-section mt-5 d-flex align-items-center bg-black fadein" >
     <div class="container px-4 px-lg-5 text-left">
     <p>
-    <h2 class="mb-1 text-center"><strong>コメント</strong></h2>
+    <h2 class="mb-5 text-center"><strong>コメント</strong></h2>
       <% comments.each do |comment|%>
         <% if comment.id.present? %>
           <p class="mb-1">
             <% if comment.user.image.present? %>
-              <%= link_to image_tag(comment.user.image.thumb.url, class: 'img-icon-post-show'), my_page_path(comment.user) %>
+              <%= link_to image_tag(comment.user.image.thumb.url, class: 'img-icon-post-show rounded-circle'), my_page_path(comment.user) %>
             <% else %>
-              <%= link_to image_tag("default.jpg", class: 'img-icon-post-show'), my_page_path(comment.user) %>
+              <%= link_to image_tag("default.jpg", class: 'img-icon-post-show rounded-circle'), my_page_path(comment.user) %>
             <% end %>
             <%= comment.content %>
             <% if comment.image.present? %>
