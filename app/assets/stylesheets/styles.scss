@@ -11200,10 +11200,10 @@ footer.footer .social-link:hover {
 }
 
 .img-content{
-  height: 400px;  /* 任意の高さ */
-    width: 700px;   /* 画面の幅いっぱい */
-    overflow: hidden;  /* はみ出た部分を非表示に */
-    position: relative; 
+  height: 200px;
+  width: 300px; 
+  overflow: hidden;
+  position: relative; 
 }
 .img-show{
   height: 100%;
@@ -11219,9 +11219,8 @@ footer.footer .social-link:hover {
   height: 100%;
 }
 .img-icon-post-show{
-  width: 10%;
-  height: 10%;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
 }
 .img-show-hotel{
   width: 80%;

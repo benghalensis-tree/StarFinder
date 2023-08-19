@@ -3,10 +3,10 @@
 <% else %>
     <% image_url = asset_path "no-image.png" %>
 <% end %>
-    <div class="background-image parallax-content">
-    <div class='gradient'></div>
-    </div>
 
+<div class="background-image parallax-content">
+  <div class='gradient'></div>
+</div>
 <%= render 'posts/post_data', post: @post, favorite: @favorite %>
 <%= render 'posts/radar_chart' %>
 <%= render 'posts/weather', weather_data: @weather_data %>
@@ -16,6 +16,7 @@
 <style>
   .background-image {
     background-image:  url("<%= image_url %>");
+    background-size: cover;
     height: 600px; 
     position: relative;
   }

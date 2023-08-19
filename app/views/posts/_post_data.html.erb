@@ -1,67 +1,63 @@
 <section class=" bg-black" >
-<div class="container row mb-1 px-4 mt-5 px-lg-5 text-center">
-  <div class='img-content col-8'>
-      <% if @post.image? %>
-          <%= link_to @post.image.url, "data-lightbox" => @post.image.url do %>
-          <%= image_tag @post.image.url, class: 'img-show'%>
-          <% end %>
-      <% else %>
-          <%= image_tag "no-image.png", class: 'img-show' %>
-      <% end %>
-  </div>
+    
+    <div class="row h-25 mb-1 px-4 mt-5 px-lg-5 text-center">
+        <div class='col'>
+            <div class='btn-group bg-dark rounded'>
+                <% if post.user.image.present? %>
+                  <%= link_to image_tag(post.user.image.thumb.url, class: 'img-icon-post-show border boder-light rounded-left'), my_page_path(post.user) %>
+                <% else %>
+                  <%= link_to image_tag("default.jpg", class: 'img-icon-post-show border boder-light rounded-left'), my_page_path(post.user) %>
+                <% end %>
+                <%= link_to post.user.name, my_page_path(post.user), class: 'btn btn-light' %>
+            </div>
+        
+            <% if user_signed_in?%>
+              <% if favorite.present? %>
+                <%= link_to 'お気に入り解除', favorite_path(favorite.id, post_id: post.id), method: :delete, class: 'btn btn-dark' %> 
+              <% else %>
+                <%= link_to 'お気に入り', favorites_path(post_id: post.id), method: :post, class: 'btn btn-dark' %> 
+              <% end %>
+            <% else %>
+              <%= link_to 'お気に入り',  new_user_registration_path, class: 'btn btn-dark'%> 
+            <% end %>
+        
+            <% if current_user == post.user %>
+                <%= link_to '編集', edit_post_path(post), class: 'btn btn-dark' %> 
+                <%= link_to '削除', post_path(post), method: :delete, data: {confirm: "削除しますか？"}, class: 'btn btn-dark' %> 
+            <% end %>
+        </div>
 
-  <div class="col-4">
-    <div class="mb-1 text-center">
-      <% if user_signed_in?%>
-        <% if favorite.present? %>
-          <%= link_to 'お気に入り解除', favorite_path(favorite.id, post_id: post.id), method: :delete, class: 'btn btn-dark' %> 
-        <% else %>
-          <%= link_to 'お気に入り', favorites_path(post_id: post.id), method: :post, class: 'btn btn-dark' %> 
-        <% end %>
-      <% else %>
-        <%= link_to 'お気に入り',  new_user_registration_path, class: 'btn btn-dark'%> 
-      <% end %>
-      <% if current_user == post.user %>
-        <%= link_to '編集', edit_post_path(post), class: 'btn btn-dark' %> 
-        <%= link_to '削除', post_path(post), method: :delete, data: {confirm: "削除しますか？"}, class: 'btn btn-dark' %> 
-      <% end %>
-
-      <p>
-        <strong>訪れた日</strong>
-        <%= post.access_date %>
-      </p>
-
-      <p>
-        <strong>場所</strong>
-        <%= post.address %>
-      </p>
-
-      <p>
-        <strong>投稿者</strong>
-        <%= link_to post.user.name, my_page_path(post.user), class: 'btn btn-dark' %>
-      </p>
-
-      <p>
-        <strong>閲覧数</strong>
-        <%= post.view_count %>
-      </p>
-
-      <p>
-        <strong>お気に入り数</strong>
-        <%= post.favorite_count %>
-      </p>
+        <div class='col ml-auto'>
+            <i class='icon-eye'></i>
+            <%= post.view_count%>
+        
+            <i class='icon-heart ms-3'></i>
+            <%= post.favorite_count %>
+        
+            <i class='ms-3'></i>
+            <%= post.access_date %>
+        
+            <i class='ms-3'></i>
+            <%= post.address %>
+        </div>
     </div>
-  </div>
-  </div>
+    <div class="container mb-1 px-4 mt-5 px-lg-5 text-center">
+        <h2 class="mb-1 text-left">
+            <%= post.title %>
+        </h2>
+        <div class='row'>
+          <div class="col-8 bg-secondary rounded mb-1 text-left"> 
+              <%= post.content %>
+          </div>
+          <div class='col-4 img-content'>
+              <% if @post.image? %>
+                  <%= link_to @post.image.url, "data-lightbox" => @post.image.url do %>
+                  <%= image_tag @post.image.url, class: 'img-show'%>
+                  <% end %>
+              <% else %>
+                  <%= image_tag "no-image.png", class: 'img-show' %>
+              <% end %>
+          </div>
+        </div>
+    </div>
 </section>
-<div class="conntent-section d-flex align-items-center bg-black" >
-  <div class="container px-4 px-lg-5">
-    <h2 class="mb-1 text-left">
-      <%= post.title %>
-    </h2>
-
-    <div class="mb-1 text-left"> 
-      <%= post.content %>
-    </div>
-  </div>
-</div>
