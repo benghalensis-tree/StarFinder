@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
 
     $(function () {
-        var parallaxContent = $(".masthead");
+        var parallaxContent = $(".parallax-content");
         var parallaxNum = parallaxContent.offset().top;
         var parallaxFactor = 0.5;
         var windowHeight = $(window).height();
