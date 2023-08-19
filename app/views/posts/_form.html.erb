@@ -127,9 +127,9 @@
   <% end %>
 
   <div class="actions">
-    <% if action_name == 'new' || 'create' %>
+    <% if action_name == 'new' || action_name =='create' %>
       <%= form.submit '投稿', class: "btn btn-primary" %>
-    <% elsif action_name == 'edit' || 'update' %>
+    <% elsif action_name == 'edit' || action_name == 'update' %>
       <%= form.submit '登録', class: "btn btn-primary" %>
     <% end %>
   </div>
