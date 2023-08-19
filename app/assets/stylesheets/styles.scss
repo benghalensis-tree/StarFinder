@@ -11199,9 +11199,20 @@ footer.footer .social-link:hover {
   height: 50%;
 }
 
+.img-content{
+  height: 400px;  /* 任意の高さ */
+    width: 700px;   /* 画面の幅いっぱい */
+    overflow: hidden;  /* はみ出た部分を非表示に */
+    position: relative; 
+}
 .img-show{
-  width: 50%;
-  height: 50%;
+  height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.img-show-background {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(0, 0, 0, 0)70.71%);
 }
 .img-show-weather-icon{
   width: 100%;

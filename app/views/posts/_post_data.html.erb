@@ -1,11 +1,16 @@
-<section class="conntent-section d-flex align-items-center bg-black" >
-  <% if post.image? %>
-    <%= image_tag post.image.url, class: 'img-show' %>
-  <% else %>
-    <%= image_tag "no-image.png", class: 'img-show' %>
-  <% end %>
+<section class=" bg-black" >
+<div class="container row mb-1 px-4 mt-5 px-lg-5 text-center">
+  <div class='img-content col-8'>
+      <% if @post.image? %>
+          <%= link_to @post.image.url, "data-lightbox" => @post.image.url do %>
+          <%= image_tag @post.image.url, class: 'img-show'%>
+          <% end %>
+      <% else %>
+          <%= image_tag "no-image.png", class: 'img-show' %>
+      <% end %>
+  </div>
 
-  <div class="container px-4 px-lg-5">
+  <div class="col-4">
     <div class="mb-1 text-center">
       <% if user_signed_in?%>
         <% if favorite.present? %>
@@ -46,6 +51,7 @@
         <%= post.favorite_count %>
       </p>
     </div>
+  </div>
   </div>
 </section>
 <div class="conntent-section d-flex align-items-center bg-black" >
