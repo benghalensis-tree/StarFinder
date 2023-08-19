@@ -11228,6 +11228,19 @@ footer.footer .social-link:hover {
   height: 80%;
 }
 
+.gradient {
+  background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,255,0) 40%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.parallax-content {
+  background-position: center center;
+}
+
 .simple-calendar {
   .day {
     

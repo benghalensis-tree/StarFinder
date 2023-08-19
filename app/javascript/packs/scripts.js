@@ -65,7 +65,8 @@ window.addEventListener('DOMContentLoaded', event => {
         $(window).on('scroll', function () {
             var scrollY = $(this).scrollTop();
             if (scrollY > scrollYStart) {
-                parallaxContent.css('background-position-y', (scrollY - parallaxNum) * parallaxFactor + 'px');
+                var offset = (scrollY - parallaxNum) * parallaxFactor;
+                parallaxContent.css('background-position-y', 'calc(50% + ' + offset + 'px)');
             } 
         });
     });
