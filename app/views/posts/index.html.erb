@@ -62,4 +62,4 @@
     <%= sort_link(@q, :view_count, "閲覧数の多い順", default_order: :desc, class: 'col-4 btn btn-dark mt-3', id: 'view_count_sort')%>
     <%= sort_link(@q, :favorite_count, "お気に入りの多い順", default_order: :desc, class: 'col-4 btn btn-dark mt-3', id: 'favorite_count_sort') %> 
 </div>
-<%= render 'list', posts: @posts %>
+<%= render 'list', posts: @posts, favorite: @favorite%>
