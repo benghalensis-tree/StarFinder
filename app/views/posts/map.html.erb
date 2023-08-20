@@ -70,6 +70,7 @@
   let markerData = gon.posts; 
   let light_pollutions = gon.light_pollutions;
   let weather_forecasts = gon.weather_forecasts;
+  let ctaLayer;
   
   function initMap() {
     geocoder = new google.maps.Geocoder()
@@ -90,6 +91,15 @@
         strictBounds: false
       }
     });
+
+    ctaLayer = new google.maps.KmlLayer({
+        url: "<%=ENV['KML_LIGHT_POLLUTION_URL']%>",
+        map: map
+    });
+
+    google.maps.event.addListener(ctaLayer, 'status_changed', function() {
+  console.log('KML Layer status: ' + ctaLayer.getStatus());
+});
 
     if(weather_forecasts){
 
@@ -245,5 +255,6 @@
       infoWindow[i].close(map, markers[i]);
     });
   }
+  
 
 </script>
