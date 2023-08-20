@@ -29,7 +29,7 @@
   <body class='<%= controller.action_name %>'>
     <nav class="d-none d-md-block">
       <nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top">
-        <%= link_to 'StarFinder', posts_path, class: 'navbar-brand ml-5' %>
+        <%= link_to 'StarFinder', map_posts_path, class: 'navbar-brand ml-5' %>
         <ul class="navbar-nav mr-auto">
           <% if notice %>
           <small class="alert alert-notice mb-1"><%= notice %></small>
@@ -39,8 +39,9 @@
           <% end %>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item"><%= link_to 'マップ', posts_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'ポートフォリオ説明', top_posts_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'Top', top_posts_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'マップ', map_posts_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to '一覧', posts_path, class: 'nav-link' %></li>
           <% if user_signed_in? %>
             <li class="nav-item"><%= link_to 'マイページ', my_page_path(current_user.id), class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to '新規投稿', new_post_path, class: 'nav-link' %></li>
@@ -83,6 +84,8 @@
   
     <%= yield %>
 
+    <% unless controller.action_name == 'map' %>
+
     <footer class="footer text-center">
         <div class="container px-4 px-lg-5">
             <ul class="list-inline mb-5">
@@ -99,6 +102,7 @@
             <p class="text-muted small mb-0">Copyright &copy; Your Website 2023</p>
         </div>
     </footer>
+    <% end %>
     
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_API_KEY']%>&v=beta&libraries=marker&callback=initMap"></script>

@@ -18,6 +18,13 @@ class PostsController < ApplicationController
   end
 
   def index
+    @q = Post.ransack(params[:q])
+    @q.sorts
+    @posts = @q.result
+    @posts = @posts.page(params[:page]).per(40)
+  end
+
+  def map
     @bests = Post.order(view_count: :desc).limit(5)
     @q = Post.ransack(params[:q])
     @q.sorts
