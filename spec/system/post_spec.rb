@@ -20,12 +20,11 @@ RSpec.describe '投稿機能', type: :system do
       sleep 0.5
     end
     context '投稿を新規作成した場合' do
-      it '作成したタスクが表示される' do
+      it '作成した投稿が表示される' do
         visit new_post_path
         fill_in 'post_title', with: 'テストタイトル'  
         fill_in 'post_content', with: 'テストコンテント'  
         find('#map').click(x: 10, y: 10)
-        attach_file 'post[image]', File.join(Rails.root, 'spec/fixtures/test.jpg')
         choose 'sky_light4'
         choose 'sky_clear2'
         click_button '投稿'
