@@ -22,11 +22,11 @@
         
             <% if user_signed_in?%>
                 <% if favorite.present? %>
-                  <%= link_to favorite_path(favorite.id, post_id: post.id), method: :delete do %> 
+                  <%= link_to favorite_path(favorite.id, post_id: post.id), id: 'favorite_btn', method: :delete do %> 
                       <i class="fa-solid fa-heart ms-3" style="color: #ff0000;"></i>
                   <% end %>
               <% else %>
-                <%= link_to favorites_path(post_id: post.id),  method: :post do %> 
+                <%= link_to favorites_path(post_id: post.id), id: 'favorite_btn', method: :post do %> 
                     <i class="fa-regular fa-heart ms-3"></i>
                 <% end %>
               <% end %>
