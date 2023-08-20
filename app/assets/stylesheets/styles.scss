@@ -11018,21 +11018,10 @@ footer.footer .social-link:hover {
   text-decoration: none;
 }
 
-.map {
-  height: 35rem;
-}
-.map iframe {
-  pointer-events: none;
-  height: 100%;
-  width: 100%;
-  border: 0;
+.map-container {
+  height: 50rem;
 }
 
-@media (max-width: 992px) {
-  .map {
-    height: 75%;
-  }
-}
 .masthead {
   min-height: 20rem;
   position: relative;

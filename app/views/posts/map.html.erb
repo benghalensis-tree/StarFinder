@@ -52,7 +52,198 @@
     </section>
 </div>
 
-<!-- Map-->
-<div class="map bg-black fadein" id="contact">
-   <%= render 'map'%>
+<div class="map-container">
+  <div id='map'></div>
 </div>
+
+<style>
+#map {
+  height: 100%;
+  width: 100%;
+}
+</style>
+
+<script>
+  let map;
+  let markers = []; 
+  let infoWindow = []; 
+  let markerData = gon.posts; 
+  let light_pollutions = gon.light_pollutions;
+  let weather_forecasts = gon.weather_forecasts;
+  
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 35.6585, lng: 139.7486 }, 
+      zoom: 5,
+      mapId: "<%=ENV['MAP_ID']%>",
+      scrollwheel: true,
+      mapTypeControl: false, 
+      restriction: {
+        latLngBounds: {
+          north: 49.55, 
+          south: 20.25, 
+          west: 122.935, 
+          east: 153.986
+        },
+        strictBounds: false
+      }
+    });
+
+    if(weather_forecasts){
+
+    for (var i = 0; i < weather_forecasts.length; i++) {
+      let id = weather_forecasts[i]['id']
+
+      markerLatLng = new google.maps.LatLng({
+        lat: weather_forecasts[i]['latitude'],
+        lng: weather_forecasts[i]['longitude']
+      });
+
+      let weather_icon
+      if (weather_forecasts[i]['icon'] == '01d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/01d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '02d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/02d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '03d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/03d04d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '04d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/03d04d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '09d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/09d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '10d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/10d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '11d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/11d.png' %>'
+        }
+      else if (weather_forecasts[i]['icon'] == '13d' ){
+        weather_icon = '<%= asset_path 'weather_icons3/13d.png' %>'
+        }
+      else {
+        weather_icon = '<%= asset_path 'weather_icons3/01d.png' %>'
+        }
+      
+      markers[i] = new google.maps.Marker({
+        position: markerLatLng,
+        map: map,
+        icon: {
+          url: weather_icon,
+          scaledSize: new google.maps.Size(50, 25),
+           }
+      });
+    }
+    }
+    for (var i = 0; i < light_pollutions.length; i++) {
+      let id = light_pollutions[i]['id']
+
+      markerLatLng = new google.maps.LatLng({
+        lat: light_pollutions[i]['latitude'],
+        lng: light_pollutions[i]['longitude']
+      });
+
+      let limiting_mag_icon
+      if (light_pollutions[i]['limiting_mag'] == 0 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_0.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 1 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_1.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 2 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_2.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 3 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_3.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 4 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_4.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 5 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_5.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 6 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_6.png' %>'
+        }
+      else if (light_pollutions[i]['limiting_mag'] == 7 ){
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_7.png' %>'
+        }
+      else{
+        limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_0.png' %>'
+        }
+      
+      markers[i] = new google.maps.Marker({
+        position: markerLatLng,
+        map: map,
+        icon: {
+          url: limiting_mag_icon,
+          scaledSize: new google.maps.Size(10, 10),
+           }
+      });
+    }
+    for (var i = 0; i < markerData.length; i++) {
+      let id = markerData[i]['id']
+
+      markerLatLng = new google.maps.LatLng({
+        lat: markerData[i]['latitude'],
+        lng: markerData[i]['longitude']
+      });
+
+      markers[i] = new google.maps.marker.AdvancedMarkerView({
+        position: markerLatLng,
+        map: map,
+        collisionBehavior: 'OPTIONAL_AND_HIDES_LOWER_PRIORITY',
+      });
+      
+      if( markerData[i]['image_url']){
+        info_window_image = markerData[i]['image_url']
+      }
+      else{
+        info_window_image = '<%= asset_path 'no-image.png' %>'
+      }
+
+      content_data = `<div style="width:200px; height:200px;">
+                        <a data-turbolinks = "false" href="${ markerData[i]['post_url'] }">
+                          <img src="${ info_window_image }" width="100%" />
+                        </a>
+                        <p style="font-size:20px;">${ markerData[i]['title']}</p>
+                        <p style="font-size:10px;">閲覧数:${ markerData[i]['view_count']}</p>
+                        <p style="font-size:10px;">${ markerData[i]['content']}</p>
+                      </div>`
+
+      infoWindow[i] = new google.maps.InfoWindow({
+        content: content_data,
+        maxWidth: 600
+      });
+
+      infoOpen(i);
+      infoClose(i);
+    }
+    // new markerClusterer.MarkerClusterer({
+    //     map,
+    //     markers
+    // });
+  }
+
+  function infoOpen(i) {
+    markers[i].addListener('click', function () {
+      for (var j = 0; j < infoWindow.length; j++) {
+      if (j !== i) {
+        infoWindow[j].close();
+      }
+    }
+      infoWindow[i].open(map, markers[i]);
+    });
+  }
+  function infoClose(i) {
+    map.addListener('click', function () {
+      infoWindow[i].close(map, markers[i]);
+    });
+  }
+
+</script>
