@@ -11090,6 +11090,7 @@ footer.footer .social-link:hover {
   position: relative;
   overflow: hidden;
   max-width: 530px;
+  max-height: 300px;
   margin: auto auto 1rem;
 }
 .portfolio-item .caption {
@@ -11199,22 +11200,45 @@ footer.footer .social-link:hover {
   height: 50%;
 }
 
+.img-content{
+  height: 200px;
+  width: 300px; 
+  overflow: hidden;
+  position: relative; 
+}
 .img-show{
-  width: 50%;
-  height: 50%;
+  height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.img-show-background {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(0, 0, 0, 0)70.71%);
 }
 .img-show-weather-icon{
   width: 100%;
   height: 100%;
 }
 .img-icon-post-show{
-  width: 10%;
-  height: 10%;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
 }
 .img-show-hotel{
   width: 80%;
   height: 80%;
+}
+
+.gradient {
+  background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,255,0) 40%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.parallax-content {
+  background-position: center center;
 }
 
 .simple-calendar {
@@ -11283,7 +11307,7 @@ footer.footer .social-link:hover {
   padding: 10px 10px 0;
   color: gray;
   cursor: pointer;
-  font-size: 40px; 
+  font-size: 30px; 
 }
 .rating_form label .text{
   position: absolute;
@@ -11297,7 +11321,7 @@ footer.footer .social-link:hover {
 .rating_form label:hover,
 .rating_form label:hover ~ label,
 .rating_form input[type='radio']:checked ~ label{
-  color: #ffcc00;
+  color: #4dc3fe;
 }
 
 .star-rating {

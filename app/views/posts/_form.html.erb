@@ -1,3 +1,4 @@
+<div class="d-flex justify-content-center">
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -10,135 +11,147 @@
     </div>
   <% end %>
 
+<div class="d-flex justify-content-center">
+   <div class="input-group text-center w-25">
   <% if post.image.present? %>
-    <%= image_tag post.image.url, id: :img_prev, size: '300x200' %>
+    <%= image_tag post.image.url, id: :img_prev, size: '800x200' %>
   <% else %>
     <%= image_tag "no-image.png", id: :img_prev %>
   <% end %>
-
-  <div class="form-group mb-1 text-left">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "form-control bg-secondary text-white", placeholder: "タイトル"%>
+      <div class="custom-file">
+        <%= form.label :画像を選択, class: "custom-file-label text-left bg-dark" %>
+        <%= form.file_field :image, class: "custom-file-input bg-dark", id: :post_img  %>
+      </div>
+  </div>
   </div>
 
-  <div class="form-group mb-1 text-left">
-      <%= form.label :content %>
-      <%= form.text_area :content, class: "form-control form-control-lg bg-secondary text-white", placeholder: "本文" %>
-  </div>
-
-  <div class="form-group mb-1 text-left">
-    <%= form.label :address %>
+  <div class="mb-1 mt-5 text-left">
+    <%= form.label :address %>を選択してください。
     <div id='map'></div>
   </div>
 
   <%= form.hidden_field :latitude, id: "latitude-input" %>
   <%= form.hidden_field :longitude, id: "longitude-input" %>
 
-  <div class="form-group mb-1 text-left">
+  <div class='row'>
+    <div class='col-8'>
+      <div class="form-group mb-1 mt-3 text-left">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control bg-secondary text-white", style: 'height: 50px;', placeholder: "タイトル"%>
+      </div>
+
+      <div class="form-group mb-1 mt-3 text-left">
+          <%= form.label :content %>
+          <%= form.text_area :content, class: "form-control form-control-lg bg-secondary text-white", style: 'height: 400px;',placeholder: "本文" %>
+      </div>
+    </div>
+
+    <div class='col'>
+      <%= form.fields_for :rating do |rating_form| %>
+        <div class="form-group mb-1 text-left">
+          <%= rating_form.label :sky_light %>
+          <div class="rating_form">
+            <%= rating_form.radio_button :sky_light , 5, id: 'sky_light5' %>
+            <label for="sky_light5"><span class="text">5</span>★</label>
+            <%= rating_form.radio_button :sky_light , 4, id: 'sky_light4' %>
+            <label for="sky_light4"><span class="text">4</span>★</label>
+            <%= rating_form.radio_button :sky_light , 3, id: 'sky_light3' %>
+            <label for="sky_light3"><span class="text">3</span>★</label>
+            <%= rating_form.radio_button :sky_light , 2, id: 'sky_light2' %>
+            <label for="sky_light2"><span class="text">2</span>★</label>
+            <%= rating_form.radio_button :sky_light , 1, id: 'sky_light1' %>
+            <label for="sky_light1"><span class="text">1</span>★</label>
+          </div>
+        </div>
+        <br>
+        <div class="form-group mb-1 text-left">
+          <%= rating_form.label :sky_clear %>
+          <div class="rating_form">
+            <%= rating_form.radio_button :sky_clear , 5, id: 'sky_clear5' %>
+            <label for="sky_clear5"><span class="text">5</span>★</label>
+            <%= rating_form.radio_button :sky_clear , 4, id: 'sky_clear4' %>
+            <label for="sky_clear4"><span class="text">4</span>★</label>
+            <%= rating_form.radio_button :sky_clear , 3, id: 'sky_clear3' %>
+            <label for="sky_clear3"><span class="text">3</span>★</label>
+            <%= rating_form.radio_button :sky_clear , 2, id: 'sky_clear2' %>
+            <label for="sky_clear2"><span class="text">2</span>★</label>
+            <%= rating_form.radio_button :sky_clear , 1, id: 'sky_clear1' %>
+            <label for="sky_clear1"><span class="text">1</span>★</label>
+          </div>
+        </div>
+        <br>
+        <div class="form-group mb-1 text-left">
+          <%= rating_form.label :sky_extent %>
+          <div class="rating_form">
+            <%= rating_form.radio_button :sky_extent , 5, id: 'sky_extent5' %>
+            <label for="sky_extent5"><span class="text">5</span>★</label>
+            <%= rating_form.radio_button :sky_extent , 4, id: 'sky_extent4' %>
+            <label for="sky_extent4"><span class="text">4</span>★</label>
+            <%= rating_form.radio_button :sky_extent , 3, id: 'sky_extent3' %>
+            <label for="sky_extent3"><span class="text">3</span>★</label>
+            <%= rating_form.radio_button :sky_extent , 2, id: 'sky_extent2' %>
+            <label for="sky_extent2"><span class="text">2</span>★</label>
+            <%= rating_form.radio_button :sky_extent , 1, id: 'sky_extent1' %>
+            <label for="sky_extent1"><span class="text">1</span>★</label>
+          </div>
+        </div>
+        <br>
+        <div class="form-group mb-1 text-left">
+          <%= rating_form.label :accessiblity %>
+          <div class="rating_form">
+            <%= rating_form.radio_button :accessiblity , 5, id: 'accessiblity5' %>
+            <label for="accessiblity5"><span class="text">5</span>★</label>
+            <%= rating_form.radio_button :accessiblity , 4, id: 'accessiblity4' %>
+            <label for="accessiblity4"><span class="text">4</span>★</label>
+            <%= rating_form.radio_button :accessiblity , 3, id: 'accessiblity3' %>
+            <label for="accessiblity3"><span class="text">3</span>★</label>
+            <%= rating_form.radio_button :accessiblity , 2, id: 'accessiblity2' %>
+            <label for="accessiblity2"><span class="text">2</span>★</label>
+            <%= rating_form.radio_button :accessiblity , 1, id: 'accessiblity1' %>
+            <label for="accessiblity1"><span class="text">1</span>★</label>
+          </div>
+        </div>
+        <br>
+        <div class="form-group mb-1 text-left">
+          <%= rating_form.label :convenient %>
+          <div class="rating_form">
+            <%= rating_form.radio_button :convenient , 5, id: 'convenient5' %>
+            <label for="convenient5"><span class="text">5</span>★</label>
+            <%= rating_form.radio_button :convenient , 4, id: 'convenient4' %>
+            <label for="convenient4"><span class="text">4</span>★</label>
+            <%= rating_form.radio_button :convenient , 3, id: 'convenient3' %>
+            <label for="convenient3"><span class="text">3</span>★</label>
+            <%= rating_form.radio_button :convenient , 2, id: 'convenient2' %>
+            <label for="convenient2"><span class="text">2</span>★</label>
+            <%= rating_form.radio_button :convenient , 1, id: 'convenient1' %>
+            <label for="convenient1"><span class="text">1</span>★</label>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  
+  <div class="form-group mb-1 mt-5 text-left">
     <%= form.label :access_date, '訪れた日' %>
     <%= form.date_field :access_date, class: 'bg-secondary text-white', value: ( post.new_record? ? Date.today : post.access_date ) %>
   </div>
 
-  <div class="form-group mb-1 text-left">
-    <%= form.label :image %>
-    <%= form.file_field :image, class: "form-control-file bg-secondary text-white", id: :post_img %>
-  </div>
-
-  <%= form.fields_for :rating do |rating_form| %>
-    <div class="form-group mb-1 text-left">
-      <%= rating_form.label :sky_light %>
-      <div class="rating_form">
-        <%= rating_form.radio_button :sky_light , 5, id: 'sky_light5' %>
-        <label for="sky_light5"><span class="text">5</span>★</label>
-        <%= rating_form.radio_button :sky_light , 4, id: 'sky_light4' %>
-        <label for="sky_light4"><span class="text">4</span>★</label>
-        <%= rating_form.radio_button :sky_light , 3, id: 'sky_light3' %>
-        <label for="sky_light3"><span class="text">3</span>★</label>
-        <%= rating_form.radio_button :sky_light , 2, id: 'sky_light2' %>
-        <label for="sky_light2"><span class="text">2</span>★</label>
-        <%= rating_form.radio_button :sky_light , 1, id: 'sky_light1' %>
-        <label for="sky_light1"><span class="text">1</span>★</label>
-      </div>
-    </div>
-    <br>
-    <div class="form-group mb-1 text-left">
-      <%= rating_form.label :sky_clear %>
-      <div class="rating_form">
-        <%= rating_form.radio_button :sky_clear , 5, id: 'sky_clear5' %>
-        <label for="sky_clear5"><span class="text">5</span>★</label>
-        <%= rating_form.radio_button :sky_clear , 4, id: 'sky_clear4' %>
-        <label for="sky_clear4"><span class="text">4</span>★</label>
-        <%= rating_form.radio_button :sky_clear , 3, id: 'sky_clear3' %>
-        <label for="sky_clear3"><span class="text">3</span>★</label>
-        <%= rating_form.radio_button :sky_clear , 2, id: 'sky_clear2' %>
-        <label for="sky_clear2"><span class="text">2</span>★</label>
-        <%= rating_form.radio_button :sky_clear , 1, id: 'sky_clear1' %>
-        <label for="sky_clear1"><span class="text">1</span>★</label>
-      </div>
-    </div>
-    <br>
-    <div class="form-group mb-1 text-left">
-      <%= rating_form.label :sky_extent %>
-      <div class="rating_form">
-        <%= rating_form.radio_button :sky_extent , 5, id: 'sky_extent5' %>
-        <label for="sky_extent5"><span class="text">5</span>★</label>
-        <%= rating_form.radio_button :sky_extent , 4, id: 'sky_extent4' %>
-        <label for="sky_extent4"><span class="text">4</span>★</label>
-        <%= rating_form.radio_button :sky_extent , 3, id: 'sky_extent3' %>
-        <label for="sky_extent3"><span class="text">3</span>★</label>
-        <%= rating_form.radio_button :sky_extent , 2, id: 'sky_extent2' %>
-        <label for="sky_extent2"><span class="text">2</span>★</label>
-        <%= rating_form.radio_button :sky_extent , 1, id: 'sky_extent1' %>
-        <label for="sky_extent1"><span class="text">1</span>★</label>
-      </div>
-    </div>
-    <br>
-    <div class="form-group mb-1 text-left">
-      <%= rating_form.label :accessiblity %>
-      <div class="rating_form">
-        <%= rating_form.radio_button :accessiblity , 5, id: 'accessiblity5' %>
-        <label for="accessiblity5"><span class="text">5</span>★</label>
-        <%= rating_form.radio_button :accessiblity , 4, id: 'accessiblity4' %>
-        <label for="accessiblity4"><span class="text">4</span>★</label>
-        <%= rating_form.radio_button :accessiblity , 3, id: 'accessiblity3' %>
-        <label for="accessiblity3"><span class="text">3</span>★</label>
-        <%= rating_form.radio_button :accessiblity , 2, id: 'accessiblity2' %>
-        <label for="accessiblity2"><span class="text">2</span>★</label>
-        <%= rating_form.radio_button :accessiblity , 1, id: 'accessiblity1' %>
-        <label for="accessiblity1"><span class="text">1</span>★</label>
-      </div>
-    </div>
-    <br>
-    <div class="form-group mb-1 text-left">
-      <%= rating_form.label :convenient %>
-      <div class="rating_form">
-        <%= rating_form.radio_button :convenient , 5, id: 'convenient5' %>
-        <label for="convenient5"><span class="text">5</span>★</label>
-        <%= rating_form.radio_button :convenient , 4, id: 'convenient4' %>
-        <label for="convenient4"><span class="text">4</span>★</label>
-        <%= rating_form.radio_button :convenient , 3, id: 'convenient3' %>
-        <label for="convenient3"><span class="text">3</span>★</label>
-        <%= rating_form.radio_button :convenient , 2, id: 'convenient2' %>
-        <label for="convenient2"><span class="text">2</span>★</label>
-        <%= rating_form.radio_button :convenient , 1, id: 'convenient1' %>
-        <label for="convenient1"><span class="text">1</span>★</label>
-      </div>
-    </div>
-  <% end %>
 
   <div class="actions">
-    <% if action_name == 'new' || 'create' %>
+    <% if action_name == 'new' || action_name =='create' %>
       <%= form.submit '投稿', class: "btn btn-primary" %>
-    <% elsif action_name == 'edit' || 'update' %>
+    <% elsif action_name == 'edit' || action_name == 'update' %>
       <%= form.submit '登録', class: "btn btn-primary" %>
     <% end %>
   </div>
 <% end %>
+  </div>
 
 <style>
 #map {
   height: 300px;
-  width: 400px;
+  width: 1000px;
 }
 </style>
 

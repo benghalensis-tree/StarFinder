@@ -1,4 +1,4 @@
-<header class="masthead d-flex align-items-center"  style="background-image: url(<%= asset_path 'galaxy.jpg' %>) ">
+<header class="masthead parallax-content d-flex align-items-center"  style="background-image: url(<%= asset_path 'galaxy.jpg' %>) ">
     <div class="container px-4 px-lg-5 text-center">
         <h2 class="mb-1">Star Finder</h2>
     </div>
@@ -6,10 +6,14 @@
 
 <div class="top-page-container d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center fadein">
-        <h2 class="mb-1">星空を探す</h2>
+        <h2 class="mb-1">このアプリの目的</h2>
         <div class="row justify-content-center mt-5">
         </div>
-        <p class="mb-1">このアプリは星空観察スポットの探索を効率化します。マップ、月齢、ホテル一覧等を一元化して表示し、観察計画の立案を容易にします。観測可能時間や天気予報、近隣の宿泊施設の情報も提供します。ユーザーは手間なく必要な情報を得られ、共有や宿泊施設の検索もシームレスに行えます。星空観察の経験や写真を投稿し、コミュニティ内で共有することも可能です。
+        <p class="mb-1"> 
+        満点の星空を観測するにはさまざまな条件をクリアする必要があります。町が明るいと空が明るくなってしまい明るい星を見ることが困難になってしまいます。また、月が出ていると、その明るさも星を見るのには邪魔をしてしまいます。天気ももちろん重要で空が曇っていてはそもそも見ることができません。
+        </p>
+        <p class="mb-1"> 
+        このアプリは星空観察スポットの探索を効率化します。天気、月齢、星の明るさ、ホテル情報を一元化して表示し観測スポットの検索を容易にします。観測可能時間や天気予報、近隣の宿泊施設の情報も提供します。星空観察の経験や写真を投稿し、コミュニティ内で共有することも可能です。
         </p>
     </div>
 </div>
@@ -59,8 +63,8 @@
             <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                 <span class="service-icon rounded-circle mx-auto mb-3 bg-dark"><%= image_tag(asset_path("moon_icons/#{@moon_age}.png"),class: 'limiting-mag-icon', style: 'width: 100px;') %></span>
                 <h4><strong>1.月齢を調べる</strong></h4>
-                <p class="text-faded mb-0">月が明るいと星は見えづらくなります。</p>
-                <p class="text-faded mb-0">月があまり出ない空が暗い日をカレンダーから見つけます。</p>
+                <p class="text-faded mb-0">月が出ると星は見えづらくなります。</p>
+                <p class="text-faded mb-0">月があまり出ない空が暗い日をカレンダーから見つけます。青色になる程月が沈んでいる時間が長い日になります。</p>
             </div>
             <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                 <% if @weather == '03d' || '04d' %>
@@ -70,19 +74,21 @@
                 <h4><strong>2.天気を調べる</strong></h4>
                 <p class="text-faded mb-0">空が曇っていると観測できません。</p>
                 <p class="text-faded mb-0">カレンダーから天気のいい日を探します。</p>
+                <p class="text-faded mb-0">日付を選択すると日本全国の天気がマーカーで表示することができます。（最大7日先まで）</p>
             </div>
             <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
                 <span class="service-icon rounded-circle mx-auto mb-3 bg-dark"><%= image_tag(asset_path("limiting_mag_icons/icon_6.png"),class: 'limiting-mag-icon') %></span>
                 <h4><strong>3.星が明るく見える場所を探す</strong></h4>
                 <p class="text-faded mb-0">町の明るさによって星の見かけの明るさは変わります。</p>
-                <p class="text-faded mb-0">星がよく見える場所をマップ上から探します。</p>
+                <p class="text-faded mb-0">星がよく見える場所をマップ上から探します。マーカーの色が明るくなるほど星がよく見える場所です。</p>
             </div>
             <div class="col-lg-3 col-md-6">
                 <span class="service-icon rounded-circle mx-auto mb-3 bg-dark"><i class="icon-location-pin"></i></span>
                 
                 <h4><strong>4.レビューを見つける</strong></h4>
                 <p class="text-faded mb-0">1~3を考慮して</p>
-                <p class="text-faded mb-0">レビューのピンを見つけましょう。</p>
+                <p class="text-faded mb-0">レビューのピンを見つけます。</p>
+                <p class="text-faded mb-0">近隣のホテル情報を見ることもできます。</p>
             </div>
         </div>
     </div>

@@ -1,12 +1,12 @@
-<div class="conntent-section d-flex align-items-center bg-black fadein" >
-  <div class="container px-4 px-lg-5 text-left">
+
+  <div class="container pt-5 mt-5 pb-5 mb-5 px-4 px-lg-5 text-left bg-secondary rounded fadein">
   <p>
-    <h2 class="mb-1 text-center"><strong>天気</strong></h2>     
+    <h2 class="mb-5 text-center"><strong>天気</strong></h2>     
       <table>
         <thead>
           <tr>
             <% for i in 0..13 do %>
-              <th>
+              <th class='mb-1'>
                 <% date = Date.today %>
                 <% date += i %>
                 <% month = date.month %>
@@ -47,4 +47,3 @@
       </table>
     </p>
   </div>
-</div>

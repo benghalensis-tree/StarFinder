@@ -10,7 +10,7 @@ RSpec.describe 'お気に入り機能', type: :system do
         fill_in 'user_password', with: 111111 
         click_on 'commit'
         visit post_path(@post)
-        click_on 'お気に入り'
+        click_on 'favorite_btn'
         expect(page).to have_content 'お気に入り登録しました'
       end
     end
@@ -25,7 +25,7 @@ RSpec.describe 'お気に入り機能', type: :system do
         fill_in 'user_password', with: 111111 
         click_on 'commit'
         visit post_path(@post)
-        click_on 'お気に入り'
+        click_on 'favorite_btn'
         visit favorite_path(@user)
         expect(page).to have_content 'お気に入り一覧で表示したい投稿'
       end
