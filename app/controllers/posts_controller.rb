@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     @q = Post.ransack(params[:q])
     @q.sorts
     @posts = @q.result
+    @posts = @posts.page(params[:page]).per(40)
   end
 
   def map
