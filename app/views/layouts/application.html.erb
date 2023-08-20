@@ -83,6 +83,8 @@
   
     <%= yield %>
 
+    <% unless controller.action_name == 'map' %>
+
     <footer class="footer text-center">
         <div class="container px-4 px-lg-5">
             <ul class="list-inline mb-5">
@@ -99,6 +101,7 @@
             <p class="text-muted small mb-0">Copyright &copy; Your Website 2023</p>
         </div>
     </footer>
+    <% end %>
     
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_API_KEY']%>&v=beta&libraries=marker&callback=initMap"></script>
