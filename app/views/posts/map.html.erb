@@ -14,7 +14,7 @@
         <% end %>
         </p>
         <a class="btn btn-dark btn-lg toggle-btn"  href="#"  >
-           <%= @day %>
+            <%= @day %>
         </a>
     </div>
 </div>
@@ -22,21 +22,23 @@
 <div class="masthead_2 d-flex align-items-center" >
     <div class="container px-4 px-lg-2 text-center">
         <div class="row justify-content-between">
-            <div class="col-4">
-                <a class="btn btn-dark btn-lg toggle-btn"  href="#"  >
-                    <h3><%= @day %></h3>
-                </a>
-            </div>
-            <div class="col-4">    
-                <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 30px;') %>
-                <p class="mb-1">
+            <div class="col-2 bg-black rounded">    
+                <h3 class='mb-1 mb-2'><%= @day %></h3>
+                <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), class: 'mb-2',style: 'width: 30px;') %>
                 <% @moon_time.each do |moon| %>
-                    <%= moon %>
+                    <p class="mb-1"><%= moon %></p>
                 <% end %>
-                </p>
+            </div>
+            <div class="col-4">
             </div>
             <div class="col-4">
                 <%= render 'search', q: @q, url: posts_path %>
+                <a class="btn btn-primary btn-lg toggle-btn"  href="#"  >
+                    <i class="fa-regular fa-calendar-days"></i>
+                </a>
+                <button id="light_pollutions_btn" class='btn btn-light rounded'><i class="fa-solid fa-lightbulb"></i></button>
+                <button id="weather_forecasts_btn" class='btn btn-light rounded'><i class="fa-solid fa-cloud-sun"></i></button>
+                <button id="star_light_btn" class='btn btn-light rounded'><i class="fa-solid fa-star"></i></button>
             </div>
         </div>
     </div>
@@ -65,13 +67,15 @@
 
 <script>
   let map;
-  let markers = []; 
+  let markers = [];
+  let markers_lp = []
+  let markers_wf = []
   let infoWindow = []; 
   let markerData = gon.posts; 
   let light_pollutions = gon.light_pollutions;
   let weather_forecasts = gon.weather_forecasts;
-  let ctaLayer;
-  
+  let kmlLayer;
+
   function initMap() {
     geocoder = new google.maps.Geocoder()
 
@@ -92,14 +96,12 @@
       }
     });
 
-    ctaLayer = new google.maps.KmlLayer({
-        url: "<%=ENV['KML_LIGHT_POLLUTION_URL']%>",
+    kmlLayer = new google.maps.KmlLayer({
+      url: "<%=ENV['KML_LIGHT_POLLUTION_URL']%>",
         map: map
     });
 
-    google.maps.event.addListener(ctaLayer, 'status_changed', function() {
-  console.log('KML Layer status: ' + ctaLayer.getStatus());
-});
+    kmlLayer.setMap(null);
 
     if(weather_forecasts){
 
@@ -140,15 +142,15 @@
         weather_icon = '<%= asset_path 'weather_icons3/01d.png' %>'
         }
       
-      markers[i] = new google.maps.Marker({
+      markers_wf[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
         icon: {
           url: weather_icon,
           scaledSize: new google.maps.Size(50, 25),
-           }
+          }
       });
-    }
+    }  
     }
     for (var i = 0; i < light_pollutions.length; i++) {
       let id = light_pollutions[i]['id']
@@ -187,13 +189,13 @@
         limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_0.png' %>'
         }
       
-      markers[i] = new google.maps.Marker({
+      markers_lp[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
         icon: {
           url: limiting_mag_icon,
           scaledSize: new google.maps.Size(10, 10),
-           }
+          }
       });
     }
     for (var i = 0; i < markerData.length; i++) {
@@ -234,10 +236,19 @@
       infoOpen(i);
       infoClose(i);
     }
-    // new markerClusterer.MarkerClusterer({
-    //     map,
-    //     markers
-    // });
+    new markerClusterer.MarkerClusterer({
+        map,
+        markers
+    });
+    document.getElementById('light_pollutions_btn').addEventListener('click', function() {
+        if (kmlLayer.getMap()) {
+            kmlLayer.setMap(null);
+        } else {
+            kmlLayer.setMap(map);
+        }
+    });
+    document.getElementById('weather_forecasts_btn').addEventListener('click', toggleWeatherForecasts);
+    document.getElementById('star_light_btn').addEventListener('click', toggleStarLights);
   }
 
   function infoOpen(i) {
@@ -255,6 +266,21 @@
       infoWindow[i].close(map, markers[i]);
     });
   }
-  
+
+  function toggleWeatherForecasts() {
+    let currentVisibility = markers_wf[0] && markers_wf[0].getVisible();
+    let newVisibility = !currentVisibility;
+    for (let marker of markers_wf) {
+        marker.setVisible(newVisibility);
+    }
+  }
+
+  function toggleStarLights() {
+    let currentVisibility = markers_lp[0] && markers_lp[0].getVisible();
+    let newVisibility = !currentVisibility;
+    for (let marker of markers_lp) {
+        marker.setVisible(newVisibility);
+    }
+  }
 
 </script>
