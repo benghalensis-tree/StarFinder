@@ -37,7 +37,8 @@
             </div>
             <div class="col-4">
                 <%= render 'search', q: @q, url: posts_path %>
-                <button id="toggleKml" class='btn btn-light rounded'><i class="fa-solid fa-lightbulb"></i></button>
+                <button id="light_pollutions_btn" class='btn btn-light rounded'><i class="fa-solid fa-lightbulb"></i></button>
+                <button id="weather_forecasts_btn" class='btn btn-light rounded'><i class="fa-solid fa-cloud-sun"></i></button>
             </div>
         </div>
     </div>
@@ -66,7 +67,9 @@
 
 <script>
   let map;
-  let markers = []; 
+  let markers = [];
+  let markers_lp = []
+  let markers_wf = []
   let infoWindow = []; 
   let markerData = gon.posts; 
   let light_pollutions = gon.light_pollutions;
@@ -139,7 +142,7 @@
         weather_icon = '<%= asset_path 'weather_icons3/01d.png' %>'
         }
       
-      markers[i] = new google.maps.Marker({
+      markers_wf[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
         icon: {
@@ -147,7 +150,7 @@
           scaledSize: new google.maps.Size(50, 25),
           }
       });
-    }
+    }  
     }
     for (var i = 0; i < light_pollutions.length; i++) {
       let id = light_pollutions[i]['id']
@@ -186,7 +189,7 @@
         limiting_mag_icon = '<%= asset_path 'limiting_mag_icons/icon_0.png' %>'
         }
       
-      markers[i] = new google.maps.Marker({
+      markers_lp[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
         icon: {
@@ -237,13 +240,14 @@
     //     map,
     //     markers
     // });
-    document.getElementById('toggleKml').addEventListener('click', function() {
+    document.getElementById('light_pollutions_btn').addEventListener('click', function() {
         if (kmlLayer.getMap()) {
             kmlLayer.setMap(null);
         } else {
             kmlLayer.setMap(map);
         }
     });
+    document.getElementById('weather_forecasts_btn').addEventListener('click', toggleWeatherForecasts);
   }
 
   function infoOpen(i) {
@@ -260,6 +264,14 @@
     map.addListener('click', function () {
       infoWindow[i].close(map, markers[i]);
     });
+  }
+
+  function toggleWeatherForecasts() {
+    let currentVisibility = markers_wf[0] && markers_wf[0].getVisible();
+    let newVisibility = !currentVisibility;
+    for (let marker of markers_wf) {
+        marker.setVisible(newVisibility);
+    }
   }
 
 </script>

@@ -1,7 +1,7 @@
 <%= month_calendar attribute: :access_date do |date| %>
   
   <p>
-    <%= link_to date.day, posts_path(date: date), class: 'btn border mb-1' %>
+    <%= link_to date.day, map_posts_path(date: date), class: 'btn border mb-1' %>
   </p>
   
   <p class='row justify-content-center'>
