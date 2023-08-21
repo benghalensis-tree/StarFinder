@@ -14,7 +14,7 @@
         <% end %>
         </p>
         <a class="btn btn-dark btn-lg toggle-btn"  href="#"  >
-           <%= @day %>
+            <%= @day %>
         </a>
     </div>
 </div>
@@ -37,6 +37,7 @@
             </div>
             <div class="col-4">
                 <%= render 'search', q: @q, url: posts_path %>
+                <button id="toggleKml" class='btn btn-light rounded'><i class="fa-solid fa-lightbulb"></i></button>
             </div>
         </div>
     </div>
@@ -70,8 +71,8 @@
   let markerData = gon.posts; 
   let light_pollutions = gon.light_pollutions;
   let weather_forecasts = gon.weather_forecasts;
-  let ctaLayer;
-  
+  let kmlLayer;
+
   function initMap() {
     geocoder = new google.maps.Geocoder()
 
@@ -92,14 +93,12 @@
       }
     });
 
-    ctaLayer = new google.maps.KmlLayer({
-        url: "<%=ENV['KML_LIGHT_POLLUTION_URL']%>",
+    kmlLayer = new google.maps.KmlLayer({
+      url: "<%=ENV['KML_LIGHT_POLLUTION_URL']%>",
         map: map
     });
 
-    google.maps.event.addListener(ctaLayer, 'status_changed', function() {
-  console.log('KML Layer status: ' + ctaLayer.getStatus());
-});
+    kmlLayer.setMap(null);
 
     if(weather_forecasts){
 
@@ -146,7 +145,7 @@
         icon: {
           url: weather_icon,
           scaledSize: new google.maps.Size(50, 25),
-           }
+          }
       });
     }
     }
@@ -193,7 +192,7 @@
         icon: {
           url: limiting_mag_icon,
           scaledSize: new google.maps.Size(10, 10),
-           }
+          }
       });
     }
     for (var i = 0; i < markerData.length; i++) {
@@ -238,6 +237,13 @@
     //     map,
     //     markers
     // });
+    document.getElementById('toggleKml').addEventListener('click', function() {
+        if (kmlLayer.getMap()) {
+            kmlLayer.setMap(null);
+        } else {
+            kmlLayer.setMap(map);
+        }
+    });
   }
 
   function infoOpen(i) {
@@ -255,6 +261,5 @@
       infoWindow[i].close(map, markers[i]);
     });
   }
-  
 
 </script>
