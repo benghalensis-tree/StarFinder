@@ -40,7 +40,7 @@ class PostsController < ApplicationController
         post_url: post_url(post)
       }
     end
-    @posts = @posts.page(params[:page]).per(40)
+    
     @light_pollutions = LightPollution.all
     gon.light_pollutions = @light_pollutions.map do |light_pollution|
       {
@@ -141,7 +141,7 @@ class PostsController < ApplicationController
     def correct_user
       unless current_user == @post.user
         flash[:alert] = '権限がありません'
-        redirect_to posts_path
+        redirect_to map_posts_path
       end
     end
 end
