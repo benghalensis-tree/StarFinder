@@ -39,6 +39,7 @@
                 <%= render 'search', q: @q, url: posts_path %>
                 <button id="light_pollutions_btn" class='btn btn-light rounded'><i class="fa-solid fa-lightbulb"></i></button>
                 <button id="weather_forecasts_btn" class='btn btn-light rounded'><i class="fa-solid fa-cloud-sun"></i></button>
+                <button id="star_light_btn" class='btn btn-light rounded'><i class="fa-solid fa-star"></i></button>
             </div>
         </div>
     </div>
@@ -248,6 +249,7 @@
         }
     });
     document.getElementById('weather_forecasts_btn').addEventListener('click', toggleWeatherForecasts);
+    document.getElementById('star_light_btn').addEventListener('click', toggleStarLights);
   }
 
   function infoOpen(i) {
@@ -270,6 +272,14 @@
     let currentVisibility = markers_wf[0] && markers_wf[0].getVisible();
     let newVisibility = !currentVisibility;
     for (let marker of markers_wf) {
+        marker.setVisible(newVisibility);
+    }
+  }
+
+  function toggleStarLights() {
+    let currentVisibility = markers_lp[0] && markers_lp[0].getVisible();
+    let newVisibility = !currentVisibility;
+    for (let marker of markers_lp) {
         marker.setVisible(newVisibility);
     }
   }
