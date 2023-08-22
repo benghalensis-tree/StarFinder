@@ -1,25 +1,7 @@
-<header class="masthead parallax-content d-flex align-items-center"  style="background-image: url(<%= asset_path 'galaxy.jpg' %>) ">
-    <div class="container px-4 px-lg-5 text-center">
-        <h2 class="mb-1">Star Finder</h2>
-    </div>
-</header>
-
-<div class="masthead d-flex align-items-center bg-black" >
-    <div class="container px-4 px-lg-5 text-center">
-    <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 50px;') %>
-        <br>
-        <p class="mb-1">
-        <% @moon_time.each do |moon| %>
-            <%= moon %>
-        <% end %>
-        </p>
-        <a class="btn btn-dark btn-lg toggle-btn"  href="#"  >
-            <%= @day %>
-        </a>
-    </div>
-</div>
-
-<div class="masthead_2 d-flex align-items-center" >
+<div class="wrapper">
+<%= render 'side_menu' %>
+<div id="content">
+<div class="masthead_2 d-flex align-items-center"  >
     <div class="container px-4 px-lg-2 text-center">
         <div class="row justify-content-between">
             <div class="col-2 bg-black rounded">    
@@ -54,12 +36,20 @@
     </section>
 </div>
 
-<div class="map-container">
-  <div id='map'></div>
-</div>
+
+    <button type="button" id="sidebarCollapse" class="navbar-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+  <div id='map'>
+  </div>
+  </div>
+
 
 <style>
 #map {
+  position: absolute;
   height: 100%;
   width: 100%;
 }
