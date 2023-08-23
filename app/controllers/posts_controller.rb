@@ -51,7 +51,11 @@ class PostsController < ApplicationController
     end
    
     if params[:date].present?
-      @weather_forecasts = WeatherForecast.where(date: params[:date])
+      @date = params[:date].to_date
+    else
+      @date = Date.today
+    end
+      @weather_forecasts = WeatherForecast.where(date: @date)
       gon.weather_forecasts = @weather_forecasts.map do |weather_forecast|
         {
           clouds: weather_forecast.clouds,
@@ -65,11 +69,7 @@ class PostsController < ApplicationController
           longitude: weather_forecast.city.longitude,
         }
       end
-      @date = params[:date].to_date
-      
-    else
-      @date = Date.today
-    end
+
     @moon_time = moon_time(@date)
     @day = "#{@date.month}/#{@date.day}"
     date_time = @date.strftime('%Y%m%d')
