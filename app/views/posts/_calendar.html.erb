@@ -1,13 +1,11 @@
 <%= month_calendar attribute: :access_date do |date| %>
-  
-  <p>
-    <%= link_to date.day, map_posts_path(date: date), class: 'btn border mb-1' %>
-  </p>
-  
+<div class='calendar-content'>
+  <%= link_to date.day, map_posts_path(date: date), class: 'btn btn-sm border text-light mt-0 pt-0 mb-0 pb-0' %>
+
   <p class='row justify-content-center'>
     <% date_time = date.strftime('%Y%m%d')%>
-    <% @moon_age = MkCalendar.new("#{date_time}").moonage.round%>
-    <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 80px;') %>
+    <% @calendar_moon_age = MkCalendar.new("#{date_time}").moonage.round%>
+    <%= image_tag(asset_path("moon_icons/#{@calendar_moon_age}.png"), class: 'mt-0 pt-0', style: 'width: 45px;') %>
   </p>
-
+</div>
 <% end %>

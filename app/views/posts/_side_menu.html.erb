@@ -1,0 +1,15 @@
+<nav id="sidebar" class="active">
+  <div class="sidebar-header">
+    
+        <h3 class='text-center'><%= @day %></h3>
+        <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), class: 'mx-auto d-block mb-2',style: 'width: 30px;') %>
+        <% @moon_time.each do |moon| %>
+            <p class="mb-1 text-center"><%= moon %></p>
+        <% end %>
+
+  </div>
+
+  <ul class="list-unstyled components">
+    <%= render 'calendar', posts: @posts%>
+  </ul>
+</nav>

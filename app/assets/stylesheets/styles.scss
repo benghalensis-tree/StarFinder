@@ -11018,10 +11018,6 @@ footer.footer .social-link:hover {
   text-decoration: none;
 }
 
-.map-container {
-  height: 50rem;
-}
-
 .masthead {
   min-height: 20rem;
   position: relative;
@@ -11228,6 +11224,11 @@ footer.footer .social-link:hover {
 
 .parallax-content {
   background-position: center center;
+}
+
+.calendar-content{
+  width: 50px;
+  height: 40px;
 }
 
 .simple-calendar {

@@ -113,6 +113,13 @@ window.addEventListener('DOMContentLoaded', event => {
           $('.toggle-calender').slideToggle();
         });
       });
+      
+      $(document).ready(function() {
+        $("#sidebarCollapse").on("click", function() {
+          $("#sidebar").toggleClass("active");
+          $(this).toggleClass("active");
+        });
+      });
 })
 
 function fadeOut(el) {

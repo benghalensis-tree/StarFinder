@@ -1,65 +1,33 @@
-<header class="masthead parallax-content d-flex align-items-center"  style="background-image: url(<%= asset_path 'galaxy.jpg' %>) ">
-    <div class="container px-4 px-lg-5 text-center">
-        <h2 class="mb-1">Star Finder</h2>
-    </div>
-</header>
+<div class="wrapper">
+    <%= render 'side_menu' %>
+    <div id="content">
+        <div class="masthead_2 d-flex align-items-center"  >
+            <div class="container px-4 px-lg-2 text-center">
+                <div class="row">
+                        
+                    <div id="sidebarCollapse" class="col-1 btn btn-dark border border-2 border-primary rounded-3 active">    
+                        <h4 class='text-light'><%= @day %></h4>
+                        <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 30px;') %>
+                    </div>
 
-<div class="masthead d-flex align-items-center bg-black" >
-    <div class="container px-4 px-lg-5 text-center">
-    <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 50px;') %>
-        <br>
-        <p class="mb-1">
-        <% @moon_time.each do |moon| %>
-            <%= moon %>
-        <% end %>
-        </p>
-        <a class="btn btn-dark btn-lg toggle-btn"  href="#"  >
-            <%= @day %>
-        </a>
-    </div>
-</div>
-
-<div class="masthead_2 d-flex align-items-center" >
-    <div class="container px-4 px-lg-2 text-center">
-        <div class="row justify-content-between">
-            <div class="col-2 bg-black rounded">    
-                <h3 class='mb-1 mb-2'><%= @day %></h3>
-                <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), class: 'mb-2',style: 'width: 30px;') %>
-                <% @moon_time.each do |moon| %>
-                    <p class="mb-1"><%= moon %></p>
-                <% end %>
-            </div>
-            <div class="col-4">
-            </div>
-            <div class="col-4">
-                <%= render 'search', q: @q, url: posts_path %>
-                <a class="btn btn-primary btn-lg toggle-btn"  href="#"  >
-                    <i class="fa-regular fa-calendar-days"></i>
-                </a>
-                <button id="light_pollutions_btn" class='btn btn-light rounded'><i class="fa-solid fa-lightbulb"></i></button>
-                <button id="weather_forecasts_btn" class='btn btn-light rounded'><i class="fa-solid fa-cloud-sun"></i></button>
-                <button id="star_light_btn" class='btn btn-light rounded'><i class="fa-solid fa-star"></i></button>
+                    <div class="col-3">
+                        <%= render 'search', q: @q, url: posts_path %>
+                   <div class='row'>
+                        <button id="light_pollutions_btn" class='col btn btn-outline-danger border border-primary rounded'><i class="fa-solid fa-fire" style="color: #ff0000;"></i></button>
+                        <button id="weather_forecasts_btn" class='col btn btn-outline-warning border border-primary rounded'><i class="fa-solid fa-cloud-sun" style="color: #ffc23d;"></i></button>
+                        <button id="star_light_btn" class='col btn btn-outline-info border border-primary rounded'><i class="fa-solid fa-star" style="color: #7cccfd;"></i></button>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div id='map'></div>
     </div>
-</div>
-
-<div class="toggle-calender">
-    <section class="conntent-section d-flex align-items-center bg-secondary" >
-        <div class="container mt-5 text-center">
-            <div class="container px-4 mt-6 mb-5 px-lg-5 text-center">
-            <%= render 'calendar', posts: @posts%>
-            </div>
-        </div>
-    </section>
-</div>
-
-<div class="map-container">
-  <div id='map'></div>
 </div>
 
 <style>
 #map {
+  position: absolute;
   height: 100%;
   width: 100%;
 }
@@ -71,7 +39,7 @@
   let markers_lp = []
   let markers_wf = []
   let infoWindow = []; 
-  let markerData = gon.posts; 
+  let posts = gon.posts; 
   let light_pollutions = gon.light_pollutions;
   let weather_forecasts = gon.weather_forecasts;
   let kmlLayer;
@@ -145,13 +113,32 @@
       markers_wf[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
+        visible: false,
         icon: {
           url: weather_icon,
-          scaledSize: new google.maps.Size(50, 25),
+          scaledSize: new google.maps.Size(70, 35),
           }
       });
+      weather_content_data = `<div style="width:200px; height:200px;">
+                        
+                          <img src="${ weather_icon }" width="100%" />
+                        </a>
+                        <p style="font-size:10px;">曇り度合い:${ weather_forecasts[i]['clouds']}</p>
+                        <p style="font-size:10px;">湿度:${ weather_forecasts[i]['humidity']}</p>
+                        <p style="font-size:10px;">降水:${ weather_forecasts[i]['pop']}</p>
+                        <p style="font-size:10px;">最高気温:${ weather_forecasts[i]['temp_max']}</p>
+                        <p style="font-size:10px;">最低気温:${ weather_forecasts[i]['temp_min']}</p>
+                      </div>`
+
+      infoWindow[i] = new google.maps.InfoWindow({
+        content: weather_content_data,
+        maxWidth: 600
+      });
+      weather_infoOpen(i);
+      weather_infoClose(i);
     }  
     }
+
     for (var i = 0; i < light_pollutions.length; i++) {
       let id = light_pollutions[i]['id']
 
@@ -192,18 +179,19 @@
       markers_lp[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
+        visible: false,
         icon: {
           url: limiting_mag_icon,
-          scaledSize: new google.maps.Size(10, 10),
+          scaledSize: new google.maps.Size(20, 20),
           }
       });
     }
-    for (var i = 0; i < markerData.length; i++) {
-      let id = markerData[i]['id']
+    for (var i = 0; i < posts.length; i++) {
+      let id = posts[i]['id']
 
       markerLatLng = new google.maps.LatLng({
-        lat: markerData[i]['latitude'],
-        lng: markerData[i]['longitude']
+        lat: posts[i]['latitude'],
+        lng: posts[i]['longitude']
       });
 
       markers[i] = new google.maps.marker.AdvancedMarkerView({
@@ -212,23 +200,23 @@
         collisionBehavior: 'OPTIONAL_AND_HIDES_LOWER_PRIORITY',
       });
       
-      if( markerData[i]['image_url']){
-        info_window_image = markerData[i]['image_url']
+      if( posts[i]['image_url']){
+        info_window_image = posts[i]['image_url']
       }
       else{
         info_window_image = '<%= asset_path 'no-image.png' %>'
       }
 
       content_data = `<div style="width:200px; height:200px;">
-                        <a data-turbolinks = "false" href="${ markerData[i]['post_url'] }">
+                        <a data-turbolinks = "false" href="${ posts[i]['post_url'] }">
                           <img src="${ info_window_image }" width="100%" />
                         </a>
-                        <p style="font-size:20px;">${ markerData[i]['title']}</p>
-                        <p style="font-size:10px;">閲覧数:${ markerData[i]['view_count']}</p>
-                        <p style="font-size:10px;">${ markerData[i]['content']}</p>
+                        <p style="font-size:20px;">${ posts[i]['title']}</p>
+                        <p style="font-size:10px;">閲覧数:${ posts[i]['view_count']}</p>
+                        <p style="font-size:10px;">${ posts[i]['content']}</p>
                       </div>`
 
-      infoWindow[i] = new google.maps.InfoWindow({
+      infoWindow[markers_wf.length + i] = new google.maps.InfoWindow({
         content: content_data,
         maxWidth: 600
       });
@@ -258,12 +246,28 @@
         infoWindow[j].close();
       }
     }
-      infoWindow[i].open(map, markers[i]);
+      infoWindow[markers_wf.length + i].open(map, markers[i]);
     });
   }
   function infoClose(i) {
     map.addListener('click', function () {
-      infoWindow[i].close(map, markers[i]);
+      infoWindow[markers_wf.length + i].close(map, markers[i]);
+    });
+  }
+
+  function weather_infoOpen(i) {
+    markers_wf[i].addListener('click', function () {
+      for (var j = 0; j < infoWindow.length; j++) {
+      if (j !== i) {
+        infoWindow[j].close();
+      }
+    }
+      infoWindow[i].open(map, markers_wf[i]);
+    });
+  }
+  function weather_infoClose(i) {
+    map.addListener('click', function () {
+      infoWindow[i].close(map, markers_wf[i]);
     });
   }
 
