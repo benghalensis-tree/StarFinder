@@ -54,7 +54,13 @@ class PostsController < ApplicationController
       @weather_forecasts = WeatherForecast.where(date: params[:date])
       gon.weather_forecasts = @weather_forecasts.map do |weather_forecast|
         {
+          clouds: weather_forecast.clouds,
           icon: weather_forecast.icon,
+          temp_min: weather_forecast.temp_min,
+          temp_max: weather_forecast.temp_max,
+          humidity: weather_forecast.humidity,
+          wind_speed: weather_forecast.wind_speed,
+          pop: weather_forecast.pop,
           latitude: weather_forecast.city.latitude,
           longitude: weather_forecast.city.longitude,
         }

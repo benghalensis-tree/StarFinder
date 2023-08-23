@@ -39,7 +39,7 @@
   let markers_lp = []
   let markers_wf = []
   let infoWindow = []; 
-  let markerData = gon.posts; 
+  let posts = gon.posts; 
   let light_pollutions = gon.light_pollutions;
   let weather_forecasts = gon.weather_forecasts;
   let kmlLayer;
@@ -118,8 +118,26 @@
           scaledSize: new google.maps.Size(70, 35),
           }
       });
+      weather_content_data = `<div style="width:200px; height:200px;">
+                        
+                          <img src="${ weather_icon }" width="100%" />
+                        </a>
+                        <p style="font-size:10px;">曇り度合い:${ weather_forecasts[i]['clouds']}</p>
+                        <p style="font-size:10px;">湿度:${ weather_forecasts[i]['humidity']}</p>
+                        <p style="font-size:10px;">降水:${ weather_forecasts[i]['pop']}</p>
+                        <p style="font-size:10px;">最高気温:${ weather_forecasts[i]['temp_max']}</p>
+                        <p style="font-size:10px;">最低気温:${ weather_forecasts[i]['temp_min']}</p>
+                      </div>`
+
+      infoWindow[i] = new google.maps.InfoWindow({
+        content: weather_content_data,
+        maxWidth: 600
+      });
+      weather_infoOpen(i);
+      weather_infoClose(i);
     }  
     }
+
     for (var i = 0; i < light_pollutions.length; i++) {
       let id = light_pollutions[i]['id']
 
@@ -166,12 +184,12 @@
           }
       });
     }
-    for (var i = 0; i < markerData.length; i++) {
-      let id = markerData[i]['id']
+    for (var i = 0; i < posts.length; i++) {
+      let id = posts[i]['id']
 
       markerLatLng = new google.maps.LatLng({
-        lat: markerData[i]['latitude'],
-        lng: markerData[i]['longitude']
+        lat: posts[i]['latitude'],
+        lng: posts[i]['longitude']
       });
 
       markers[i] = new google.maps.marker.AdvancedMarkerView({
@@ -180,23 +198,23 @@
         collisionBehavior: 'OPTIONAL_AND_HIDES_LOWER_PRIORITY',
       });
       
-      if( markerData[i]['image_url']){
-        info_window_image = markerData[i]['image_url']
+      if( posts[i]['image_url']){
+        info_window_image = posts[i]['image_url']
       }
       else{
         info_window_image = '<%= asset_path 'no-image.png' %>'
       }
 
       content_data = `<div style="width:200px; height:200px;">
-                        <a data-turbolinks = "false" href="${ markerData[i]['post_url'] }">
+                        <a data-turbolinks = "false" href="${ posts[i]['post_url'] }">
                           <img src="${ info_window_image }" width="100%" />
                         </a>
-                        <p style="font-size:20px;">${ markerData[i]['title']}</p>
-                        <p style="font-size:10px;">閲覧数:${ markerData[i]['view_count']}</p>
-                        <p style="font-size:10px;">${ markerData[i]['content']}</p>
+                        <p style="font-size:20px;">${ posts[i]['title']}</p>
+                        <p style="font-size:10px;">閲覧数:${ posts[i]['view_count']}</p>
+                        <p style="font-size:10px;">${ posts[i]['content']}</p>
                       </div>`
 
-      infoWindow[i] = new google.maps.InfoWindow({
+      infoWindow[markers_wf.length + i] = new google.maps.InfoWindow({
         content: content_data,
         maxWidth: 600
       });
@@ -226,12 +244,28 @@
         infoWindow[j].close();
       }
     }
-      infoWindow[i].open(map, markers[i]);
+      infoWindow[markers_wf.length + i].open(map, markers[i]);
     });
   }
   function infoClose(i) {
     map.addListener('click', function () {
-      infoWindow[i].close(map, markers[i]);
+      infoWindow[markers_wf.length + i].close(map, markers[i]);
+    });
+  }
+
+  function weather_infoOpen(i) {
+    markers_wf[i].addListener('click', function () {
+      for (var j = 0; j < infoWindow.length; j++) {
+      if (j !== i) {
+        infoWindow[j].close();
+      }
+    }
+      infoWindow[i].open(map, markers_wf[i]);
+    });
+  }
+  function weather_infoClose(i) {
+    map.addListener('click', function () {
+      infoWindow[i].close(map, markers_wf[i]);
     });
   }
 
