@@ -113,6 +113,7 @@
       markers_wf[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
+        visible: false,
         icon: {
           url: weather_icon,
           scaledSize: new google.maps.Size(70, 35),
@@ -178,6 +179,7 @@
       markers_lp[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
+        visible: false,
         icon: {
           url: limiting_mag_icon,
           scaledSize: new google.maps.Size(20, 20),
