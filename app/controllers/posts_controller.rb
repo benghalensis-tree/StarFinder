@@ -41,12 +41,12 @@ class PostsController < ApplicationController
       }
     end
     
-    @light_pollutions = LightPollution.all
-    gon.light_pollutions = @light_pollutions.map do |light_pollution|
+    @star_lights = StarLight.all
+    gon.star_lights = @star_lights.map do |star_light|
       {
-        latitude: light_pollution.latitude,
-        longitude: light_pollution.longitude,
-        limiting_mag: light_pollution.limiting_mag,
+        latitude: star_light.latitude,
+        longitude: star_light.longitude,
+        magnitude: star_light.magnitude,
       }
     end
    
