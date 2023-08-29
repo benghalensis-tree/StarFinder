@@ -13,11 +13,14 @@
 *その他
 * お気に入り機能
 * フォロー機能
-* AWS EC2
+* AWS S3
+* heroku
 
 ## カリキュラム外の技術
 * Gem
 * geocoder (緯度経度取得)
+* gon (javascript変換)
+* http_client (APIの情報取得)
 * ransack (検索)
 * simple_calendar (カレンダー)
 * omniauth-line (LINEログイン)
@@ -25,12 +28,14 @@
 * mk_calendar (月齢取得)
 
 * API
-* google maps API (マップ)
-* open meteo API (天気予報)
-* 周辺地域の情報を所得するAPI導入予定
+* Maps Javascript API (マップ)
+* open weather map API (天気予報)
+* rakuten travel API (ホテル情報)
 
 * その他
 * chart.js (レーダーチャート表示)
+* heroku scheduler (定期実行処理)
+* bootstrap4 (cssフレームワーク)
 
 ## 実行手順
 * git clone https://github.com/genergia/StarFinder.git
