@@ -1,0 +1,2 @@
+class StarLight < ApplicationRecord
+end
