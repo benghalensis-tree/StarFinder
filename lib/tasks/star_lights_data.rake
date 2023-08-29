@@ -10,12 +10,12 @@ namespace :import do
       list << {
           latitude: row["latitude"],
           longitude: row["longitude"],
-          limiting_mag: row["star_light"]
+          magnitude: row["magnitude"]
       }
     end
     puts "start to create"
     begin
-      LightPollution.create!(list) 
+      StarLight.create!(list) 
       puts "completed!!"
     rescue ActiveModel::UnknownAttributeError => invalid
       puts "raised error : unKnown attribute "
@@ -30,12 +30,12 @@ namespace :import do
       list << {
           latitude: row["latitude"],
           longitude: row["longitude"],
-          limiting_mag: row["star_light"]
+          magnitude: row["magnitude"]
       }
     end
     puts "start to create"
     begin
-      LightPollution.create!(list) 
+      StarLight.create!(list) 
       puts "completed!!"
     rescue ActiveModel::UnknownAttributeError => invalid
       puts "raised error : unKnown attribute "
