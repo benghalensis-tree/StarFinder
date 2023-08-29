@@ -40,7 +40,7 @@
 * yarn add --dev @babel/plugin-proposal-private-property-in-object
 * yarn install
 * rails db:create && rails db:migrate
-* rake import:light_pollutions 
+* rake import:star_lights 
 * rake import:cities
 * rake open_weather_api:weather_forecasts (APIキーが必要です)
 * rails s
