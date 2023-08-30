@@ -36,7 +36,7 @@
 <script>
   let map;
   let markers = [];
-  let markers_lp = []
+  let markers_sl = []
   let markers_wf = []
   let infoWindow = []; 
   let posts = gon.posts; 
@@ -173,7 +173,7 @@
         magnitude_icon = '<%= asset_path 'magnitude_icons/icon_0.png' %>'
         }
       
-      markers_lp[i] = new google.maps.Marker({
+      markers_sl[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
         visible: false,
@@ -182,7 +182,20 @@
           scaledSize: new google.maps.Size(20, 20),
           }
       });
-    }
+      star_light_content_data = `<div style="width:200px; height:200px;">
+                        
+                          <img src="${ magnitude_icon }" width="100%" />
+                        
+                      </div>`
+
+      infoWindow[markers_wf.length + i] = new google.maps.InfoWindow({
+        content: star_light_content_data,
+        maxWidth: 600
+      });
+      star_light_infoOpen(i);
+      star_light_infoClose(i);
+    }  
+    
     for (var i = 0; i < posts.length; i++) {
       let id = posts[i]['id']
 
@@ -213,7 +226,7 @@
                         <p style="font-size:10px;">${ posts[i]['content']}</p>
                       </div>`
 
-      infoWindow[markers_wf.length + i] = new google.maps.InfoWindow({
+      infoWindow[markers_sl.length + markers_wf.length + i] = new google.maps.InfoWindow({
         content: content_data,
         maxWidth: 600
       });
@@ -243,12 +256,12 @@
         infoWindow[j].close();
       }
     }
-      infoWindow[markers_wf.length + i].open(map, markers[i]);
+      infoWindow[markers_sl.length + markers_wf.length + i].open(map, markers[i]);
     });
   }
   function infoClose(i) {
     map.addListener('click', function () {
-      infoWindow[markers_wf.length + i].close(map, markers[i]);
+      infoWindow[markers_sl.length + markers_wf.length + i].close(map, markers[i]);
     });
   }
 
@@ -268,6 +281,22 @@
     });
   }
 
+  function star_light_infoOpen(i) {
+    markers_sl[i].addListener('click', function () {
+      for (var j = 0; j < infoWindow.length; j++) {
+      if (j !== i) {
+        infoWindow[j].close();
+      }
+    }
+      infoWindow[markers_wf.length + i].open(map, markers_sl[i]);
+    });
+  }
+  function star_light_infoClose(i) {
+    map.addListener('click', function () {
+      infoWindow[markers_wf.length + i].close(map, markers_sl[i]);
+    });
+  }
+
   function toggleWeatherForecasts() {
     let currentVisibility = markers_wf[0] && markers_wf[0].getVisible();
     let newVisibility = !currentVisibility;
@@ -277,9 +306,9 @@
   }
 
   function toggleStarLights() {
-    let currentVisibility = markers_lp[0] && markers_lp[0].getVisible();
+    let currentVisibility = markers_sl[0] && markers_sl[0].getVisible();
     let newVisibility = !currentVisibility;
-    for (let marker of markers_lp) {
+    for (let marker of markers_sl) {
         marker.setVisible(newVisibility);
     }
   }
