@@ -7,11 +7,25 @@ namespace :import do
     puts "path: #{path}"
     list = []
     CSV.foreach(path, headers: true, encoding: 'Shift_JIS:UTF-8') do |row|
+      if row["magnitude"].to_f < 17
+        rank = 1
+      elsif row["magnitude"].to_f < 18
+        rank = 2
+      elsif row["magnitude"].to_f < 19
+        rank = 3
+      elsif row["magnitude"].to_f < 20
+        rank = 4
+      elsif row["magnitude"].to_f < 21
+        rank = 5
+      elsif row["magnitude"].to_f >= 21
+        rank = 6
+      end
       list << {
           latitude: row["latitude"],
           longitude: row["longitude"],
-          magnitude: row["magnitude"]
-      }
+          magnitude: row["magnitude"],
+          rank: rank,
+        }
     end
     puts "start to create"
     begin
@@ -28,11 +42,25 @@ namespace :import do
     puts "path: #{path}"
     list = []
     CSV.foreach(path, headers: true, encoding: 'Shift_JIS:UTF-8') do |row|
+      if row["magnitude"].to_f < 17
+        rank = 1
+      elsif row["magnitude"].to_f < 18
+        rank = 2
+      elsif row["magnitude"].to_f < 19
+        rank = 3
+      elsif row["magnitude"].to_f < 20
+        rank = 4
+      elsif row["magnitude"].to_f < 21
+        rank = 5
+      elsif row["magnitude"].to_f >= 21
+        rank = 6
+      end
       list << {
           latitude: row["latitude"],
           longitude: row["longitude"],
-          magnitude: row["magnitude"]
-      }
+          magnitude: row["magnitude"],
+          rank: rank,
+        }
     end
     puts "start to create"
     begin
@@ -49,11 +77,25 @@ namespace :import do
     puts "path: #{path}"
     list = []
     CSV.foreach(path, headers: true, encoding: 'Shift_JIS:UTF-8') do |row|
+      if row["magnitude"].to_f < 17
+        rank = 1
+      elsif row["magnitude"].to_f < 18
+        rank = 2
+      elsif row["magnitude"].to_f < 19
+        rank = 3
+      elsif row["magnitude"].to_f < 20
+        rank = 4
+      elsif row["magnitude"].to_f < 21
+        rank = 5
+      elsif row["magnitude"].to_f >= 21
+        rank = 6
+      end
       list << {
           latitude: row["latitude"],
           longitude: row["longitude"],
-          magnitude: row["magnitude"]
-      }
+          magnitude: row["magnitude"],
+          rank: rank,
+        }
     end
     puts "start to create"
     begin
@@ -70,11 +112,25 @@ namespace :import do
     puts "path: #{path}"
     list = []
     CSV.foreach(path, headers: true, encoding: 'Shift_JIS:UTF-8') do |row|
+      if row["magnitude"].to_f < 17
+        rank = 1
+      elsif row["magnitude"].to_f < 18
+        rank = 2
+      elsif row["magnitude"].to_f < 19
+        rank = 3
+      elsif row["magnitude"].to_f < 20
+        rank = 4
+      elsif row["magnitude"].to_f < 21
+        rank = 5
+      elsif row["magnitude"].to_f >= 21
+        rank = 6
+      end
       list << {
           latitude: row["latitude"],
           longitude: row["longitude"],
-          magnitude: row["magnitude"]
-      }
+          magnitude: row["magnitude"],
+          rank: rank,
+        }
     end
     puts "start to create"
     begin
@@ -91,11 +147,25 @@ namespace :import do
     puts "path: #{path}"
     list = []
     CSV.foreach(path, headers: true, encoding: 'Shift_JIS:UTF-8') do |row|
+      if row["magnitude"].to_f < 17
+        rank = 1
+      elsif row["magnitude"].to_f < 18
+        rank = 2
+      elsif row["magnitude"].to_f < 19
+        rank = 3
+      elsif row["magnitude"].to_f < 20
+        rank = 4
+      elsif row["magnitude"].to_f < 21
+        rank = 5
+      elsif row["magnitude"].to_f >= 21
+        rank = 6
+      end
       list << {
           latitude: row["latitude"],
           longitude: row["longitude"],
-          magnitude: row["magnitude"]
-      }
+          magnitude: row["magnitude"],
+          rank: rank,
+        }
     end
     puts "start to create"
     begin
@@ -112,11 +182,25 @@ namespace :import do
     puts "path: #{path}"
     list = []
     CSV.foreach(path, headers: true, encoding: 'Shift_JIS:UTF-8') do |row|
+      if row["magnitude"].to_f < 17
+        rank = 1
+      elsif row["magnitude"].to_f < 18
+        rank = 2
+      elsif row["magnitude"].to_f < 19
+        rank = 3
+      elsif row["magnitude"].to_f < 20
+        rank = 4
+      elsif row["magnitude"].to_f < 21
+        rank = 5
+      elsif row["magnitude"].to_f >= 21
+        rank = 6
+      end
       list << {
           latitude: row["latitude"],
           longitude: row["longitude"],
-          magnitude: row["magnitude"]
-      }
+          magnitude: row["magnitude"],
+          rank: rank,
+        }
     end
     puts "start to create"
     begin
@@ -127,7 +211,6 @@ namespace :import do
     end
   end
 end
-
 
 namespace :import do
   desc "Import all MoE data from csv"
