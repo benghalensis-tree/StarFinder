@@ -150,10 +150,9 @@
       markers_sl[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
-        visible: false,
         icon: {
           url:  `/assets/magnitude_icons/icon_${star_lights[i]['rank']}.png`,
-          scaledSize: new google.maps.Size(30, 30),
+          scaledSize: new google.maps.Size(20, 20),
           }
       });
       star_light_content_data = `<div style="width:200px; height:200px;">
