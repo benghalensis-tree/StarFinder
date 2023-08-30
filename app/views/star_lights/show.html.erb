@@ -1,6 +1,7 @@
 <div class="container">
     <div class="text-center">
-        <h2 class='text-light pt-5'>ランク：<%= @star_light.rank %></h2>
+        <%= image_tag asset_path("show_star_light_icons/icon_#{@star_light.rank}.png"), style: 'width: 300px;' %>
+        <h2 class='text-light'>ランク：<%= @star_light.rank %></h2>
         <% @star_light.rank.times do%>
             <%= image_tag asset_path("magnitude_icons/icon_#{@star_light.rank}.png"), style: 'width: 40px;' %>
         <% end %>
