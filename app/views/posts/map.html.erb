@@ -147,44 +147,18 @@
         lng: star_lights[i]['longitude']
       });
 
-      let magnitude_icon
-      if (star_lights[i]['magnitude'] < 17 ){
-        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_1.png' %>'
-        }
-      else if (star_lights[i]['magnitude'] < 18 ){
-        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_2.png' %>'
-        }
-      else if (star_lights[i]['magnitude'] < 19 ){
-        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_3.png' %>'
-        }
-      else if (star_lights[i]['magnitude'] < 20 ){
-        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_4.png' %>'
-        }
-      else if (star_lights[i]['magnitude'] < 21 ){
-        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_5.png' %>'
-        }
-      else if (star_lights[i]['magnitude'] < 21.5 ){
-        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_6.png' %>'
-        }
-      else if (star_lights[i]['magnitude'] >= 21.5 ){
-        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_7.png' %>'
-        }
-      else{
-        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_0.png' %>'
-        }
-      
       markers_sl[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
         visible: false,
         icon: {
-          url: magnitude_icon,
+          url:  `/assets/magnitude_icons/icon_${star_lights[i]['rank']}.png`,
           scaledSize: new google.maps.Size(20, 20),
           }
       });
       star_light_content_data = `<div style="width:200px; height:200px;">
                           <a data-turbolinks = "false" href="${ star_lights[i]['star_light_url'] }">
-                            <img src="${ magnitude_icon }" style="width: 100px; display: block; margin-left: auto;margin-right: auto;" />
+                            <img src="/assets/magnitude_icons/icon_${star_lights[i]['rank']}.png" style="width: 100px; display: block; margin-left: auto;margin-right: auto;" />
                           </a>
                           <p style="font-size:20px;">${ star_lights[i]['magnitude']}</p>
                       </div>`
