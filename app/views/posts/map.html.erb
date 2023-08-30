@@ -150,17 +150,40 @@
         lng: star_lights[i]['longitude']
       });
 
+      let magnitude_icon
+      if (star_lights[i]['rank'] == 1 ){
+        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_1.png' %>'
+        }
+      else if (star_lights[i]['rank'] == 2 ){
+        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_2.png' %>'
+        }
+      else if (star_lights[i]['rank'] == 3 ){
+        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_3.png' %>'
+        }
+      else if (star_lights[i]['rank'] == 4 ){
+        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_4.png' %>'
+        }
+      else if (star_lights[i]['rank'] == 5 ){
+        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_5.png' %>'
+        }
+      else if (star_lights[i]['rank'] == 6 ){
+        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_6.png' %>'
+        }
+      else{
+        magnitude_icon = '<%= asset_path 'magnitude_icons/icon_1.png' %>'
+        }
+
       markers_sl[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
         icon: {
-          url:  `/assets/magnitude_icons/icon_${star_lights[i]['rank']}.png`,
+          url:  magnitude_icon,
           scaledSize: new google.maps.Size(20, 20),
           }
       });
       star_light_content_data = `<div style="width:200px; height:200px;">
                           <a data-turbolinks = "false" href="${ star_lights[i]['star_light_url'] }">
-                            <img src="/assets/magnitude_icons/icon_${star_lights[i]['rank']}.png" style="width: 100px; display: block; margin-left: auto;margin-right: auto;" />
+                            <img src="${ magnitude_icon }" style="width: 100px; display: block; margin-left: auto;margin-right: auto;" />
                           </a>
                           <p style="font-size:20px;">星ランク${ star_lights[i]['rank']}</p>
                           <p style="font-size:15px;">(等級${ star_lights[i]['magnitude']})</p>
