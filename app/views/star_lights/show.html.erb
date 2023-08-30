@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="text-center">
+        <%= image_tag asset_path("show_star_light_icons/icon_#{@star_light.rank}.png"), style: 'width: 300px;' %>
+        <h2 class='text-light'>ランク：<%= @star_light.rank %></h2>
+        <% @star_light.rank.times do%>
+            <%= image_tag asset_path("magnitude_icons/icon_#{@star_light.rank}.png"), style: 'width: 40px;' %>
+        <% end %>
+        <div class='text-light mb-5'>
+            <% if @star_light.rank == 1 %>
+              都市部の明るさ、星はほとんど見られない
+            <% elsif @star_light.rank == 2 %>
+              市街地の明るさ、星座の形が分かり始める
+            <% elsif @star_light.rank == 3 %>
+              住宅地の明るさ、星座の形がよく分かる
+            <% elsif @star_light.rank == 4 %>
+              郊外の暗さ、天の川が見え始める
+            <% elsif @star_light.rank == 5 %>
+              山や海などの暗さ、天の川がよく見られる
+            <% elsif @star_light.rank == 6 %>
+              天の川の複雑な構造が確認でき、星団などの観測ができる
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="container fadein">
+    <table class='table table-sm table-dark text-light text-center'>
+        <thead>
+            <tr>
+              <% for i in 0..7 do %>
+                  <th>
+                    <% date = Date.today %>
+                    <% date += i %>
+                    <% month = date.month %>
+                    <% day = date.day%>
+                    <%= "#{month}/#{day}" %>
+                  </th>
+                <% end %> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <% for i in 0..7 do %>
+                  <td>
+                    <% date = Date.today %>
+                    <% date += i %>
+                    <% date_time = date.strftime('%Y%m%d')%>
+                    <% @calendar_moon_age = MkCalendar.new("#{date_time}").moonage.round%>
+                    <%= image_tag(asset_path("moon_icons/#{@calendar_moon_age}.png"), class: 'mt-0 pt-0', style: 'width: 25px;') %>
+                  </td>
+                <% end %> 
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<%= render 'posts/hotel', hotels: @hotels %>
+
+<div class="container pt-3 pb-3 bg-light rounded rounded-3">
+    <div class='d-flex justify-content-center'>
+        <div class='row text-center'>
+            <div class='col'>
+                <strong>ランクは環境省の観測結果を元にしています。</strong>
+                <div><%= link_to(image_tag(asset_path('kankyosho_banner.png')), 'https://www.env.go.jp/air/life/hoshizorakansatsu/index.html')%></div>
+            </div>
+            <div class='col'>
+                <%= link_to(asset_path('magnitude_index.png'), "data-lightbox" => asset_path('magnitude_index.png')) do %>   
+                    <%= image_tag(asset_path('magnitude_index.png'), style: 'width: 150px;')%>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

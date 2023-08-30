@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :my_pages, only:[:show, :edit, :update]
   resources :favorites, only:[:create, :destroy, :show]
+  resources :star_lights, only:[:show]
   resources :posts do
     resources :comments
     collection do

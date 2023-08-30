@@ -47,6 +47,8 @@ class PostsController < ApplicationController
         latitude: star_light.latitude,
         longitude: star_light.longitude,
         magnitude: star_light.magnitude,
+        rank: star_light.rank,
+        star_light_url: star_light_url(star_light)
       }
     end
    
