@@ -68,6 +68,9 @@
       url: "<%=ENV['KML_LIGHT_POLLUTION_URL']%>",
         map: map
     });
+    google.maps.event.addListener(kmlLayer, 'click', function(event) {
+        event.stop();
+    });
 
     kmlLayer.setMap(null);
 
