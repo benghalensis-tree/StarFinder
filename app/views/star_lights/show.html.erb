@@ -1,1 +1,24 @@
-hellow world
+<div class="container">
+    <div class="text-center">
+        <h2 class='text-light pt-5'>ランク：<%= @star_light.rank %></h2>
+        <% @star_light.rank.times do%>
+            <%= image_tag asset_path("magnitude_icons/icon_#{@star_light.rank}.png"), style: 'width: 40px;' %>
+        <% end %>
+        <div class='text-light'>
+            <% if @star_light.rank == 1 %>
+              都市部の明るさ、星はほとんど見られない
+            <% elsif @star_light.rank == 2 %>
+              市街地の明るさ、星座の形が分かり始める
+            <% elsif @star_light.rank == 3 %>
+              住宅地の明るさ、星座の形がよく分かる
+            <% elsif @star_light.rank == 4 %>
+              郊外の暗さ、天の川が見え始める
+            <% elsif @star_light.rank == 5 %>
+              山や海などの暗さ、天の川がよく見られる
+            <% elsif @star_light.rank == 6 %>
+              天の川の複雑な構造が確認でき、星団などの観測ができる
+            <% end %>
+        </div>
+    </div>
+</div>
+  <%= render 'posts/hotel', hotels: @hotels %>
