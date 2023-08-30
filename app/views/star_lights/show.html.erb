@@ -22,4 +22,21 @@
         </div>
     </div>
 </div>
-  <%= render 'posts/hotel', hotels: @hotels %>
+
+<%= render 'posts/hotel', hotels: @hotels %>
+
+<div class="container pt-3 pb-3 bg-light rounded rounded-3">
+    <div class='d-flex justify-content-center'>
+        <div class='row text-center'>
+            <div class='col'>
+                <strong>ランクは環境省の観測結果を元にしています。</strong>
+                <div><%= link_to(image_tag(asset_path('kankyosho_banner.png')), 'https://www.env.go.jp/air/life/hoshizorakansatsu/index.html')%></div>
+            </div>
+            <div class='col'>
+                <%= link_to(asset_path('magnitude_index.png'), "data-lightbox" => asset_path('magnitude_index.png')) do %>   
+                    <%= image_tag(asset_path('magnitude_index.png'), style: 'width: 150px;')%>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
