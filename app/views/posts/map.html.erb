@@ -160,7 +160,8 @@
                           <a data-turbolinks = "false" href="${ star_lights[i]['star_light_url'] }">
                             <img src="/assets/magnitude_icons/icon_${star_lights[i]['rank']}.png" style="width: 100px; display: block; margin-left: auto;margin-right: auto;" />
                           </a>
-                          <p style="font-size:20px;">${ star_lights[i]['magnitude']}</p>
+                          <p style="font-size:20px;">星ランク${ star_lights[i]['rank']}</p>
+                          <p style="font-size:15px;">(等級${ star_lights[i]['magnitude']})</p>
                       </div>`
 
       infoWindow[markers_wf.length + i] = new google.maps.InfoWindow({
