@@ -5,7 +5,7 @@
         <% @star_light.rank.times do%>
             <%= image_tag asset_path("magnitude_icons/icon_#{@star_light.rank}.png"), style: 'width: 40px;' %>
         <% end %>
-        <div class='text-light'>
+        <div class='text-light mb-5'>
             <% if @star_light.rank == 1 %>
               都市部の明るさ、星はほとんど見られない
             <% elsif @star_light.rank == 2 %>
@@ -21,6 +21,37 @@
             <% end %>
         </div>
     </div>
+</div>
+
+<div class="container fadein">
+    <table class='table table-sm table-dark text-light text-center'>
+        <thead>
+            <tr>
+              <% for i in 0..7 do %>
+                  <th>
+                    <% date = Date.today %>
+                    <% date += i %>
+                    <% month = date.month %>
+                    <% day = date.day%>
+                    <%= "#{month}/#{day}" %>
+                  </th>
+                <% end %> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <% for i in 0..7 do %>
+                  <td>
+                    <% date = Date.today %>
+                    <% date += i %>
+                    <% date_time = date.strftime('%Y%m%d')%>
+                    <% @calendar_moon_age = MkCalendar.new("#{date_time}").moonage.round%>
+                    <%= image_tag(asset_path("moon_icons/#{@calendar_moon_age}.png"), class: 'mt-0 pt-0', style: 'width: 25px;') %>
+                  </td>
+                <% end %> 
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <%= render 'posts/hotel', hotels: @hotels %>
