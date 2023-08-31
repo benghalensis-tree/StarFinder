@@ -38,7 +38,9 @@
             <small class="alert alert-error text-light pb-0 pt-0 mb-0"><%= alert %></small>
           <% end %>
         </ul>
+        
         <ul class="navbar-nav">
+          <div class='px-5'><%= render 'search', q: @q, url: posts_path %></div>
           <li class="nav-item"><%= link_to 'Top', top_posts_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'マップ', map_posts_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to '一覧', posts_path, class: 'nav-link' %></li>
