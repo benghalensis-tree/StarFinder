@@ -11037,24 +11037,6 @@ footer.footer .social-link:hover {
   padding: 0;
 }
 
-@media(max-width: 780px){
-  .masthead {
-    display:flex !important;
-  }
-  .masthead_2 {
-    display:none !important;
-  }
-}
-
-@media(min-width: 779px){
-  .masthead {
-    display:none !important;
-  }
-  .masthead_2 {
-    display:flex !important;
-  }
-}
-
 .masthead_2 {
   
   position: absolute;
