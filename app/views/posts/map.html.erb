@@ -40,7 +40,7 @@
         <div class="second-control-bar d-flex align-items-center position-absolute" style="bottom: 0;" >
             <div class="container px-4 px-lg-2">
                 <div class="row d-flex justify-content-center">
-                    <button id="marker_btn" class='col-2 col-md-2 col-lg-2 btn'>
+                    <button id="markers_btn" class='col-2 col-md-2 col-lg-2 btn'>
                     <i class="fa-solid fa-location-dot fa-2xl" style="color: #1D809F;"></i></button>
                     <button id="light_pollutions_btn" class='col-2 col-md-2 col-lg-2 btn'><i class="fa-solid fa-fire fa-2xl" style="color: #1D809F;"></i></button>
                     <div id="sidebarCollapse" class="col-2 col-md-2 col-lg-2 btn border border-2 border-dark rounded-3 active">    
@@ -236,7 +236,7 @@
         lng: posts[i]['longitude']
       });
 
-      markers[i] = new google.maps.marker.AdvancedMarkerView({
+      markers[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
         collisionBehavior: 'OPTIONAL_AND_HIDES_LOWER_PRIORITY',
@@ -266,7 +266,7 @@
       infoOpen(i);
       infoClose(i);
     }
-    new markerClusterer.MarkerClusterer({
+    clusterer = new markerClusterer.MarkerClusterer({
         map,
         markers
     });
@@ -277,6 +277,7 @@
             kmlLayer.setMap(map);
         }
     });
+    document.getElementById('markers_btn').addEventListener('click', toggleMarkers);
     document.getElementById('weather_forecasts_btn').addEventListener('click', toggleWeatherForecasts);
     document.getElementById('star_light_btn').addEventListener('click', toggleStarLights);
   }
@@ -329,6 +330,18 @@
     });
   }
 
+  function toggleMarkers() {
+    let currentVisibility = markers[0] && markers[0].getVisible();
+    let newVisibility = !currentVisibility;
+    for (let marker of markers) {
+        marker.setVisible(newVisibility);
+    }
+    if (newVisibility == false) {
+      clusterer.clearMarkers();
+    } else {
+      clusterer.addMarkers(markers);
+    }
+  }
   function toggleWeatherForecasts() {
     let currentVisibility = markers_wf[0] && markers_wf[0].getVisible();
     let newVisibility = !currentVisibility;
