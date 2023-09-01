@@ -38,20 +38,25 @@
 
         <div class="second-control-bar d-flex align-items-center position-absolute" style="bottom: 0;" >
             <div class="container px-4 px-lg-2">
+
                 <div class="row d-flex justify-content-center">
-                    <button id="markers_btn" class='col-2 col-md-2 col-lg-2 btn'>
-                        <i class="fa-solid fa-location-dot fa-2xl" style="color: #1D809F;"></i>
+                    <button id="weather_forecasts_btn" class='col-2 col-md-2 col-lg-2 btn'>
+                        <i class="fa-solid fa-cloud-sun fa-2xl" style="color: #1D809F;"></i>
                     </button>
+
                     <button id="light_pollutions_btn" class='col-2 col-md-2 col-lg-2 btn'>
                         <i class="fa-solid fa-fire fa-2xl" style="color: #1D809F;"></i>
                     </button>
+
                     <div id="sidebarCollapse" class="col-2 col-md-2 col-lg-2 btn border border-2 border-dark rounded-3 active">    
                         <h4 class='text-light'><%= @day %></h4>
                         <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 30px; filter: hue-rotate(140deg);') %>
                     </div>
-                    <button id="weather_forecasts_btn" class='col-2 col-md-2 col-lg-2 btn'>
-                        <i class="fa-solid fa-cloud-sun fa-2xl" style="color: #1D809F;"></i>
+                    
+                    <button id="markers_btn" class='col-2 col-md-2 col-lg-2 btn'>
+                        <i class="fa-solid fa-location-dot fa-2xl" style="color: #1D809F;"></i>
                     </button>
+                    
                     <button id="star_light_btn" class='col-2 col-md-2 col-lg-2 btn'>
                         <i class="fa-solid fa-star fa-2xl" style="color: #1D809F;"></i>
                     </button>
