@@ -93,7 +93,7 @@
 }
 
 @media (min-width: 768px) {
-  body {
+  body:not(.map) {
     padding-top: 60px;
   }
 }
@@ -11037,16 +11037,29 @@ footer.footer .social-link:hover {
   padding: 0;
 }
 
-.masthead_2 {
+.control-bar {
   
   position: absolute;
   z-index: 1;
   display: none ;
   width: 100%;
   height: 7rem;
-  padding-top: 4rem;
+  padding-top: 6rem;
   padding-bottom: 2rem;
-  background-color:rgba(0,0,0,0.3);
+  background-color:rgba(0,0,0,0);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.second-control-bar {
+  
+  position: absolute;
+  z-index: 1;
+  display: none ;
+  width: 100%;
+  height: 7rem;
+  padding-bottom: 1rem;
+  background-color:rgba(0,0,0,0);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
