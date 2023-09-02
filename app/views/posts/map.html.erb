@@ -54,10 +54,9 @@
                         <i class="fa-solid fa-fire fa-2xl" style="color: #1D809F;"></i>
                     </button>
 
-                    <div id="sidebarCollapse" class="col-2 col-md-2 col-lg-2 btn border border-2 border-dark rounded-3 active">    
-                        <h4 class='text-light'><%= @day %></h4>
-                        <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 30px; filter: hue-rotate(140deg);') %>
-                    </div>
+                    <%= link_to posts_path, class: 'col-2 col-md-2 col-lg-2 btn' do%>
+                        <i class="fa-solid fa-list fa-2xl" style="color: #1D809F;"></i>
+                    <% end %>
                     
                     <button id="markers_btn" class='col-2 col-md-2 col-lg-2 btn'>
                         <i class="fa-solid fa-location-dot fa-2xl" style="color: #1D809F;"></i>
