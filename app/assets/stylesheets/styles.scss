@@ -92,7 +92,9 @@
   }
 }
 
-
+body.map{
+  overflow: hidden;
+}
 
 body {
   padding-top: 55px;
