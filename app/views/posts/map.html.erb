@@ -3,34 +3,40 @@
     <div id="content">
         <div class="control-bar d-flex align-items-center"  >
             <div class="container fadein">
-              <table class='table table-sm border border-dark text-light text-center'>
-                  <thead>
-                      <tr>
-                        <% for i in 0..7 do %>
-                          <td  class='border border-dark'>
-                            <% date = Date.today %>
-                            <% date += i %>
-                            <% date_time = date.strftime('%Y%m%d')%>
-                            <% @calendar_moon_age = MkCalendar.new("#{date_time}").moonage.round%>
-                            <%= image_tag(asset_path("moon_icons/#{@calendar_moon_age}.png"), class: 'mt-0 pt-0', style: 'width: 15px; filter: hue-rotate(140deg);') %>
-                          </td>
-                        <% end %> 
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <% for i in 0..7 do %>
-                            <th class='border border-dark'>
-                              <% date = Date.today %>
-                              <% date += i %>
-                              <% month = date.month %>
-                              <% day = date.day%>
-                              <%= link_to "#{month}/#{day}", map_posts_path(date: date), class: 'btn btn-dark btn-sm' %>
-                            </th>
-                          <% end %> 
-                      </tr>
-                  </tbody>
-              </table>
+                <div class="row">
+                    <div id="sidebarCollapse" class="col-1 d-none d-lg-block  btn border border-2 border-dark rounded-3 active">
+                        <i class="fa-solid fa-calendar fa-2xl" style="color: #1D809F;"></i>
+                        <p class='text-light'><%= @day %></p>
+                    </div>
+                    <table class='col table table-sm text-light text-center'>
+                        <thead>
+                            <tr>
+                              <% for i in 0..7 do %>
+                                <td style='border:none;'>
+                                  <% date = Date.today %>
+                                  <% date += i %>
+                                  <% date_time = date.strftime('%Y%m%d')%>
+                                  <% @calendar_moon_age = MkCalendar.new("#{date_time}").moonage.round%>
+                                  <%= image_tag(asset_path("moon_icons/#{@calendar_moon_age}.png"), class: 'mt-0 pt-0', style: 'width: 15px; filter: hue-rotate(140deg);') %>
+                                </td>
+                              <% end %> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              <% for i in 0..7 do %>
+                                  <th style='border:none;'>
+                                    <% date = Date.today %>
+                                    <% date += i %>
+                                    <% month = date.month %>
+                                    <% day = date.day%>
+                                    <%= link_to "#{month}/#{day}", map_posts_path(date: date), class: 'btn btn-dark btn-sm' %>
+                                  </th>
+                                <% end %> 
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
