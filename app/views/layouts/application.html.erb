@@ -62,7 +62,11 @@
     </nav>
 
     <nav class="d-md-none">
-      <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        <nav class="navbar justify-content-start navbar-expand-md navbar-dark bg-secondary fixed-top">
+            <%= link_to 'StarFinder', map_posts_path, class: 'navbar-brand' %>
+            <div class='col-6'><%= render 'posts/search', q: @q, url: posts_path %></div>
+            <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        </nav>
       <nav id="sidebar-wrapper">
         <ul class="sidebar-nav">
           <li class="sidebar-brand"><%= link_to 'StarFinder', map_posts_path %></li>
@@ -82,7 +86,6 @@
             <li class="sidebar-nav-item"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></li>
             <li class="sidebar-nav-item"><%= link_to '管理者ログイン', users_guest_admin_sign_in_path, method: :post %></li>
           <% end %>
-          <li class="sidebar-nav-item" style='width: 80%;'><%= render 'posts/search', q: @q, url: posts_path %></li>
         </ul>
       </nav>
     </nav>

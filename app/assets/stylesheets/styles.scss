@@ -92,13 +92,10 @@
   }
 }
 
-@media (min-width: 768px) {
-  body:not(.map) {
-    padding-top: 60px;
-  }
-}
+
 
 body {
+  padding-top: 55px;
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
@@ -10887,7 +10884,7 @@ html {
 
 #sidebar-wrapper {
   position: fixed;
-  z-index: 2;
+  z-index: 1031;
   right: 0;
   width: 250px;
   height: 100%;
@@ -10953,14 +10950,13 @@ html {
 .menu-toggle {
   position: fixed;
   right: 15px;
-  top: 15px;
   width: 50px;
   height: 50px;
   text-align: center;
   color: #fff;
   background: rgba(52, 58, 64, 0.5);
   line-height: 50px;
-  z-index: 999;
+  z-index: 1032;
 }
 .menu-toggle:focus, .menu-toggle:hover {
   color: #fff;
@@ -11044,7 +11040,6 @@ footer.footer .social-link:hover {
   display: none ;
   width: 100%;
   height: 7rem;
-  padding-top: 6rem;
   padding-bottom: 2rem;
   background-color:rgba(0,0,0,0);
   background-position: center center;
@@ -11052,17 +11047,14 @@ footer.footer .social-link:hover {
   background-size: cover;
 }
 .second-control-bar {
-  
-  position: absolute;
+  position: fixed;
+  bottom: 80px;
   z-index: 1;
   display: none ;
   width: 100%;
   height: 7rem;
-  padding-bottom: 1rem;
+  padding-bottom: 8rem;
   background-color:rgba(0,0,0,0);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .portfolio-item {
