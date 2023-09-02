@@ -263,7 +263,10 @@
       markers[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
-        collisionBehavior: 'OPTIONAL_AND_HIDES_LOWER_PRIORITY',
+        icon: {
+          url: '<%= asset_path 'marker_icon.png' %>',
+          scaledSize: new google.maps.Size(30, 30),
+          }
       });
       
       if( posts[i]['image_url']){
