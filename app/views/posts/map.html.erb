@@ -100,6 +100,11 @@
       mapId: "<%=ENV['MAP_ID']%>",
       scrollwheel: true,
       mapTypeControl: false, 
+      zoomControl: false,
+      fullscreenControl: false,
+      streetViewControlOptions: {
+          position: google.maps.ControlPosition.RIGHT_CENTER
+      },
       restriction: {
         latLngBounds: {
           north: 49.55, 
