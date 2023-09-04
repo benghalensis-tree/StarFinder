@@ -9,17 +9,30 @@
   position: relative;
   display: table;
   width: 100%;
-  height: 40rem;
+  height: 30rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+@media (min-width: 768px) {
+  .posts-top-masthead {
+      height: 40rem;
+  }
+}
 .posts-top-masthead h1, .posts-top-masthead .h1 {
   font-size: 4rem;
   margin: 0;
   padding: 0;
+}
+.posts-top-img-cover {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .posts-top-container {
   min-height: 20rem;
@@ -27,11 +40,25 @@
   display: table;
   width: 100%;
   height: 30rem;
-  padding-top: 2rem;
+  padding-top: 1rem;
   padding-bottom: 2rem;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  font-size: 13px;
+}
+@media (min-width: 768px) {
+  .posts-top-container {
+    font-size: 1rem;
+  }
+}
+.posts-top-service {
+  font-size: 13px;
+}
+@media (min-width: 768px) {
+  .posts-top-service {
+    font-size: 1rem;
+  }
 }
 .posts-top-service-icon {
   background-color: #fff;
