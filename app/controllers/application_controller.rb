@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     @q = Post.ransack(params[:q])
     @q.sorts
     @posts = @q.result
-    @posts = @posts.page(params[:page]).per(40)
+    @posts = @posts.page(params[:page]).per(20)
   end
 
 end
