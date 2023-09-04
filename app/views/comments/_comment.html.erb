@@ -4,9 +4,9 @@
         <% if comment.id.present? %>
           <p class="bg-secondary pb-4 pt-3 border-bottom fadein">
             <% if comment.user.image.present? %>
-              <%= link_to image_tag(comment.user.image.thumb.url, class: 'user-icon rounded-circle'), my_page_path(comment.user) %>
+              <%= link_to image_tag(comment.user.image.thumb.url, class: 'comments-show-user-icon rounded-circle'), my_page_path(comment.user) %>
             <% else %>
-              <%= link_to image_tag("default.jpg", class: 'user-icon rounded-circle'), my_page_path(comment.user) %>
+              <%= link_to image_tag("default.jpg", class: 'comments-show-user-icon rounded-circle'), my_page_path(comment.user) %>
             <% end %>
             <%= comment.content %>
             
@@ -15,7 +15,7 @@
             <%= link_to '削除', post_comment_path(@post, comment), method: :delete, data: {confirm: "削除しますか？"}, class: 'btn btn-dark' %>
             <% if comment.image.present? %>
             
-              <%= image_tag comment.image.url, class:'img-comment-show'%>
+              <%= image_tag comment.image.url, class:'comments-show-img'%>
             
             <% end %>
           </p>

@@ -2,9 +2,9 @@
     <div class="container mb-1 px-4 mt-5 px-lg-5 text-center">
       <h2 class="container mb-1 px-4 mt-5 px-lg-5 text-left">マイページを編集</h2>
         <% if @user.image.present? %>
-          <%= image_tag @user.image.thumb.url, id: :img_prev, size: '300x200', class: 'img-icon' %>
+          <%= image_tag @user.image.thumb.url, id: :my_pages_edit_img_prev, size: '300x200', class: 'my-pages-edit-img-icon' %>
         <% else %>
-          <%= image_tag "default.jpg", id: :img_prev, class: 'img-icon' %>
+          <%= image_tag "default.jpg", id: :my_pages_edit_img_prev, class: 'my-pages-edit-img-icon' %>
         <% end %>
 
         <%= form_with(model: @user, url: my_page_path, method: :patch) do |form|%>

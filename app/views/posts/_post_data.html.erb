@@ -3,9 +3,9 @@
         <div class='col'>
             <div class='btn-group bg-light rounded'>
                 <% if post.user.image.present? %>
-                  <%= link_to image_tag(post.user.image.thumb.url, class: 'user-icon border boder-light rounded-circle'), my_page_path(post.user) %>
+                  <%= link_to image_tag(post.user.image.thumb.url, class: 'posts-show-user-icon border boder-light rounded-circle'), my_page_path(post.user) %>
                 <% else %>
-                  <%= link_to image_tag("default.jpg", class: 'user-icon border boder-light rounded-left'), my_page_path(post.user) %>
+                  <%= link_to image_tag("default.jpg", class: 'posts-show-user-icon border boder-light rounded-left'), my_page_path(post.user) %>
                 <% end %>
                 <%= link_to post.user.name, my_page_path(post.user), class: 'btn btn-light' %>
             </div>
@@ -49,21 +49,21 @@
         </h2>
 
         <div class='col col-lg-3 d-flex justify-content-end'>
-            <div class='post-img-content'>
+            <div class='posts-show-img-content'>
                 <% if @post.image? %>
                     <%= link_to @post.image.url, class:' btn btn-dark', "data-lightbox" => @post.image.url do %>
-                        <%= image_tag @post.image.url, class: 'post-img'%>
+                        <%= image_tag @post.image.url, class: 'posts-show-img'%>
                     <% end %>
                     
                 <% else %>
-                    <%= image_tag "no-image.png", class: 'post-img' %>
+                    <%= image_tag "no-image.png", class: 'posts-show-img' %>
                 <% end %>
             </div>
         </div>
         <div class="col col-lg-3 d-flex justify-content-end">
             <div class="bg-secondary rounded fadein">
                 <%= javascript_pack_tag 'radar_chart' %>
-                <canvas class="chart-center" id="myChart"></canvas>
+                <canvas class="posts-show-chart" id="myChart"></canvas>
             </div>
         </div>
     </div>

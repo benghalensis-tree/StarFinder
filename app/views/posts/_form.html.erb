@@ -14,9 +14,9 @@
 <div class="d-flex justify-content-center">
    <div class="input-group text-center w-25">
   <% if post.image.present? %>
-    <%= image_tag post.image.url, id: :img_prev, size: '800x200' %>
+    <%= image_tag post.image.url, id: :posts_form_img_prev, size: '800x200' %>
   <% else %>
-    <%= image_tag "no-image.png", id: :img_prev %>
+    <%= image_tag "no-image.png", id: :posts_form_img_prev %>
   <% end %>
       <div class="custom-file">
         <%= form.label :画像を選択, class: "custom-file-label text-left bg-dark" %>
@@ -50,7 +50,7 @@
       <%= form.fields_for :rating do |rating_form| %>
         <div class="form-group mb-1 text-left">
           <%= rating_form.label :sky_light %>
-          <div class="rating_form">
+          <div class="posts-form-rating">
             <%= rating_form.radio_button :sky_light , 5, id: 'sky_light5' %>
             <label for="sky_light5"><span class="text">5</span>★</label>
             <%= rating_form.radio_button :sky_light , 4, id: 'sky_light4' %>
@@ -66,7 +66,7 @@
         <br>
         <div class="form-group mb-1 text-left">
           <%= rating_form.label :sky_clear %>
-          <div class="rating_form">
+          <div class="posts-form-rating">
             <%= rating_form.radio_button :sky_clear , 5, id: 'sky_clear5' %>
             <label for="sky_clear5"><span class="text">5</span>★</label>
             <%= rating_form.radio_button :sky_clear , 4, id: 'sky_clear4' %>
@@ -82,7 +82,7 @@
         <br>
         <div class="form-group mb-1 text-left">
           <%= rating_form.label :sky_extent %>
-          <div class="rating_form">
+          <div class="posts-form-rating">
             <%= rating_form.radio_button :sky_extent , 5, id: 'sky_extent5' %>
             <label for="sky_extent5"><span class="text">5</span>★</label>
             <%= rating_form.radio_button :sky_extent , 4, id: 'sky_extent4' %>
@@ -98,7 +98,7 @@
         <br>
         <div class="form-group mb-1 text-left">
           <%= rating_form.label :accessiblity %>
-          <div class="rating_form">
+          <div class="posts-form-rating">
             <%= rating_form.radio_button :accessiblity , 5, id: 'accessiblity5' %>
             <label for="accessiblity5"><span class="text">5</span>★</label>
             <%= rating_form.radio_button :accessiblity , 4, id: 'accessiblity4' %>
@@ -114,7 +114,7 @@
         <br>
         <div class="form-group mb-1 text-left">
           <%= rating_form.label :convenient %>
-          <div class="rating_form">
+          <div class="posts-form-rating">
             <%= rating_form.radio_button :convenient , 5, id: 'convenient5' %>
             <label for="convenient5"><span class="text">5</span>★</label>
             <%= rating_form.radio_button :convenient , 4, id: 'convenient4' %>

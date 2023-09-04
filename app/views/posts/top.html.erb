@@ -1,10 +1,10 @@
-<header class="masthead parallax-content d-flex align-items-center"  style="background-image: url(<%= asset_path 'galaxy.jpg' %>) ">
+<header class="posts-top-masthead parallax-content d-flex align-items-center"  style="background-image: url(<%= asset_path 'galaxy.jpg' %>) ">
     <div class="container px-4 px-lg-5 text-center">
         <h2 class="mb-1">Star Finder</h2>
     </div>
 </header>
 
-<div class="top-page-container d-flex align-items-center bg-black" >
+<div class="posts-top-container d-flex align-items-center bg-black" >
     <div class="container px-4 px-lg-5 text-center fadein">
         <h2 class="mb-1">このアプリの目的</h2>
         <div class="row justify-content-center mt-5">
@@ -26,25 +26,25 @@
         </div>
         <div class="row gx-4 gx-lg-5 fadein">
             <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-location-pin"></i></span>
+                <span class="posts-top-service-icon rounded-circle mx-auto mb-3"><i class="icon-location-pin"></i></span>
                 <h4><strong>マップ機能</strong></h4>
                 <p class="text-faded mb-0">マップ上にレビューをマーカー表示します。</p>
                 <p class="text-faded mb-0">天気や星の明るさを表示。レビューを探す手助けをします。</p>
             </div>
             <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+                <span class="posts-top-service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
                 <h4><strong>投稿機能</strong></h4>
                 <p class="text-faded mb-0">レビューを投稿できます。</p>
                 <p class="text-faded mb-0">住所や評価を直感的に選択でき簡単に投稿できます。</p>
             </div>
             <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-heart"></i></span>
+                <span class="posts-top-service-icon rounded-circle mx-auto mb-3"><i class="icon-heart"></i></span>
                 <h4><strong>お気に入り機能</strong></h4>
                 <p class="text-faded mb-0">レビューをお気に入りすることができます。</p>
                 <p class="text-faded mb-0">お気に入りしたものはマイページから閲覧が可能です。</p>
             </div>
             <div class="col-lg-3 col-md-6">
-                <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-magnifier"></i></span>
+                <span class="posts-top-service-icon rounded-circle mx-auto mb-3"><i class="icon-magnifier"></i></span>
                 <h4><strong>検索・ソート機能</strong></h4>
                 <p class="text-faded mb-0">投稿をタイトルや住所などのキーワードで検索できます。</p>
                 <p class="text-faded mb-0">閲覧数やお気に入り数でソートすることができます。</p>
@@ -61,7 +61,7 @@
         </div>
         <div class="row gx-4 gx-lg-5 fadein">
             <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                <span class="service-icon rounded-circle mx-auto mb-3 bg-dark"><%= image_tag(asset_path("moon_icons/#{@moon_age}.png"),class: 'limiting-mag-icon', style: 'width: 100px;') %></span>
+                <span class="posts-top-service-icon rounded-circle mx-auto mb-3 bg-dark"><%= image_tag(asset_path("moon_icons/#{@moon_age}.png"),class: 'limiting-mag-icon', style: 'width: 100px;') %></span>
                 <h4><strong>1.月齢を調べる</strong></h4>
                 <p class="text-faded mb-0">月が出ると星は見えづらくなります。</p>
                 <p class="text-faded mb-0">月があまり出ない空が暗い日をカレンダーから見つけます。青色になる程月が沈んでいる時間が長い日になります。</p>
@@ -70,20 +70,20 @@
                 <% if @weather == '03d' || '04d' %>
                     <% @weather = '03d04d' %>
                 <% end %>
-                <span class="service-icon rounded-circle mx-auto mb-3 bg-dark"><%= image_tag asset_path "weather_icons3/#{@weather}.png" %></span>
+                <span class="posts-top-service-icon rounded-circle mx-auto mb-3 bg-dark"><%= image_tag asset_path "weather_icons3/#{@weather}.png" %></span>
                 <h4><strong>2.天気を調べる</strong></h4>
                 <p class="text-faded mb-0">空が曇っていると観測できません。</p>
                 <p class="text-faded mb-0">カレンダーから天気のいい日を探します。</p>
                 <p class="text-faded mb-0">日付を選択すると日本全国の天気がマーカーで表示することができます。（最大7日先まで）</p>
             </div>
             <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                <span class="service-icon rounded-circle mx-auto mb-3 bg-dark"><%= image_tag(asset_path("magnitude_icons/icon_6.png"),class: 'limiting-mag-icon') %></span>
+                <span class="posts-top-service-icon rounded-circle mx-auto mb-3 bg-dark"><%= image_tag(asset_path("magnitude_icons/icon_6.png"),class: 'limiting-mag-icon') %></span>
                 <h4><strong>3.星が明るく見える場所を探す</strong></h4>
                 <p class="text-faded mb-0">町の明るさによって星の見かけの明るさは変わります。</p>
                 <p class="text-faded mb-0">星がよく見える場所をマップ上から探します。マーカーの色が明るくなるほど星がよく見える場所です。</p>
             </div>
             <div class="col-lg-3 col-md-6">
-                <span class="service-icon rounded-circle mx-auto mb-3 bg-dark"><i class="icon-location-pin"></i></span>
+                <span class="posts-top-service-icon rounded-circle mx-auto mb-3 bg-dark"><i class="icon-location-pin"></i></span>
                 
                 <h4><strong>4.レビューを見つける</strong></h4>
                 <p class="text-faded mb-0">1~3を考慮して</p>

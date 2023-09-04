@@ -95,7 +95,25 @@ window.addEventListener('DOMContentLoaded', event => {
             if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-        $('#img_prev').attr('src', e.target.result);
+        $('#posts_form_img_prev').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#post_img").change(function(){
+            readURL(this);
+        });
+        $("#user_img").change(function(){
+            readURL(this);
+        });
+      });
+
+      $(function() {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+        $('#my_pages_edit_img_prev').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
             }
@@ -110,7 +128,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
       $(function() {
         $('.toggle-btn').on('click', function() {
-          $('.toggle-calender').slideToggle();
+          $('.posts-map-toggle-calender').slideToggle();
         });
       });
       
