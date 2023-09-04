@@ -123,7 +123,12 @@
   padding: 10px 10px 0;
   color: gray;
   cursor: pointer;
-  font-size: 30px; 
+  font-size: 20px; 
+}
+@media (min-width: 768px) {
+  .posts-form-rating label {
+      font-size: 30px;
+  }
 }
 .posts-form-rating label .text{
   position: absolute;
@@ -138,10 +143,6 @@
 .posts-form-rating label:hover ~ label,
 .posts-form-rating input[type='radio']:checked ~ label{
   color: #4dc3fe;
-}
-#posts_form_img_prev {
-  max-width: 100%;
-  height: auto;
 }
 
 //posts-showのcss
