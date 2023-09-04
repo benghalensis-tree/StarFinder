@@ -1,3 +1,294 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.top {
+    .masthead {
+      min-height: 20rem;
+      position: relative;
+      display: table;
+      width: 100%;
+      height: 40rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .masthead h1, .masthead .h1 {
+      font-size: 4rem;
+      margin: 0;
+      padding: 0;
+    }
+    .top-page-container {
+      min-height: 20rem;
+      position: relative;
+      display: table;
+      width: 100%;
+      height: 30rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .portfolio-item {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      max-width: 530px;
+      margin: auto auto 1rem;
+    }
+    .portfolio-item .caption {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(33, 37, 41, 0.2);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+    .portfolio-item .caption .caption-content {
+      color: #fff;
+      margin: auto 2rem 2rem;
+    }
+    .portfolio-item .caption .caption-content h2, .portfolio-item .caption .caption-content .h2 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+    .portfolio-item .caption .caption-content p {
+      font-weight: 300;
+      font-size: 1.2rem;
+    }
+    @media (min-width: 992px) {
+      .portfolio-item {
+        max-width: none;
+        margin: 0;
+      }
+      .portfolio-item .caption {
+        transition: background-color 0.7s, -webkit-clip-path 0.25s ease-out;
+        transition: clip-path 0.25s ease-out, background-color 0.7s;
+        transition: clip-path 0.25s ease-out, background-color 0.7s, -webkit-clip-path 0.25s ease-out;
+        -webkit-clip-path: inset(0px);
+                clip-path: inset(0px);
+      }
+      .portfolio-item .caption .caption-content {
+        transition: opacity 0.25s;
+        margin-left: 5rem;
+        margin-right: 5rem;
+        margin-bottom: 5rem;
+      }
+      .portfolio-item img {
+        transition: -webkit-clip-path 0.25s ease-out;
+        transition: clip-path 0.25s ease-out;
+        transition: clip-path 0.25s ease-out, -webkit-clip-path 0.25s ease-out;
+        -webkit-clip-path: inset(-1px);
+                clip-path: inset(-1px);
+      }
+      .portfolio-item:hover img {
+        -webkit-clip-path: inset(2rem);
+                clip-path: inset(2rem);
+      }
+      .portfolio-item:hover .caption {
+        background-color: rgba(29, 128, 159, 0.9);
+        -webkit-clip-path: inset(2rem);
+                clip-path: inset(2rem);
+      }
+    }
+    
+    .service-icon {
+      background-color: #fff;
+      color: #1D809F;
+      height: 7rem;
+      width: 7rem;
+      display: block;
+      line-height: 7.5rem;
+      font-size: 2.25rem;
+      box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+    .fadein {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(30px);
+      transition: opacity 1s, visibility 1s, transform 1s;
+    }
+    .is-fadein {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+}
+
+.map{
+    .toggle-calender{
+      display: none;
+      list-style: none;
+    }
+    .toggle-calender a{
+      display: block;
+    }
+
+    .calendar-content{
+      width: 50px;
+      height: 40px;
+    }
+
+    .simple-calendar {
+      .day {
+        
+      }
+      .wday-0 {
+        
+      }
+      .wday-1 {}
+      .wday-2 {}
+      .wday-3 {}
+      .wday-4 {}
+      .wday-5 {}
+      .wday-6 {}
+      .past {
+        background: #d0d5ea;
+      }
+      .future {}
+      .start-date {}
+      .prev-month {}
+      .next-month {}
+      .current-month {}
+      .has-events {}
+      
+    .super_good{
+      background: #008cff;
+      height: 100px;
+    }
+    .good{
+      background: #0072cf;
+      height: 100px;
+    }
+    .normal{
+      background: #005eaa;
+      height: 100px;
+    }
+    .short{
+      background: #003967;
+      height: 100px;
+    }
+    .bad{
+      background: #00213b;
+      height: 100px;
+    }
+    .today {
+      background: #9dffeb;
+    }
+    }
+}
+
+.index {
+    .img-index{
+      width: 50%;
+      height: 50%;
+    }
+    .img-topimage{
+      width: 100%;
+      height: 50%;
+    }
+}
+
+.new, .create, .edit, .update {
+    .rating_form{
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+    .rating_form input[type='radio']{
+      display: none;
+    }
+    .rating_form label{
+      position: relative;
+      padding: 10px 10px 0;
+      color: gray;
+      cursor: pointer;
+      font-size: 30px; 
+    }
+    .rating_form label .text{
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      text-align: center;
+      font-size: 15px; 
+      color: gray;
+    }
+    .rating_form label:hover,
+    .rating_form label:hover ~ label,
+    .rating_form input[type='radio']:checked ~ label{
+      color: #4dc3fe;
+    }
+    .star-rating {
+      position: relative;
+      display: inline-block;
+      width: 5em;
+      height: 1em;
+      font-size: 25px;
+    }
+    .star-rating-front {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      color: #ffcc33;
+    }
+    .star-rating-back {
+      display: inline-block;
+      color: #ccc;
+    }
+    #img_prev{
+      max-width: 100%;
+      height: auto;
+    }
+}
+
+.show {
+    .img-content{
+      height: 200px;
+      width: 300px; 
+      overflow: hidden;
+      position: relative; 
+    }
+    .img-show{
+      height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .img-show-background {
+      background: linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(0, 0, 0, 0)70.71%);
+    }
+    .img-show-weather-icon{
+      width: 40px;
+    }
+
+    .img-icon-post-show{
+      width: 40px;
+      height: 40px;
+    }
+    .img-show-hotel{
+      width: 80%;
+      height: 80%;
+    }
+
+    .gradient {
+      background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,255,0) 40%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    .chart-center{
+      left: 0;
+      right: 0;
+      margin: auto;
+      height: 50%;
+    }
+}
