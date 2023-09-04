@@ -16,9 +16,9 @@
 </div>
 
 <%= render 'posts/post_data', post: @post, favorite: @favorite %>
-<%= render 'posts/weather', weather_data: @weather_data %>
+<%= render 'shared/weather', weather_data: @weather_data %>
 <%= render 'posts/comment', comments: @comments %>
-<%= render 'posts/hotel', hotels: @hotels %>
+<%= render 'shared/hotel', hotels: @hotels %>
 
 <style>
   .post-show-background-image {

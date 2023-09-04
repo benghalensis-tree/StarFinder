@@ -42,7 +42,7 @@
         </ul>
         
         <ul class="navbar-nav">
-          <div class='px-5'><%= render 'posts/search', q: @q, url: posts_path %></div>
+          <div class='px-5'><%= render 'shared/search', q: @q, url: posts_path %></div>
           <li class="nav-item"><%= link_to 'Top', top_posts_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'マップ', map_posts_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to '一覧', posts_path, class: 'nav-link' %></li>
@@ -68,7 +68,7 @@
             <%= link_to map_posts_path, class: 'navbar-brand ml-1' do%>
               <%= image_tag(asset_path('logo.png'), style: 'width: 30px;')%><small>StarFinder</small>
             <% end %>
-            <div class='col-6'><%= render 'posts/search', q: @q, url: posts_path %></div>
+            <div class='col-6'><%= render 'shared/search', q: @q, url: posts_path %></div>
             <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         </nav>
       <nav id="sidebar-wrapper">
