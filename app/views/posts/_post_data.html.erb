@@ -1,5 +1,4 @@
-<section class=" bg-black" >
-    
+<div class='container'>
     <div class="row h-25 mb-1 px-4 mt-5 px-lg-5 text-center">
         <div class='col'>
             <div class='btn-group bg-light rounded'>
@@ -44,23 +43,31 @@
             <%= post.address %>
         </div>
     </div>
-    <div class="container mb-1 px-4 mt-5 px-lg-5 text-center fadein">
-        <h2 class="mb-1 text-left">
+    <div class='row fadein'>
+        <h2 class="col-12 col-lg-5 mb-5 mt-5 text-light d-flex align-items-center">
             <%= post.title %>
         </h2>
-        <div class='row fadein'>
-          <div class="col-8 bg-secondary rounded mb-1 text-left"> 
-              <%= post.content %>
-          </div>
-          <div class='col-4 img-content'>
-              <% if @post.image? %>
-                  <%= link_to @post.image.url, "data-lightbox" => @post.image.url do %>
-                  <%= image_tag @post.image.url, class: 'img-show'%>
-                  <% end %>
-              <% else %>
-                  <%= image_tag "no-image.png", class: 'img-show' %>
-              <% end %>
-          </div>
+
+        <div class='col col-lg-3 d-flex justify-content-end'>
+            <div class='img-content'>
+                <% if @post.image? %>
+                    <%= link_to @post.image.url, class:' btn btn-dark', "data-lightbox" => @post.image.url do %>
+                        <%= image_tag @post.image.url, class: 'img-show'%>
+                    <% end %>
+                    
+                <% else %>
+                    <%= image_tag "no-image.png", class: 'img-show' %>
+                <% end %>
+            </div>
+        </div>
+        <div class="col col-lg-3 d-flex justify-content-end">
+            <div class="bg-secondary rounded fadein">
+                <%= javascript_pack_tag 'radar_chart' %>
+                <canvas class="chart-center" id="myChart"></canvas>
+            </div>
         </div>
     </div>
-</section>
+    <div class="pt-3 mt-5 pb-3 mb-3 px-4 text-light" style='min-height: 150px;'> 
+        <%= post.content %>
+    </div>
+</div>
