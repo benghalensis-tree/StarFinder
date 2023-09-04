@@ -3,9 +3,9 @@
         <div class='col'>
             <div class='btn-group bg-light rounded'>
                 <% if post.user.image.present? %>
-                  <%= link_to image_tag(post.user.image.thumb.url, class: 'img-icon-post-show border boder-light rounded-circle'), my_page_path(post.user) %>
+                  <%= link_to image_tag(post.user.image.thumb.url, class: 'user-icon border boder-light rounded-circle'), my_page_path(post.user) %>
                 <% else %>
-                  <%= link_to image_tag("default.jpg", class: 'img-icon-post-show border boder-light rounded-left'), my_page_path(post.user) %>
+                  <%= link_to image_tag("default.jpg", class: 'user-icon border boder-light rounded-left'), my_page_path(post.user) %>
                 <% end %>
                 <%= link_to post.user.name, my_page_path(post.user), class: 'btn btn-light' %>
             </div>
@@ -49,14 +49,14 @@
         </h2>
 
         <div class='col col-lg-3 d-flex justify-content-end'>
-            <div class='img-content'>
+            <div class='post-img-content'>
                 <% if @post.image? %>
                     <%= link_to @post.image.url, class:' btn btn-dark', "data-lightbox" => @post.image.url do %>
-                        <%= image_tag @post.image.url, class: 'img-show'%>
+                        <%= image_tag @post.image.url, class: 'post-img'%>
                     <% end %>
                     
                 <% else %>
-                    <%= image_tag "no-image.png", class: 'img-show' %>
+                    <%= image_tag "no-image.png", class: 'post-img' %>
                 <% end %>
             </div>
         </div>

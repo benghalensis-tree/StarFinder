@@ -4,9 +4,9 @@
         <% if comment.id.present? %>
           <p class="bg-secondary pb-4 pt-3 border-bottom fadein">
             <% if comment.user.image.present? %>
-              <%= link_to image_tag(comment.user.image.thumb.url, class: 'img-icon-post-show rounded-circle'), my_page_path(comment.user) %>
+              <%= link_to image_tag(comment.user.image.thumb.url, class: 'user-icon rounded-circle'), my_page_path(comment.user) %>
             <% else %>
-              <%= link_to image_tag("default.jpg", class: 'img-icon-post-show rounded-circle'), my_page_path(comment.user) %>
+              <%= link_to image_tag("default.jpg", class: 'user-icon rounded-circle'), my_page_path(comment.user) %>
             <% end %>
             <%= comment.content %>
             
