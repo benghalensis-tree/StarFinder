@@ -1,9 +1,9 @@
 <section class="conntent-section d-flex align-items-center bg-black" >
     <div class="container mb-1 px-4 mt-5 px-lg-5 text-center">
       <% if @user.image? %>
-        <%= image_tag @user.image.thumb.url, class: 'img-icon' %>
+        <%= image_tag @user.image.thumb.url, class: 'my-pages-show-img-icon' %>
       <% else %>
-        <%= image_tag "default.jpg", class: 'img-icon' %>
+        <%= image_tag "default.jpg", class: 'my-pages-show-img-icon' %>
       <% end %>
 
       <% if current_user == @user %>
