@@ -1,7 +1,7 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.top {
+.posts-top {
     .masthead {
       min-height: 20rem;
       position: relative;
@@ -119,7 +119,10 @@
     }
 }
 
-.map{
+.posts-map{
+
+    overflow: hidden; //スクロールを禁止
+
     .toggle-calender{
       display: none;
       list-style: none;
@@ -182,7 +185,7 @@
     }
 }
 
-.index {
+.posts-index {
     .img-index{
       width: 50%;
       height: 50%;
@@ -193,7 +196,7 @@
     }
 }
 
-.new, .create, .edit, .update {
+.posts-new, .posts-create, .posts-edit, .posts-update {
     .rating_form{
       display: flex;
       flex-direction: row-reverse;
@@ -248,7 +251,7 @@
     }
 }
 
-.show {
+.posts-show {
     .img-content{
       height: 200px;
       width: 300px; 
