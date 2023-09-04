@@ -6,21 +6,15 @@
 <table>
   <thead>
     <tr>
-      <th>Content</th>
-      <th>Image</th>
-      <th colspan="3"></th>
+      <th>コメント</th>
+      <th>コメントした投稿</th>
     </tr>
   </thead>
 
   <tbody>
     <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.content %></td>
-          <td>
-          <% if comment.image.present? %>
-            <%= image_tag comment.image.url, class: 'img-comment-show' %>
-          <% end %>
-          </td>
+      <tr class='bg-secondary border-bottom'>
+        <td class='pt-3 pb-3'><%= comment.content %></td>
         <td><%= link_to "「#{comment.post.title}」にコメントしました", comment.post %></td>
       </tr>
     <% end %>
