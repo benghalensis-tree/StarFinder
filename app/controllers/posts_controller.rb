@@ -5,30 +5,13 @@ class PostsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def top
-    @date = Date.today
-    date_time = @date.strftime('%Y%m%d')
-    @moon_age = MkCalendar.new("#{date_time}").moonage.round
-    @moon_time = moon_time(@date)
-    @day = "#{@date.month}/#{@date.day}"
-    tokyo = City.find(13)
-    @weather = tokyo.weather_forecasts.where(date: Date.today)[0].icon
-    lat_sec = tokyo.latitude * 3600
-    lon_sec = tokyo.longitude * 3600
-    @hotels = RakutenWebService::Travel::Hotel.search(latitude: lat_sec.round(2), longitude: lon_sec.round(2), searchRadius: 3).first(2)
   end
 
   def index
-    @q = Post.ransack(params[:q])
-    @q.sorts
-    @posts = @q.result
-    @posts = @posts.page(params[:page]).per(40)
   end
 
   def map
     @bests = Post.order(view_count: :desc).limit(5)
-    @q = Post.ransack(params[:q])
-    @q.sorts
-    @posts = @q.result
     gon.posts = @posts.map do |post|
       {
         title: post.title,
@@ -90,7 +73,7 @@ class PostsController < ApplicationController
     @comments = @post.comments
     latitude = @post.latitude
     longitude = @post.longitude
-    response = RestClient.get "https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&daily=weathercode&timezone=Asia%2FTokyo&forecast_days=14"
+    response = RestClient.get "https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&daily=weathercode&timezone=Asia%2FTokyo&forecast_days=7"
     @weather_data = JSON.parse(response.body)
     if @post.rating.present?
       gon.rating_data = [

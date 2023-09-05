@@ -1,4 +1,3 @@
-<div class="d-flex justify-content-center">
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -11,20 +10,20 @@
     </div>
   <% end %>
 
-<div class="d-flex justify-content-center">
-   <div class="input-group text-center w-25">
-  <% if post.image.present? %>
-    <%= image_tag post.image.url, id: :img_prev, size: '800x200' %>
-  <% else %>
-    <%= image_tag "no-image.png", id: :img_prev %>
-  <% end %>
-      <div class="custom-file">
-        <%= form.label :画像を選択, class: "custom-file-label text-left bg-dark" %>
-        <%= form.file_field :image, class: "custom-file-input bg-dark", id: :post_img  %>
-      </div>
-  </div>
+  <div class="mt-5 mb-5 text-light text-center">
+    <%= form.label :access_date, '訪れた日を選択' %>
+    <%= form.date_field :access_date, class: 'bg-secondary text-white', value: ( post.new_record? ? Date.today : post.access_date ) %>
   </div>
 
+  <% if post.image.present? %>
+    <%= image_tag post.image.url, id: :posts_form_img_prev, size: '800x200' %>
+  <% else %>
+    <%= image_tag "no-image.png", id: :posts_form_img_prev %>
+  <% end %>
+  <p>
+    <%= form.file_field :image, class: 'btn btn-dark border rounded', id: :post_img  %>
+  </p>
+ 
   <div class="mb-1 mt-5 text-left">
     <%= form.label :address %>を選択してください。
     <div id='map'></div>
@@ -34,23 +33,25 @@
   <%= form.hidden_field :longitude, id: "longitude-input" %>
 
   <div class='row'>
-    <div class='col-8'>
-      <div class="form-group mb-1 mt-3 text-left">
+    <div class='col-12 col-lg-8'>
+      <div class="form-group mt-5 text-light text-left">
         <%= form.label :title %>
-        <%= form.text_field :title, class: "form-control bg-secondary text-white", style: 'height: 50px;', placeholder: "タイトル"%>
+        <%= form.text_field :title, class: "d-none d-lg-block form-control bg-secondary text-white", style: 'height: 50px;', placeholder: "タイトル"%>
+        <%= form.text_field :title, class: "d-lg-none form-control bg-secondary text-white", placeholder: "タイトル"%>
       </div>
 
-      <div class="form-group mb-1 mt-3 text-left">
+      <div class="form-group mb-0 text-light mt-3 text-left">
           <%= form.label :content %>
-          <%= form.text_area :content, class: "form-control form-control-lg bg-secondary text-white", style: 'height: 400px;',placeholder: "本文" %>
+          <%= form.text_area :content, class: "d-none d-lg-block form-control form-control-lg bg-secondary text-white", style: 'height: 400px;',placeholder: "本文" %>
+          <%= form.text_area :content, class: "d-lg-none form-control bg-secondary text-white", style: 'height: 200px;',placeholder: "本文" %>
       </div>
     </div>
 
-    <div class='col'>
+    <div class='col mt-5'>
       <%= form.fields_for :rating do |rating_form| %>
-        <div class="form-group mb-1 text-left">
-          <%= rating_form.label :sky_light %>
-          <div class="rating_form">
+        <div class="form-group mb-0 row">
+          <%= rating_form.label :sky_light, class: 'col text-light text-left align-items-center d-flex' %>
+          <div class="col posts-form-rating d-flex justify-content-center">
             <%= rating_form.radio_button :sky_light , 5, id: 'sky_light5' %>
             <label for="sky_light5"><span class="text">5</span>★</label>
             <%= rating_form.radio_button :sky_light , 4, id: 'sky_light4' %>
@@ -64,9 +65,9 @@
           </div>
         </div>
         <br>
-        <div class="form-group mb-1 text-left">
-          <%= rating_form.label :sky_clear %>
-          <div class="rating_form">
+        <div class="form-group mb-0 row">
+          <%= rating_form.label :sky_clear, class: 'col text-light text-left align-items-center d-flex' %>
+          <div class="col posts-form-rating d-flex justify-content-center">
             <%= rating_form.radio_button :sky_clear , 5, id: 'sky_clear5' %>
             <label for="sky_clear5"><span class="text">5</span>★</label>
             <%= rating_form.radio_button :sky_clear , 4, id: 'sky_clear4' %>
@@ -80,9 +81,9 @@
           </div>
         </div>
         <br>
-        <div class="form-group mb-1 text-left">
-          <%= rating_form.label :sky_extent %>
-          <div class="rating_form">
+        <div class="form-group mb-0 row">
+          <%= rating_form.label :sky_extent, class: 'col text-light text-left align-items-center d-flex' %>
+          <div class="col posts-form-rating d-flex justify-content-center">
             <%= rating_form.radio_button :sky_extent , 5, id: 'sky_extent5' %>
             <label for="sky_extent5"><span class="text">5</span>★</label>
             <%= rating_form.radio_button :sky_extent , 4, id: 'sky_extent4' %>
@@ -96,9 +97,9 @@
           </div>
         </div>
         <br>
-        <div class="form-group mb-1 text-left">
-          <%= rating_form.label :accessiblity %>
-          <div class="rating_form">
+        <div class="form-group mb-0 row">
+          <%= rating_form.label :accessiblity, class: 'col text-light text-left align-items-center d-flex' %>
+          <div class="col posts-form-rating d-flex justify-content-center">
             <%= rating_form.radio_button :accessiblity , 5, id: 'accessiblity5' %>
             <label for="accessiblity5"><span class="text">5</span>★</label>
             <%= rating_form.radio_button :accessiblity , 4, id: 'accessiblity4' %>
@@ -112,9 +113,9 @@
           </div>
         </div>
         <br>
-        <div class="form-group mb-1 text-left">
-          <%= rating_form.label :convenient %>
-          <div class="rating_form">
+        <div class="form-group mb-0 row">
+          <%= rating_form.label :convenient, class: 'col text-light text-left align-items-center d-flex' %>
+          <div class="col posts-form-rating d-flex justify-content-center">
             <%= rating_form.radio_button :convenient , 5, id: 'convenient5' %>
             <label for="convenient5"><span class="text">5</span>★</label>
             <%= rating_form.radio_button :convenient , 4, id: 'convenient4' %>
@@ -131,27 +132,19 @@
     </div>
   </div>
 
-  
-  <div class="form-group mb-1 mt-5 text-left">
-    <%= form.label :access_date, '訪れた日' %>
-    <%= form.date_field :access_date, class: 'bg-secondary text-white', value: ( post.new_record? ? Date.today : post.access_date ) %>
-  </div>
-
-
   <div class="actions">
     <% if action_name == 'new' || action_name =='create' %>
-      <%= form.submit '投稿', class: "btn btn-primary" %>
+      <%= form.submit '投稿', class: "btn btn-primary mt-5" %>
     <% elsif action_name == 'edit' || action_name == 'update' %>
-      <%= form.submit '登録', class: "btn btn-primary" %>
+      <%= form.submit '登録', class: "btn btn-primary mt-5" %>
     <% end %>
   </div>
 <% end %>
-  </div>
 
 <style>
 #map {
   height: 300px;
-  width: 1000px;
+  width: 100%;
 }
 </style>
 

@@ -1,27 +1,98 @@
 <div class="wrapper">
     <%= render 'side_menu' %>
     <div id="content">
-        <div class="masthead_2 d-flex align-items-center"  >
-            <div class="container px-4 px-lg-2 text-center">
+        <div class="control-bar d-flex align-items-center"  >
+            <div class="container fadein">
                 <div class="row">
-                        
-                    <div id="sidebarCollapse" class="col-1 btn btn-dark border border-2 border-primary rounded-3 active">    
-                        <h4 class='text-light'><%= @day %></h4>
-                        <%= image_tag(asset_path("moon_icons/#{@moon_age}.png"), style: 'width: 30px;') %>
+                    <div id="sidebarCollapse" class="col-1 d-none d-lg-block  btn border border-2 border-dark rounded-3 active">
+                        <i class="fa-solid fa-calendar fa-2xl" style="color: #1D809F;"></i>
+                        <p class='text-light'><%= @day %></p>
                     </div>
-
-                    <div class="col-3">
-                        <%= render 'search', q: @q, url: posts_path %>
-                   <div class='row'>
-                        <button id="light_pollutions_btn" class='col btn btn-outline-danger border border-primary rounded'><i class="fa-solid fa-fire" style="color: #ff0000;"></i></button>
-                        <button id="weather_forecasts_btn" class='col btn btn-outline-warning border border-primary rounded'><i class="fa-solid fa-cloud-sun" style="color: #ffc23d;"></i></button>
-                        <button id="star_light_btn" class='col btn btn-outline-info border border-primary rounded'><i class="fa-solid fa-star" style="color: #7cccfd;"></i></button>
-                    </div>
-                    </div>
+                    <table class='col table table-sm text-light text-center'>
+                        <thead>
+                            <tr>
+                              <% for i in 0..7 do %>
+                                <td style='border:none;'>
+                                  <% date = Date.today %>
+                                  <% date += i %>
+                                  <% date_time = date.strftime('%Y%m%d')%>
+                                  <% @calendar_moon_age = MkCalendar.new("#{date_time}").moonage.round%>
+                                  <%= image_tag(asset_path("moon_icons/#{@calendar_moon_age}.png"), class: 'mt-0 pt-0', style: 'width: 15px; filter: hue-rotate(140deg);') %>
+                                </td>
+                              <% end %> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              <% for i in 0..7 do %>
+                                  <th style='border:none;'>
+                                    <% date = Date.today %>
+                                    <% date += i %>
+                                    <% month = date.month %>
+                                    <% day = date.day%>
+                                    <%= link_to "#{month}/#{day}", map_posts_path(date: date), class: 'btn btn-dark btn-sm' %>
+                                  </th>
+                                <% end %> 
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+
         <div id='map'></div>
+
+        <div class="second-control-bar d-flex align-items-center" >
+            <div class="container px-4 px-lg-2">
+
+                <div class="row d-flex justify-content-center">
+                    <button id="weather_forecasts_btn" class='col-2 col-md-2 col-lg-2 btn'>
+                        <div class='d-none d-lg-block'>
+                            <i class="fa-solid fa-cloud-sun fa-2xl" style="color: #1D809F;"></i>
+                        </div>
+                        <div class='d-lg-none'>
+                            <i class="fa-solid fa-cloud-sun fa-xl" style="color: #1D809F;"></i>
+                        </div>
+                    </button>
+
+                    <button id="light_pollutions_btn" class='col-2 col-md-2 col-lg-2 btn'>
+                        <div class='d-none d-lg-block'>
+                            <i class="fa-solid fa-fire fa-2xl" style="color: #1D809F;"></i>
+                        </div>
+                        <div class='d-lg-none'>
+                            <i class="fa-solid fa-fire fa-xl" style="color: #1D809F;"></i>
+                        </div>
+                    </button>
+
+                    <%= link_to posts_path, class: 'col-2 col-md-2 col-lg-2 btn' do%>
+                        <div class='d-none d-lg-block'>
+                            <i class="fa-solid fa-list fa-2xl" style="color: #1D809F;"></i>
+                        </div>
+                        <div class='d-lg-none'>
+                            <i class="fa-solid fa-list fa-xl" style="color: #1D809F;"></i>
+                        </div>
+                    <% end %>
+                    
+                    <button id="markers_btn" class='col-2 col-md-2 col-lg-2 btn'>
+                        <div class='d-none d-lg-block'>
+                            <i class="fa-solid fa-location-dot fa-2xl" style="color: #1D809F;"></i>
+                        </div>
+                        <div class='d-lg-none'>
+                            <i class="fa-solid fa-location-dot fa-xl" style="color: #1D809F;"></i>
+                        </div>
+                    </button>
+                    
+                    <button id="star_light_btn" class='col-2 col-md-2 col-lg-2 btn'>
+                        <div class='d-none d-lg-block'>
+                            <i class="fa-solid fa-star fa-2xl" style="color: #1D809F;"></i>
+                        </div>
+                        <div class='d-lg-none'>
+                            <i class="fa-solid fa-star fa-xl" style="color: #1D809F;"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -30,6 +101,9 @@
   position: absolute;
   height: 100%;
   width: 100%;
+}
+#map *:focus {
+    outline: none;
 }
 </style>
 
@@ -50,9 +124,13 @@
     map = new google.maps.Map(document.getElementById('map'), {
       center: { lat: 35.6585, lng: 139.7486 }, 
       zoom: 5,
+      gestureHandling: 'greedy',
       mapId: "<%=ENV['MAP_ID']%>",
       scrollwheel: true,
       mapTypeControl: false, 
+      zoomControl: false,
+      fullscreenControl: false,
+      streetViewControlOptions: false,
       restriction: {
         latLngBounds: {
           north: 49.55, 
@@ -60,7 +138,7 @@
           west: 122.935, 
           east: 153.986
         },
-        strictBounds: false
+        strictBounds: false,
       }
     });
 
@@ -205,10 +283,13 @@
         lng: posts[i]['longitude']
       });
 
-      markers[i] = new google.maps.marker.AdvancedMarkerView({
+      markers[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
-        collisionBehavior: 'OPTIONAL_AND_HIDES_LOWER_PRIORITY',
+        icon: {
+          url: '<%= asset_path 'marker_icon.png' %>',
+          scaledSize: new google.maps.Size(30, 30),
+          }
       });
       
       if( posts[i]['image_url']){
@@ -235,7 +316,7 @@
       infoOpen(i);
       infoClose(i);
     }
-    new markerClusterer.MarkerClusterer({
+    clusterer = new markerClusterer.MarkerClusterer({
         map,
         markers
     });
@@ -246,6 +327,7 @@
             kmlLayer.setMap(map);
         }
     });
+    document.getElementById('markers_btn').addEventListener('click', toggleMarkers);
     document.getElementById('weather_forecasts_btn').addEventListener('click', toggleWeatherForecasts);
     document.getElementById('star_light_btn').addEventListener('click', toggleStarLights);
   }
@@ -298,6 +380,18 @@
     });
   }
 
+  function toggleMarkers() {
+    let currentVisibility = markers[0] && markers[0].getVisible();
+    let newVisibility = !currentVisibility;
+    for (let marker of markers) {
+        marker.setVisible(newVisibility);
+    }
+    if (newVisibility == false) {
+      clusterer.clearMarkers();
+    } else {
+      clusterer.addMarkers(markers);
+    }
+  }
   function toggleWeatherForecasts() {
     let currentVisibility = markers_wf[0] && markers_wf[0].getVisible();
     let newVisibility = !currentVisibility;

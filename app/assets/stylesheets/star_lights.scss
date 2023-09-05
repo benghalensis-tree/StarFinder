@@ -1,3 +1,62 @@
 // Place all the styles related to the StarLights controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.star-lights-show-masthead {
+  min-height: 20rem;
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 20rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (min-width: 768px) {
+  .star-lights-show-masthead {
+      height: 30rem;
+  }
+}
+.star-lights-show-masthead h1, .star-lights-show-masthead .h1 {
+  font-size: 4rem;
+  margin: 0;
+  padding: 0;
+}
+.star-lights-show-img-cover {
+  background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.2) 40%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.star-lights-show-rank-font{
+  font-size: 20px;
+}
+.star-lights-show-rank-icon{
+  width: 25px;
+}
+.star-lights-show-info-font{
+  font-size: 15px;
+}
+.star-lights-show-sample-font{
+  font-size: 10px;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .star-lights-show-rank-font{
+    font-size: 30px;
+  }
+  .star-lights-show-rank-icon{
+    width: 40px;
+  }
+  .star-lights-show-info-font{
+    font-size: 25px;
+  }
+  .star-lights-show-sample-font{
+    font-size: 15px;
+  }
+}

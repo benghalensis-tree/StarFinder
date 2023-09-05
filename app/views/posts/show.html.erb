@@ -4,20 +4,26 @@
     <% image_url = asset_path "no-image.png" %>
 <% end %>
 
-<div class="background-image parallax-content fadein">
-  <div class='gradient'></div>
+<div class='d-none d-lg-block'>
+    <div class="post-show-background-image parallax-content fadein" style='height: 600px;'>
+      <div class='posts-show-gradient'></div>
+    </div>
 </div>
+<div class='d-lg-none'>
+    <div class="post-show-background-image parallax-content fadein" style='height: 350px;'>
+      <div class='posts-show-gradient'></div>
+    </div>
+</div>
+
 <%= render 'posts/post_data', post: @post, favorite: @favorite %>
-<%= render 'posts/radar_chart' %>
-<%= render 'posts/weather', weather_data: @weather_data %>
-<%= render 'posts/comment', comments: @comments %>
-<%= render 'posts/hotel', hotels: @hotels %>
+<%= render 'shared/weather', weather_data: @weather_data %>
+<%= render 'comments/comment', comments: @comments %>
+<%= render 'shared/hotel', hotels: @hotels %>
 
 <style>
-  .background-image {
+  .post-show-background-image {
     background-image:  url("<%= image_url %>");
     background-size: cover;
-    height: 600px; 
     position: relative;
   }
 </style>

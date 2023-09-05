@@ -38,15 +38,19 @@
           <%= f.submit t('.sign_up'), class: "btn btn-primary" %>
         </div>
       <% end %>
-      <div class='mt-4'>
-        <%= link_to user_google_omniauth_authorize_path, method: :post do %>
-          <%= image_tag "google_icon.png" %>
-        <% end %>
-      </div>
-      <div class='mt-4'>
-        <%= link_to user_line_omniauth_authorize_path, method: :post do %>
-          <%= image_tag "line_icon.png" %>
-        <% end %>
+
+      <div class='content mt-5 pt-3 text-light border-top'>
+          <h2 class='text-left'>簡単登録</h2>
+          <div class='mt-4'>
+              <%= link_to user_google_omniauth_authorize_path, class: 'col-10 col-lg-8 btn btn-dark btn-lg border border-primary', method: :post do %>
+                  <i class="fa-brands fa-google fa-2xl" style="color: #1D809F;"></i> Googleで登録
+              <% end %>
+          </div>
+          <div class='mt-4 mb-4'>
+              <%= link_to user_line_omniauth_authorize_path, class: 'col-10 col-lg-8 btn btn-dark btn-lg border border-primary', method: :post do %>
+                  <i class="fa-brands fa-line fa-2xl" style="color: #1D809F;"></i> LINEで登録
+              <% end %>
+          </div>
       </div>
     </div>
 </section>
