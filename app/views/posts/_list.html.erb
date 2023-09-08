@@ -16,9 +16,14 @@
                     </a>
                     <div class='container rounded mb-1 px-4 pt-3 pb-3 px-lg-5 text-left bg-secondary'>
                         <p><%= post.title %></p>
-                        <i class="fa-solid fa-eye me-1"></i><%= post.view_count %> view
-                        <%= render "favorites/button", post: post%>
-                        <%= post.favorite_count %>
+                        <div class='row'>
+                            <div class='col-3'>
+                                <i class="fa-solid fa-eye me-1"></i><%= post.view_count %> pv
+                            </div>
+                            <div id="favorite_button_<%= post.id %>" class='col-3'>
+                                <%= render "favorites/button", post: post%>
+                            </div>
+                        </div>
                         </p>
                     </div>
                 </div>

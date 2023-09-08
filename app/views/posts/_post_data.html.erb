@@ -18,8 +18,10 @@
         <div class='col ml-auto'>
             <i class='icon-eye'></i>
             <%= post.view_count%>
-            <%= render "favorites/button", post: post%>
-            <%= post.favorite_count %>
+
+            <div id="favorite_button_<%= post.id %>">
+                <%= render "favorites/button", post: post%>
+            </div>
         
             <i class='ms-3'></i>
             <%= post.access_date %>
