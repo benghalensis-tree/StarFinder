@@ -1,6 +1,6 @@
 <%= month_calendar attribute: :access_date do |date| %>
 <div class='calendar-content'>
-  <%= link_to date.day, map_posts_path(date: date), class: 'btn btn-sm border text-light mt-0 pt-0 mb-0 pb-0' %>
+  <%= link_to date.day, maps_path(date: date), class: 'btn btn-sm border text-light mt-0 pt-0 mb-0 pb-0' %>
 
   <p class='row justify-content-center'>
     <% date_time = date.strftime('%Y%m%d')%>

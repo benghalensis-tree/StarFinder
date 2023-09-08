@@ -48,7 +48,7 @@
                     <% date += i %>
                     <% month = date.month %>
                     <% day = date.day%>
-                    <%= link_to "#{month}/#{day}", map_posts_path(date: date), class: 'btn btn-dark btn-sm' %>
+                    <%= link_to "#{month}/#{day}", maps_path(date: date), class: 'btn btn-dark btn-sm' %>
                   </th>
                 <% end %> 
             </tr>

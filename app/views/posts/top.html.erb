@@ -1,7 +1,7 @@
 <header class="posts-top-masthead parallax-content d-flex align-items-center"  style="background-image: url(<%= asset_path 'galaxy.jpg' %>) ">
     <div class="posts-top-img-cover d-flex flex-column align-items-center justify-content-center fadein">
         <h2 class="text-light mb-5"><%= image_tag(asset_path('logo.png'), style: 'width: 70px;')%>Star Finder</h2>
-        <p><%= link_to 'はじめる', map_posts_path, class: "col btn btn-primary btn-sm fadein"%></p>
+        <p><%= link_to 'はじめる', maps_path, class: "col btn btn-primary btn-sm fadein"%></p>
     </div>
 </header>
 
@@ -95,6 +95,6 @@
         <h2 class="mx-auto mb-5">  
             ようこそ!
         </h2>
-        <%= link_to 'StarFinderへ', map_posts_path, class: "btn btn-primary btn-xl fadein"%>
+        <%= link_to 'StarFinderへ', maps_path, class: "btn btn-primary btn-xl fadein"%>
     </div>
 </section>

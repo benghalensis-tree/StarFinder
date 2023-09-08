@@ -1,0 +1,67 @@
+// Place all the styles related to the maps controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+//maps-indexのcss
+
+.maps-index{
+  overflow: hidden; //スクロールを禁止
+}
+.maps-index-toggle-calender{
+  display: none;
+  list-style: none;
+}
+.maps-index-toggle-calender a{
+  display: block;
+}
+.calendar-content{
+  width: 50px;
+  height: 40px;
+}
+.simple-calendar {
+  .day {
+    
+  }
+  .wday-0 {
+    
+  }
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+  .past {
+    background: #d0d5ea;
+  }
+  .future {}
+  .start-date {}
+  .prev-month {}
+  .next-month {}
+  .current-month {}
+  .has-events {}
+  
+  .super_good{
+    background: #008cff;
+    height: 100px;
+  }
+  .good{
+    background: #0072cf;
+    height: 100px;
+  }
+  .normal{
+    background: #005eaa;
+    height: 100px;
+  }
+  .short{
+    background: #003967;
+    height: 100px;
+  }
+  .bad{
+    background: #00213b;
+    height: 100px;
+  }
+  .today {
+    background: #9dffeb;
+  }
+}
