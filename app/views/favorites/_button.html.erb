@@ -1,0 +1,16 @@
+<% if user_signed_in?%>
+    <% if post.favorites.find_by(user_id: current_user.id).present? %>
+        <% favorite = post.favorites.find_by(user_id: current_user.id) %>
+        <%= link_to favorite_path(favorite.id, post_id: post.id, page: "#{controller_name}/#{action_name}"), method: :delete do %> 
+            <i class="fa-solid fa-heart ms-3 me-1" style="color: #ff0000;"></i>
+        <% end %>
+    <% else %>
+        <%= link_to favorites_path(post_id: post.id, page: "#{controller_name}/#{action_name}"),  method: :post do %> 
+            <i class="fa-regular fa-heart ms-3 me-1"></i>
+        <% end %>
+    <% end %>
+<% else %>
+    <%= link_to new_user_registration_path do %> 
+        <i class="fa-regular fa-heart ms-3 me-1"></i>
+    <% end %>
+<% end %>
