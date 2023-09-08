@@ -29,7 +29,7 @@
   <body class='<%= "#{controller.controller_name}-#{controller.action_name}" %>'>
     <nav class="d-none d-lg-block">
       <nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top">
-        <%= link_to map_posts_path, class: 'navbar-brand ml-5' do%>
+        <%= link_to maps_path, class: 'navbar-brand ml-5' do%>
           <%= image_tag(asset_path('logo.png'), style: 'width: 30px;')%>StarFinder
         <% end %>
         <ul class="navbar-nav mr-auto">
@@ -44,7 +44,7 @@
         <ul class="navbar-nav">
           <div class='px-5'><%= render 'shared/search', q: @q, url: posts_path %></div>
           <li class="nav-item"><%= link_to 'Top', top_posts_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to 'マップ', map_posts_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'マップ', maps_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to '一覧', posts_path, class: 'nav-link' %></li>
           <% if user_signed_in? %>
             <li class="nav-item"><%= link_to 'マイページ', my_page_path(current_user.id), class: 'nav-link' %></li>
@@ -65,7 +65,7 @@
 
     <nav class="d-lg-none">
         <nav class="navbar justify-content-start navbar-expand-md navbar-dark bg-secondary fixed-top">
-            <%= link_to map_posts_path, class: 'navbar-brand ml-1' do%>
+            <%= link_to maps_path, class: 'navbar-brand ml-1' do%>
               <%= image_tag(asset_path('logo.png'), style: 'width: 30px;')%><small>StarFinder</small>
             <% end %>
             <div class='col-6'><%= render 'shared/search', q: @q, url: posts_path %></div>
@@ -73,9 +73,9 @@
         </nav>
       <nav id="sidebar-wrapper">
         <ul class="sidebar-nav">
-          <li class="sidebar-brand"><%= link_to 'StarFinder', map_posts_path %></li>
+          <li class="sidebar-brand"><%= link_to 'StarFinder', maps_path %></li>
           <li class="sidebar-nav-item"><%= link_to 'Top', top_posts_path %></li>
-          <li class="sidebar-nav-item"><%= link_to 'マップ', map_posts_path %></li>
+          <li class="sidebar-nav-item"><%= link_to 'マップ', maps_path %></li>
           <li class="sidebar-nav-item"><%= link_to '一覧', posts_path %></li>
           <% if user_signed_in? %>
             <li class="sidebar-nav-item"><%= link_to 'マイページ', my_page_path(current_user.id) %></li>

@@ -4,7 +4,7 @@ RSpec.describe 'マップ機能', type: :system do
     context 'マップページを表示した場合' do
       it '投稿マーカーが表示される' do
         post = FactoryBot.create(:post)
-        visit map_posts_path
+        visit maps_path
         expect(page).to have_css('.yNHHyP-marker-view')
       end
     end

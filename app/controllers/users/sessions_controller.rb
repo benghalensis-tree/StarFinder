@@ -5,13 +5,13 @@ class Users::SessionsController < Devise::SessionsController
   def new_guest
     user = User.guest
     sign_in user
-    redirect_to map_posts_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to maps_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
   def new_guest_admin
     user = User.guest_admin
     sign_in user
-    redirect_to map_posts_path, notice: '管理者ユーザーとしてログインしました。'
+    redirect_to maps_path, notice: '管理者ユーザーとしてログインしました。'
   end
 
   # GET /resource/sign_in

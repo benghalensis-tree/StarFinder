@@ -11,11 +11,11 @@ class ApplicationController < ActionController::Base
 
   private 
   def after_sign_in_path_for(resource)
-    map_posts_path
+    maps_path
   end
 
   def after_sign_out_path_for(resource)
-    map_posts_path 
+    maps_path 
   end
 
   def set_search

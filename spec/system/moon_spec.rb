@@ -7,7 +7,7 @@ RSpec.describe '観測可能時間表示機能', type: :system do
         day = Date.today
         date_time = day.strftime('%Y%m%d')
         @moon_age = MkCalendar.new("#{date_time}").moonage.round
-        visit map_posts_path
+        visit maps_path
         expect(page).to have_selector("img[src^='/assets/moon_icons/#{@moon_age}-'][src$='.png']")
       end
     end
