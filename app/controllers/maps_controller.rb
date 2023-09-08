@@ -51,4 +51,8 @@ class MapsController < ApplicationController
     date_time = @date.strftime('%Y%m%d')
     @moon_age = MkCalendar.new("#{date_time}").moonage.round
   end
+
+  def weather_of_date
+  end
+
 end
