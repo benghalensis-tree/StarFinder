@@ -16,9 +16,9 @@ Rails.application.routes.draw do
     resources :comments
     collection do
       get 'top'
-      get 'map'
     end
   end
+  resources :maps 
   
   root 'posts#top'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
