@@ -128,7 +128,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
       $(function() {
         $('.toggle-btn').on('click', function() {
-          $('.posts-map-toggle-calender').slideToggle();
+          $('.maps-index-toggle-calender').slideToggle();
         });
       });
       
