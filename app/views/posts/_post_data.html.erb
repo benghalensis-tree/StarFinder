@@ -18,23 +18,10 @@
         <div class='col ml-auto'>
             <i class='icon-eye'></i>
             <%= post.view_count%>
-        
-            <% if user_signed_in?%>
-                <% if favorite.present? %>
-                  <%= link_to favorite_path(favorite.id, post_id: post.id), id: 'favorite_btn', method: :delete do %> 
-                      <i class="fa-solid fa-heart ms-3" style="color: #ff0000;"></i>
-                  <% end %>
-              <% else %>
-                <%= link_to favorites_path(post_id: post.id), id: 'favorite_btn', method: :post do %> 
-                    <i class="fa-regular fa-heart ms-3"></i>
-                <% end %>
-              <% end %>
-            <% else %>
-                <%= link_to new_user_registration_path do %> 
-                    <i class="fa-regular fa-heart ms-3"></i>
-                <% end %>
-            <% end %>
-            <%= post.favorite_count %>
+
+            <i id="favorite_button_<%= post.id %>">
+                <%= render "favorites/button", post: post%>
+            </i>
         
             <i class='ms-3'></i>
             <%= post.access_date %>
