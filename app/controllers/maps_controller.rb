@@ -26,25 +26,21 @@ class MapsController < ApplicationController
       }
     end
    
-    if params[:date].present?
-      @date = params[:date].to_date
-    else
-      @date = Date.today
+    @date = Date.today
+    @weather_forecasts = WeatherForecast.where(date: @date)
+    gon.weather_forecasts = @weather_forecasts.map do |weather_forecast|
+      {
+        clouds: weather_forecast.clouds,
+        icon: weather_forecast.icon,
+        temp_min: weather_forecast.temp_min,
+        temp_max: weather_forecast.temp_max,
+        humidity: weather_forecast.humidity,
+        wind_speed: weather_forecast.wind_speed,
+        pop: weather_forecast.pop,
+        latitude: weather_forecast.city.latitude,
+        longitude: weather_forecast.city.longitude,
+      }
     end
-      @weather_forecasts = WeatherForecast.where(date: @date)
-      gon.weather_forecasts = @weather_forecasts.map do |weather_forecast|
-        {
-          clouds: weather_forecast.clouds,
-          icon: weather_forecast.icon,
-          temp_min: weather_forecast.temp_min,
-          temp_max: weather_forecast.temp_max,
-          humidity: weather_forecast.humidity,
-          wind_speed: weather_forecast.wind_speed,
-          pop: weather_forecast.pop,
-          latitude: weather_forecast.city.latitude,
-          longitude: weather_forecast.city.longitude,
-        }
-      end
 
     @moon_time = moon_time(@date)
     @day = "#{@date.month}/#{@date.day}"
@@ -53,6 +49,32 @@ class MapsController < ApplicationController
   end
 
   def weather_of_date
+    @date = Date.today
+    @moon_time = moon_time(@date)
+    @day = "#{@date.month}/#{@date.day}"
+    date_time = @date.strftime('%Y%m%d')
+    @moon_age = MkCalendar.new("#{date_time}").moonage.round
+
+    @select_date = params[:date].to_date
+    @weather_forecasts = WeatherForecast.where(date: @select_date)
+    
+    @weather_forecasts = @weather_forecasts.map do |weather_forecast|
+      {
+        clouds: weather_forecast.clouds,
+        icon: weather_forecast.icon,
+        temp_min: weather_forecast.temp_min,
+        temp_max: weather_forecast.temp_max,
+        humidity: weather_forecast.humidity,
+        wind_speed: weather_forecast.wind_speed,
+        pop: weather_forecast.pop,
+        latitude: weather_forecast.city.latitude,
+        longitude: weather_forecast.city.longitude,
+        date: weather_forecast.date.to_s
+      }
+    end
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     end
   end
   resources :maps do
-    get 'weather_of_date'
+    collection do
+      get 'weather_of_date'
+    end
   end
   
   root 'posts#top'
