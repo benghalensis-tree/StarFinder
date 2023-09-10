@@ -1,20 +1,10 @@
 <div class="wrapper">
-    <%= render 'side_menu' %>
     <div id="content">
         <div class="control-bar d-flex align-items-center"  >
             <div class="container fadein">
-                <div class="row">
-                    <div class="col-1">
-                        <div id="sidebarCollapse" class="row  d-none d-lg-block btn active" style='pointer-events: auto;'>
-                            <i class="fa-solid fa-calendar fa-2xl" style="color: #1D809F;"></i>
-                        </div>
-                    </div>
-                    <div class='col'>
-                      <i id="weather-of-date-ajax">
-                        <%= render 'maps/date_button', calendar_moon_age: @calendar_moon_age, select_date: @select_date %>
-                      </i>
-                    </div>
-                </div>
+                <i id="weather-of-date-ajax">
+                  <%= render 'maps/date_button', calendar_moon_age: @calendar_moon_age, select_date: @select_date %>
+                </i>
             </div>
         </div>
 
@@ -22,7 +12,6 @@
 
         <div class="second-control-bar d-flex align-items-center" >
             <div class="container px-4 px-lg-2">
-
                 <div class="row d-flex justify-content-center">
                     <button id="weather_forecasts_btn" class='col-2 col-md-2 col-lg-2 btn'>
                         <div class='d-none d-lg-block'>
