@@ -36,7 +36,7 @@ class MapsController < ApplicationController
         temp_max: weather_forecast.temp_max,
         humidity: weather_forecast.humidity,
         wind_speed: weather_forecast.wind_speed,
-        pop: weather_forecast.pop,
+        pop: (weather_forecast.pop * 100).round,
         latitude: weather_forecast.city.latitude,
         longitude: weather_forecast.city.longitude,
       }
@@ -65,10 +65,9 @@ class MapsController < ApplicationController
         temp_max: weather_forecast.temp_max,
         humidity: weather_forecast.humidity,
         wind_speed: weather_forecast.wind_speed,
-        pop: weather_forecast.pop,
+        pop: (weather_forecast.pop * 100).round,
         latitude: weather_forecast.city.latitude,
         longitude: weather_forecast.city.longitude,
-        date: weather_forecast.date.to_s
       }
     end
     respond_to do |format|

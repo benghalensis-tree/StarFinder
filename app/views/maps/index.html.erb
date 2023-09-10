@@ -1,19 +1,10 @@
 <div class="wrapper">
-    <%= render 'side_menu' %>
     <div id="content">
         <div class="control-bar d-flex align-items-center"  >
             <div class="container fadein">
-                <div class="row">
-                    <div id="sidebarCollapse" class="col-1 d-none d-lg-block  btn border border-2 border-dark rounded-3 active">
-                        <i class="fa-solid fa-calendar fa-2xl" style="color: #1D809F;"></i>
-                        <p class='text-light'><%= @day %></p>
-                    </div>
-                    <div class='col'>
-                      <i id="weather-of-date-ajax">
-                        <%= render 'maps/date_button', calendar_moon_age: @calendar_moon_age, select_date: @select_date %>
-                      </i>
-                    </div>
-                </div>
+                <i id="weather-of-date-ajax">
+                  <%= render 'maps/date_button', calendar_moon_age: @calendar_moon_age, select_date: @select_date %>
+                </i>
             </div>
         </div>
 
@@ -21,7 +12,6 @@
 
         <div class="second-control-bar d-flex align-items-center" >
             <div class="container px-4 px-lg-2">
-
                 <div class="row d-flex justify-content-center">
                     <button id="weather_forecasts_btn" class='col-2 col-md-2 col-lg-2 btn'>
                         <div class='d-none d-lg-block'>
@@ -77,7 +67,8 @@
 #map {
   position: absolute;
   height: 100%;
-  width: 100%;
+  width: 105%;
+  left: -5px;
 }
 #map *:focus {
     outline: none;
@@ -177,16 +168,16 @@
           scaledSize: new google.maps.Size(40, 40),
           }
       });
-      weather_content_data = `<div style="width:200px; height:200px;">
-                        
-                          <img src="${ weather_icon }" width="100%" />
-                        </a>
-                        <p style="font-size:10px;">曇り度合い:${ weather_forecasts[i]['clouds']}</p>
-                        <p style="font-size:10px;">湿度:${ weather_forecasts[i]['humidity']}</p>
-                        <p style="font-size:10px;">降水:${ weather_forecasts[i]['pop']}</p>
-                        <p style="font-size:10px;">最高気温:${ weather_forecasts[i]['temp_max']}</p>
-                        <p style="font-size:10px;">最低気温:${ weather_forecasts[i]['temp_min']}</p>
-                      </div>`
+      weather_content_data = `<div style="width:100px; height:auto; text-align: center;">
+                                <img src="${ weather_icon }" width="60px" />
+                                <div class='text-left' style="font-size:12px;">
+                                    <p class='mb-0'>曇り:${ weather_forecasts[i]['clouds']}%</p>
+                                    <p class='mb-0'>降水:${ weather_forecasts[i]['pop']}%</p>
+                                    <p class='mb-0'>湿度:${ weather_forecasts[i]['humidity']}%</p>
+                                    <p class='mb-0'>最高気温:${ weather_forecasts[i]['temp_max']}</p>
+                                    <p class='mb-0'>最低気温:${ weather_forecasts[i]['temp_min']}</p>
+                                </div>
+                              </div>`
 
       infoWindow[i] = new google.maps.InfoWindow({
         content: weather_content_data,
@@ -236,13 +227,17 @@
           scaledSize: new google.maps.Size(20, 20),
           }
       });
-      star_light_content_data = `<div style="width:200px; height:200px;">
-                          <a data-turbolinks = "false" href="${ star_lights[i]['star_light_url'] }">
-                            <img src="${ magnitude_icon }" style="width: 100px; display: block; margin-left: auto;margin-right: auto;" />
-                          </a>
-                          <p style="font-size:20px;">星ランク${ star_lights[i]['rank']}</p>
-                          <p style="font-size:15px;">(等級${ star_lights[i]['magnitude']})</p>
-                      </div>`
+      star_light_content_data = `<div style="width:100px; height:auto;">
+                                      <a href="${ star_lights[i]['star_light_url'] }">
+                                        <img src="${ magnitude_icon }" style="width: 50px; display: block; margin-left: auto; margin-right: auto;" />
+                                      </a>
+                                      <div class='text-left' style="font-size:12px;">
+                                          <p class="mb-0">ランク${ star_lights[i]['rank']}</p>
+                                          <p class="mb-0">(等級${ star_lights[i]['magnitude']})</p>
+                                          <a href="${ star_lights[i]['star_light_url'] }" class='btn btn-sm btn-primary' style="display: block; margin-left: auto; margin-right: auto;">詳細
+                                          </a>
+                                      </div>
+                                  </div>`
 
       infoWindow[markers_wf.length + i] = new google.maps.InfoWindow({
         content: star_light_content_data,
@@ -276,13 +271,16 @@
         info_window_image = '<%= asset_path 'no-image.png' %>'
       }
 
-      content_data = `<div style="width:200px; height:200px;">
-                        <a data-turbolinks = "false" href="${ posts[i]['post_url'] }">
-                          <img src="${ info_window_image }" width="100%" />
-                        </a>
-                        <p style="font-size:20px;">${ posts[i]['title']}</p>
-                        <p style="font-size:10px;">閲覧数:${ posts[i]['view_count']}</p>
-                        <p style="font-size:10px;">${ posts[i]['content']}</p>
+      content_data = `<div style="width:120px; height:auto;">
+                          <a href="${ posts[i]['post_url'] }">
+                            <img src="${ info_window_image }" width="100%" />
+                          </a>
+                          <div class='text-left' style="font-size:12px;">
+                              <p class="mb-0">${ posts[i]['title']}</p>
+                              <p class="mb-0">閲覧数:${ posts[i]['view_count']}</p>
+                              <a href="${ posts[i]['post_url'] }" class='btn btn-sm btn-primary' style="display: block; margin-left: auto; margin-right: auto;">詳細
+                              </a>
+                          </div>
                       </div>`
 
       infoWindow[markers_sl.length + markers_wf.length + i] = new google.maps.InfoWindow({
