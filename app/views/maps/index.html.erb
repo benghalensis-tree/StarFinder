@@ -4,9 +4,10 @@
         <div class="control-bar d-flex align-items-center"  >
             <div class="container fadein">
                 <div class="row">
-                    <div id="sidebarCollapse" class="col-1 d-none d-lg-block  btn border border-2 border-dark rounded-3 active">
-                        <i class="fa-solid fa-calendar fa-2xl" style="color: #1D809F;"></i>
-                        <p class='text-light'><%= @day %></p>
+                    <div class="col-1">
+                        <div id="sidebarCollapse" class="row  d-none d-lg-block btn active" style='pointer-events: auto;'>
+                            <i class="fa-solid fa-calendar fa-2xl" style="color: #1D809F;"></i>
+                        </div>
                     </div>
                     <div class='col'>
                       <i id="weather-of-date-ajax">
