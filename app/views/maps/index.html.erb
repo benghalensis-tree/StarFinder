@@ -168,7 +168,7 @@
           scaledSize: new google.maps.Size(40, 40),
           }
       });
-      weather_content_data = `<div style="width:100px; height:180px; text-align: center;">
+      weather_content_data = `<div style="width:100px; height:auto; text-align: center;">
                                 <img src="${ weather_icon }" width="60px" />
                                 <div class='text-left' style="font-size:12px;">
                                     <p class='mb-0'>曇り:${ weather_forecasts[i]['clouds']}%</p>
@@ -227,7 +227,7 @@
           scaledSize: new google.maps.Size(20, 20),
           }
       });
-      star_light_content_data = `<div style="width:100px; height:130px;">
+      star_light_content_data = `<div style="width:100px; height:auto;">
                                       <a href="${ star_lights[i]['star_light_url'] }">
                                         <img src="${ magnitude_icon }" style="width: 50px; display: block; margin-left: auto; margin-right: auto;" />
                                       </a>
@@ -271,13 +271,16 @@
         info_window_image = '<%= asset_path 'no-image.png' %>'
       }
 
-      content_data = `<div style="width:200px; height:200px;">
-                        <a href="${ posts[i]['post_url'] }">
-                          <img src="${ info_window_image }" width="100%" />
-                        </a>
-                        <p style="font-size:20px;">${ posts[i]['title']}</p>
-                        <p style="font-size:10px;">閲覧数:${ posts[i]['view_count']}</p>
-                        <p style="font-size:10px;">${ posts[i]['content']}</p>
+      content_data = `<div style="width:120px; height:auto;">
+                          <a href="${ posts[i]['post_url'] }">
+                            <img src="${ info_window_image }" width="100%" />
+                          </a>
+                          <div class='text-left' style="font-size:12px;">
+                              <p class="mb-0">${ posts[i]['title']}</p>
+                              <p class="mb-0">閲覧数:${ posts[i]['view_count']}</p>
+                              <a href="${ posts[i]['post_url'] }" class='btn btn-sm btn-primary' style="display: block; margin-left: auto; margin-right: auto;">詳細
+                              </a>
+                          </div>
                       </div>`
 
       infoWindow[markers_sl.length + markers_wf.length + i] = new google.maps.InfoWindow({
