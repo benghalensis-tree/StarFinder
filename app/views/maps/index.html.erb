@@ -227,13 +227,17 @@
           scaledSize: new google.maps.Size(20, 20),
           }
       });
-      star_light_content_data = `<div style="width:200px; height:200px;">
-                          <a data-turbolinks = "false" href="${ star_lights[i]['star_light_url'] }">
-                            <img src="${ magnitude_icon }" style="width: 100px; display: block; margin-left: auto;margin-right: auto;" />
-                          </a>
-                          <p style="font-size:20px;">星ランク${ star_lights[i]['rank']}</p>
-                          <p style="font-size:15px;">(等級${ star_lights[i]['magnitude']})</p>
-                      </div>`
+      star_light_content_data = `<div style="width:100px; height:130px;">
+                                      <a href="${ star_lights[i]['star_light_url'] }">
+                                        <img src="${ magnitude_icon }" style="width: 50px; display: block; margin-left: auto; margin-right: auto;" />
+                                      </a>
+                                      <div class='text-left' style="font-size:12px;">
+                                          <p class="mb-0">ランク${ star_lights[i]['rank']}</p>
+                                          <p class="mb-0">(等級${ star_lights[i]['magnitude']})</p>
+                                          <a href="${ star_lights[i]['star_light_url'] }" class='btn btn-sm btn-primary' style="display: block; margin-left: auto; margin-right: auto;">詳細
+                                          </a>
+                                      </div>
+                                  </div>`
 
       infoWindow[markers_wf.length + i] = new google.maps.InfoWindow({
         content: star_light_content_data,
@@ -268,7 +272,7 @@
       }
 
       content_data = `<div style="width:200px; height:200px;">
-                        <a data-turbolinks = "false" href="${ posts[i]['post_url'] }">
+                        <a href="${ posts[i]['post_url'] }">
                           <img src="${ info_window_image }" width="100%" />
                         </a>
                         <p style="font-size:20px;">${ posts[i]['title']}</p>
