@@ -18,7 +18,11 @@ Rails.application.routes.draw do
       get 'top'
     end
   end
-  resources :maps 
+  resources :maps do
+    collection do
+      get 'weather_of_date'
+    end
+  end
   
   root 'posts#top'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

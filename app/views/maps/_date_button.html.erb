@@ -1,0 +1,30 @@
+<div class='container text-light text-center'>
+    <div class='row'>
+        <% for i in 0..7 do %>
+          <div class='col'>
+            <% date = Date.today %>
+            <% date += i %>
+            <% date_time = date.strftime('%Y%m%d')%>
+            <% calendar_moon_age = MkCalendar.new("#{date_time}").moonage.round%>
+            <%= image_tag(asset_path("moon_icons/#{calendar_moon_age}.png"), class: 'mt-0 pt-0', style: 'width: 15px; filter: hue-rotate(140deg);') %>
+            <p style='pointer-events: auto;'>
+            <% month = date.month %>
+            <% day = date.day%>
+            <% if select_date == date%>
+                <%= link_to "#{month}/#{day}", weather_of_date_maps_path(date: date), class: 'btn btn-primary btn-sm', remote: true %> 
+            <% else %>
+                <%= link_to "#{month}/#{day}", weather_of_date_maps_path(date: date), class: 'btn btn-dark btn-sm', remote: true %>
+            <% end %>
+            </p>
+          </div>  
+        <% end %> 
+    </div>
+</div>
+
+<div class='d-flex justify-content-end'>
+<small class='rounded-2' style='pointer-events: none; background-color:rgba(29, 128, 159, 0.3);'>
+    <% @moon_time.each do |moon| %>
+      <p class='text-light text-center my-1 py-1 px-2 mx-2'><%= moon %></p>
+    <% end %> 
+</small>
+</div>
