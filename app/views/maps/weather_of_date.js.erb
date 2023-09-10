@@ -51,17 +51,16 @@ for (var i = 0; i < weather_forecasts.length; i++) {
           scaledSize: new google.maps.Size(40, 40),
           }
       });
-      weather_content_data = `<div style="width:200px; height:200px;">
-                        
-                          <img src="${ weather_icon }" width="100%" />
-                        </a>
-                        <p style="font-size:10px;">曇り度合い:${ weather_forecasts[i]['clouds']}</p>
-                        <p style="font-size:10px;">湿度:${ weather_forecasts[i]['humidity']}</p>
-                        <p style="font-size:10px;">降水:${ weather_forecasts[i]['pop']}</p>
-                        <p style="font-size:10px;">最高気温:${ weather_forecasts[i]['temp_max']}</p>
-                        <p style="font-size:10px;">最低気温:${ weather_forecasts[i]['temp_min']}</p>
-                        <p style="font-size:10px;">日付:${ weather_forecasts[i]['date']}</p>
-                      </div>`
+      weather_content_data = `<div style="width:100px; height:180px; text-align: center;">
+                                <img src="${ weather_icon }" width="60px" />
+                                <div class='text-left' style="font-size:12px;">
+                                    <p class='mb-0'>曇り:${ weather_forecasts[i]['clouds']}%</p>
+                                    <p class='mb-0'>降水:${ weather_forecasts[i]['pop']}%</p>
+                                    <p class='mb-0'>湿度:${ weather_forecasts[i]['humidity']}%</p>
+                                    <p class='mb-0'>最高気温:${ weather_forecasts[i]['temp_max']}</p>
+                                    <p class='mb-0'>最低気温:${ weather_forecasts[i]['temp_min']}</p>
+                                </div>
+                              </div>`
 
       infoWindow[i] = new google.maps.InfoWindow({
         content: weather_content_data,
