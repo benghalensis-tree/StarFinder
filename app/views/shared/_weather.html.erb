@@ -5,7 +5,7 @@
               <% weather_forecasts.each do |weather_forecast| %>
                   <% if weather_forecast.present? %>
                       <td style='border:none;'>
-                        <%= image_tag "weather_icons3/#{weather_forecast.icon}.png", class: 'shared-weather-icon' %>
+                        <%= image_tag "weather_icons/#{weather_forecast.icon}.png", class: 'shared-weather-icon' %>
                       </td>
                   <% else %>
                       <td style='border:none; font-size:5px;'>
