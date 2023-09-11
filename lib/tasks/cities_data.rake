@@ -3,11 +3,13 @@ namespace :import do
     task cities: [:environment] do
       list = []
       CSV.foreach('db/csv/cities.csv') do |row|
-        list << {
-          name: row[0],
-          latitude: row[1],
-          longitude: row[2]
-        }
+        unless City.find_by(name: row[0]).presence
+          list << {
+            name: row[0],
+            latitude: row[1],
+            longitude: row[2]
+          }
+        end
       end
 
       puts 'start creating cities'
