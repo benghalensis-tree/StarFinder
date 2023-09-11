@@ -16,7 +16,8 @@
 </div>
 
 <%= render 'posts/post_data', post: @post, favorite: @favorite %>
-<%= render 'shared/weather', weather_data: @weather_data %>
+<%= render 'shared/moon_age'%>
+<%= render 'shared/weather', weather_forecasts: @weather_forecasts %>
 <%= render 'comments/comment', comments: @comments %>
 <%= render 'shared/hotel', hotels: @hotels %>
 

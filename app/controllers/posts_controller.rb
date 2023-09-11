@@ -20,10 +20,13 @@ class PostsController < ApplicationController
     end
     @comment = @post.comments.build
     @comments = @post.comments
-    latitude = @post.latitude
-    longitude = @post.longitude
-    response = RestClient.get "https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&daily=weathercode&timezone=Asia%2FTokyo&forecast_days=7"
-    @weather_data = JSON.parse(response.body)
+    date = Date.today
+    city = City.near([@post.latitude, @post.longitude], 100).first
+    @weather_forecasts = []
+    for i in 0..7 do
+      @weather_forecasts[i] = city.weather_forecasts.find_by(date: date)
+      date += 1
+    end
     if @post.rating.present?
       gon.rating_data = [
         @post.rating.sky_light,
