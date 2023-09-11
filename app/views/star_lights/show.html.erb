@@ -25,37 +25,7 @@
     </div>
 </header>
 
-<div class="container pt-3 mt-3 pb-3 mb-3 px-4 fadein">
-    <table class='table table-sm text-light text-center'>
-        <thead>
-            <tr>
-              <% for i in 0..6 do %>
-                <td style='border:none;'>
-                  <% date = Date.today %>
-                  <% date += i %>
-                  <% date_time = date.strftime('%Y%m%d')%>
-                  <% @calendar_moon_age = MkCalendar.new("#{date_time}").moonage.round%>
-                  <%= image_tag(asset_path("moon_icons/#{@calendar_moon_age}.png"), class: 'mt-0 pt-0', style: 'width: 20px; filter: hue-rotate(140deg);') %>
-                </td>
-              <% end %> 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <% for i in 0..6 do %>
-                  <th style='border:none;'>
-                    <% date = Date.today %>
-                    <% date += i %>
-                    <% month = date.month %>
-                    <% day = date.day%>
-                    <%= link_to "#{month}/#{day}", maps_path(date: date), class: 'btn btn-dark btn-sm' %>
-                  </th>
-                <% end %> 
-            </tr>
-        </tbody>
-    </table> 
-</div>
-
+<%= render 'shared/moon_age'%>
 <%= render 'shared/weather', weather_forecasts: @weather_forecasts %>
 <%= render 'shared/hotel', hotels: @hotels %>
 
