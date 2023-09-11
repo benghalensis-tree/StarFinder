@@ -2,35 +2,22 @@
       <table class='table table-sm text-light text-center'>
         <thead>
            <tr>
-              <% weathercode = weather_data["daily"]["weathercode"]%>
-              <% weathercode.each do |code| %>
-                <td style='border:none;'>
-                <% if code == 0 %>
-                  <%= image_tag "weather_icons/100.png", class: 'shared-weather-icon' %>
-                <% elsif code == 1 %>
-                  <%= image_tag "weather_icons/101.png", class: 'shared-weather-icon' %>
-                <% elsif code == 2 %>
-                  <%= image_tag "weather_icons/201.png", class: 'shared-weather-icon' %>
-                <% elsif code == 3 %>
-                  <%= image_tag "weather_icons/200.png", class: 'shared-weather-icon' %>
-                <% elsif 60 < code && code < 68 || 79 < code && code < 83%>
-                  <%= image_tag "weather_icons/300.png", class: 'shared-weather-icon' %>
-                <% elsif 50 < code && code < 56 %>
-                  <%= image_tag "weather_icons/202.png", class: 'shared-weather-icon' %>
-                <% elsif 70 < code && code < 78 || 85 == code || code == 86 %>
-                  <%= image_tag "weather_icons/400.png", class: 'shared-weather-icon' %>
-                <% elsif 94 < code %>
-                  <%= image_tag "weather_icons/500.png", class: 'shared-weather-icon' %>
-                <% else %>
-                  <%= image_tag "no-image.png", class: 'shared-weather-icon' %>
-                <% end %>
-                </td>
+              <% weather_forecasts.each do |weather_forecast| %>
+                  <% if weather_forecast.present? %>
+                      <td style='border:none;'>
+                        <%= image_tag "weather_icons3/#{weather_forecast.icon}.png", class: 'shared-weather-icon' %>
+                      </td>
+                  <% else %>
+                      <td style='border:none; font-size:5px;'>
+                        予報が<br>ありません
+                      </td>
+                  <% end %>
               <% end %>
           </tr>
         </thead>
         <tbody>
             <tr>
-              <% for i in 0..6 do %>
+              <% for i in 0..7 do %>
                 <th style='border:none;'>
                   <% date = Date.today %>
                   <% date += i %>
