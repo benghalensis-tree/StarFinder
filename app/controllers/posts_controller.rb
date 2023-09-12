@@ -23,9 +23,11 @@ class PostsController < ApplicationController
     date = Date.today
     city = City.near([@post.latitude, @post.longitude], 100).first
     @weather_forecasts = []
-    for i in 0..7 do
-      @weather_forecasts[i] = city.weather_forecasts.find_by(date: date)
-      date += 1
+    if city.present?
+      for i in 0..7 do
+        @weather_forecasts[i] = city.weather_forecasts.find_by(date: date)
+        date += 1
+      end
     end
     if @post.rating.present?
       gon.rating_data = [
