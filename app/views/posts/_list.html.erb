@@ -1,29 +1,29 @@
-<section class="content-section bg-black">
-    <div class="container px-4">
+    <div class="container py-3 px-4">
         <div class="row justify-content-center">    
             <% posts.each do |post| %>
-                <div class="col-lg-6 fadein">
-                    <a class="list-item rounded " href = "<%= post_path(post) %>">
-                        <div class="caption">
-                            <div class="caption-content mb-0">
+                <div class="col-lg-6 py-3 fadein">
+                    <div class='rounded text-light bg-secondary' >
+                        <a class="list-item rounded" href = "<%= post_path(post) %>">
+                            <div class="caption">
+                                <div class="caption-content mb-0">
+                                </div>
                             </div>
+                            <% if post.image? %>
+                            <%= image_tag post.image.url, class: 'img-fluid', alt: "..." %>
+                            <% else %>
+                            <%= image_tag "no-image.png", class: 'img-fluid', alt: "..." %>
+                            <% end %>
+                        </a>
+                        <div class='mx-3 pb-2 px-lg-5 text-left'>
+                            <div><%= post.title %></div>
+                            <i class="fa-solid fa-eye me-1"></i><%= post.view_count %> pv
+                            <i id="favorite_button_<%= post.id %>">
+                                <%= render "favorites/button", post: post%>
+                            </i>
                         </div>
-                        <% if post.image? %>
-                          <%= image_tag post.image.url, class: 'img-fluid', alt: "..." %>
-                        <% else %>
-                          <%= image_tag "no-image.png", class: 'img-fluid', alt: "..." %>
-                        <% end %>
-                    </a>
-                    <div class='container rounded mb-1 px-4 pt-3 pb-3 px-lg-5 text-left bg-secondary'>
-                        <p><%= post.title %></p>
-                        <i class="fa-solid fa-eye me-1"></i><%= post.view_count %> pv
-                        <i id="favorite_button_<%= post.id %>">
-                            <%= render "favorites/button", post: post%>
-                        </i>
                     </div>
                 </div>
             <% end %>
             <%= paginate posts %>
         </div>
      </div>
-</section>
