@@ -1,7 +1,7 @@
 <% if @post.image? %>
     <% image_url = @post.image.url %>
 <% else %>
-    <% image_url = asset_path "no-image.png" %>
+    <% image_url = asset_path "no-image-post.png" %>
 <% end %>
 
 <div class='d-none d-lg-block'>
@@ -16,10 +16,14 @@
 </div>
 
 <%= render 'posts/post_data', post: @post, favorite: @favorite %>
-<%= render 'shared/moon_age'%>
-<%= render 'shared/weather', weather_forecasts: @weather_forecasts %>
-<%= render 'comments/comment', comments: @comments %>
-<%= render 'shared/hotel', hotels: @hotels %>
+<div class='py-5'>
+    <%= render 'shared/moon_age'%>
+    <%= render 'shared/weather', weather_forecasts: @weather_forecasts %>
+</div>
+<div class='px-4'>
+    <%= render 'comments/comment', comments: @comments %>
+</div>
+    <%= render 'shared/hotel', hotels: @hotels %>
 
 <style>
   .post-show-background-image {

@@ -45,7 +45,6 @@ for (var i = 0; i < weather_forecasts.length; i++) {
       markers_wf[i] = new google.maps.Marker({
         position: markerLatLng,
         map: map,
-        visible: false,
         icon: {
           url: weather_icon,
           scaledSize: new google.maps.Size(40, 40),
@@ -68,7 +67,6 @@ for (var i = 0; i < weather_forecasts.length; i++) {
       });
       weather_infoOpen(i);
       weather_infoClose(i);
-      toggleWeatherForecasts();
     }  
 
 

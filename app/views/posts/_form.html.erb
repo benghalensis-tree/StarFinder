@@ -10,19 +10,23 @@
     </div>
   <% end %>
 
-  <div class="mt-5 mb-5 text-light text-center">
-    <%= form.label :access_date, '訪れた日を選択' %>
+  <div class='my-5 text-light text-left'>
+  訪れた日を選択してください。
+  </div>
+  <div class="my-5 text-light text-center">
     <%= form.date_field :access_date, class: 'bg-secondary text-white', value: ( post.new_record? ? Date.today : post.access_date ) %>
   </div>
-
+  <div class='text-light text-left'>
+  画像を選択してください。
+  </div>
   <% if post.image.present? %>
-    <%= image_tag post.image.url, id: :posts_form_img_prev, size: '800x200' %>
+    <%= image_tag post.image.url, id: :posts_form_img_prev, size: '300x200' %>
   <% else %>
     <%= image_tag "no-image.png", id: :posts_form_img_prev %>
   <% end %>
-  <p>
-    <%= form.file_field :image, class: 'btn btn-dark border rounded', id: :post_img  %>
-  </p>
+  <div class="d-flex mt-2 mb-5 text-light justify-content-center">
+    <%= form.file_field :image, class: 'btn btn-dark btn-sm border rounded', id: :post_img  %>
+  </div>
  
   <div class="mb-1 mt-5 text-left">
     <%= form.label :address %>を選択してください。
