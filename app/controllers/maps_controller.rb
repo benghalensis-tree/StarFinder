@@ -26,6 +26,7 @@ class MapsController < ApplicationController
       }
     end
    
+    @select_date = Date.today
     @date = Date.today
     @weather_forecasts = WeatherForecast.where(date: @date)
     gon.weather_forecasts = @weather_forecasts.map do |weather_forecast|
