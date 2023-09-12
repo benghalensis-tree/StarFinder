@@ -15,7 +15,7 @@ namespace :open_weather_api do
         end
       end
     end
-    puts 'completed!'
+    puts "completed! weather_forecasts_1 #{Time.now}"
   end
   task weather_forecasts_2: :environment do
     City.all[47..93].each do |city|
@@ -32,7 +32,7 @@ namespace :open_weather_api do
         end
       end
     end
-    puts 'completed!'
+    puts "completed! weather_forecasts_2 #{Time.now}"
   end
   task weather_forecasts_3: :environment do
     City.all[94..140].each do |city|
@@ -49,6 +49,6 @@ namespace :open_weather_api do
         end
       end
     end
-    puts 'completed!'
+    puts "completed! weather_forecasts_3 #{Time.now}"
   end
 end
