@@ -5,8 +5,6 @@
                 <%= link_to @post.image.url, class: 'btn btn-sm text-light', "data-lightbox" => @post.image.url do %>
                     拡大
                 <% end %>
-            <% else %>
-                <%= image_tag "no-image.png", class: 'posts-show-img' %>
             <% end %>
         </div>
     </div>
