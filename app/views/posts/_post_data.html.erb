@@ -1,6 +1,17 @@
 <div class='container'>
-    <div class="row h-25 mb-1 px-4 mt-5 px-lg-5 text-center">
-        <div class='col'>
+    <div class="row  py-0">
+         <div class='col text-right'>
+            <% if @post.image? %>
+                <%= link_to @post.image.url, class: 'btn btn-sm text-light', "data-lightbox" => @post.image.url do %>
+                    拡大
+                <% end %>
+            <% else %>
+                <%= image_tag "no-image.png", class: 'posts-show-img' %>
+            <% end %>
+        </div>
+    </div>
+    <div class="row text-light pb-5 px-4 text-center">
+        <div class='col-12 col-lg-6 mb-3'>
             <div class='btn-group bg-light rounded'>
                 <% if post.user.image.present? %>
                   <%= link_to image_tag(post.user.image.thumb.url, class: 'posts-show-user-icon border boder-light rounded-circle'), my_page_path(post.user) %>
@@ -30,31 +41,20 @@
             <%= post.address %>
         </div>
     </div>
-    <div class='row fadein'>
-        <h2 class="col-12 col-lg-5 mb-5 mt-5 text-light d-flex align-items-center">
-            <%= post.title %>
-        </h2>
 
-        <div class='col col-lg-3 d-flex justify-content-end'>
-            <div class='posts-show-img-content'>
-                <% if @post.image? %>
-                    <%= link_to @post.image.url, class:' btn btn-dark', "data-lightbox" => @post.image.url do %>
-                        <%= image_tag @post.image.url, class: 'posts-show-img'%>
-                    <% end %>
-                    
-                <% else %>
-                    <%= image_tag "no-image.png", class: 'posts-show-img' %>
-                <% end %>
-            </div>
-        </div>
-        <div class="col col-lg-3 d-flex justify-content-end">
-            <div class="bg-secondary rounded fadein">
-                <%= javascript_pack_tag 'radar_chart' %>
-                <canvas class="posts-show-chart" id="myChart"></canvas>
-            </div>
+    <div class="py-3">
+        <h3 class="mb-1 text-light d-flex align-items-center fadein">
+            <%= post.title %>
+        </h3>
+        <div class="py-3 px-4 text-light fadein"> 
+            <%= post.content %>
         </div>
     </div>
-    <div class="pt-3 mt-5 pb-3 mb-3 px-4 text-light" style='min-height: 150px;'> 
-        <%= post.content %>
+
+    <div class="d-flex py-3 justify-content-center">
+        <div class="bg-secondary rounded fadein">
+            <%= javascript_pack_tag 'radar_chart' %>
+            <canvas class="posts-show-chart" id="myChart"></canvas>
+        </div>
     </div>
 </div>

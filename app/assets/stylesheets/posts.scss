@@ -72,7 +72,9 @@
 }
 
 //posts-formのcss
-
+#posts_form_img_prev{
+  width: 30%;
+}
 .posts-form-rating{
   display: flex;
   flex-direction: row-reverse;
@@ -110,12 +112,6 @@
 
 //posts-showのcss
 
-.posts-show-img-content {
-  height: 200px;
-  width: 300px; 
-  overflow: hidden;
-  position: relative; 
-}
 .posts-show-img{
   height: 100%;
   width: 100%;
@@ -137,5 +133,5 @@
   left: 0;
   right: 0;
   margin: auto;
-  height: 50%;
+  height: 60%;
 }
