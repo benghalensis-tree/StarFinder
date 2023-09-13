@@ -4,7 +4,7 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   validates :name, presence: true
   has_many :posts, dependent: :destroy
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :post
   has_many :comments, dependent: :destroy
   has_many :view_counts, dependent: :destroy
