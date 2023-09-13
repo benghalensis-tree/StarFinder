@@ -1,6 +1,8 @@
 <section class="conntent-section d-flex align-items-center bg-black" >
     <div class="container px-4 mt-5 px-lg-5 text-center">
       <h2 class="mb-1 text-left"><%= t('.sign_in') %></h2>
+      
+      <div class='text-left text-light py-3'>アカウント未登録の方は<%= link_to '新規登録', new_user_registration_path, class: 'text-decoration-none' %>から</div>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group mb-1 text-left">
