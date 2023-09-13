@@ -56,8 +56,9 @@
           <% else %>
             <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'サインアップ', new_user_registration_path, class: 'nav-link' %></li>
-            <li class="nav-item"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'nav-link' %></li>
-            <li class="nav-item"><%= link_to '管理者ログイン', users_guest_admin_sign_in_path, method: :post, class: 'nav-link' %></li>
+            
+            <%# <li class="nav-item"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'nav-link' %></li>
+            <%# <li class="nav-item"><%= link_to '管理者ログイン', users_guest_admin_sign_in_path, method: :post, class: 'nav-link' %></li>
           <% end %>
         </ul>
       </nav>
@@ -87,8 +88,8 @@
           <% else %>
             <li class="sidebar-nav-item"><%= link_to 'ログイン', new_user_session_path %></li>
             <li class="sidebar-nav-item"><%= link_to 'サインアップ', new_user_registration_path %></li>
-            <li class="sidebar-nav-item"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></li>
-            <li class="sidebar-nav-item"><%= link_to '管理者ログイン', users_guest_admin_sign_in_path, method: :post %></li>
+            <%# <li class="sidebar-nav-item"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></li>
+            <%# <li class="sidebar-nav-item"><%= link_to '管理者ログイン', users_guest_admin_sign_in_path, method: :post %></li> 
           <% end %>
         </ul>
       </nav>

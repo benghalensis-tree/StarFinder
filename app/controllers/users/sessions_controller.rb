@@ -2,17 +2,21 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  def new_guest
-    user = User.guest
-    sign_in user
-    redirect_to maps_path, notice: 'ゲストユーザーとしてログインしました。'
-  end
 
-  def new_guest_admin
-    user = User.guest_admin
-    sign_in user
-    redirect_to maps_path, notice: '管理者ユーザーとしてログインしました。'
-  end
+  ##################################################################
+  # ゲストログインについての記述
+  # def new_guest
+  #   user = User.guest
+  #   sign_in user
+  #   redirect_to maps_path, notice: 'ゲストユーザーとしてログインしました。'
+  # end
+
+  # def new_guest_admin
+  #   user = User.guest_admin
+  #   sign_in user
+  #   redirect_to maps_path, notice: '管理者ユーザーとしてログインしました。'
+  # end
+  ##################################################################
 
   # GET /resource/sign_in
   # def new

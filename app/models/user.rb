@@ -51,25 +51,26 @@ class User < ApplicationRecord
     self.save!
   end
 
-  def self.guest
-    find_or_create_by!(email: 'guest@guest.com') do |user|
-      user.password = SecureRandom.urlsafe_base64
-      user.password_confirmation = user.password
-      user.uid = SecureRandom.uuid
-      user.provider = SecureRandom.uuid
-      user.name = 'ゲスト'
-      user.admin = false
-    end
-  end
+  # ゲストログインについての記述
+  # def self.guest
+  #   find_or_create_by!(email: 'guest@guest.com') do |user|
+  #     user.password = SecureRandom.urlsafe_base64
+  #     user.password_confirmation = user.password
+  #     user.uid = SecureRandom.uuid
+  #     user.provider = SecureRandom.uuid
+  #     user.name = 'ゲスト'
+  #     user.admin = false
+  #   end
+  # end
 
-  def self.guest_admin
-    find_or_create_by!(email: 'admin@admin.com') do |user|
-      user.password = SecureRandom.urlsafe_base64
-      user.password_confirmation = user.password
-      user.uid = SecureRandom.uuid
-      user.provider = SecureRandom.uuid
-      user.name = '管理者'
-      user.admin = true
-    end
-  end
+  # def self.guest_admin
+  #   find_or_create_by!(email: 'admin@admin.com') do |user|
+  #     user.password = SecureRandom.urlsafe_base64
+  #     user.password_confirmation = user.password
+  #     user.uid = SecureRandom.uuid
+  #     user.provider = SecureRandom.uuid
+  #     user.name = '管理者'
+  #     user.admin = true
+  #   end
+  # end
 end
