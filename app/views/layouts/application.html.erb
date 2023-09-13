@@ -48,16 +48,18 @@
           <li class="nav-item"><%= link_to '一覧', posts_path, class: 'nav-link' %></li>
           <% if user_signed_in? %>
             <li class="nav-item"><%= link_to 'マイページ', my_page_path(current_user.id), class: 'nav-link' %></li>
-            <li class="nav-item"><%= link_to '新規投稿', new_post_path, class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to '投稿する', new_post_path, class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
             <% if current_user.admin? %>
               <li class="nav-item"><%= link_to '管理画面', rails_admin_path, class: 'nav-link', id: 'admin-screen-btn' %></li>
             <% end %>
           <% else %>
+            <li class="nav-item"><%= link_to '投稿する', new_user_session_path, class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %></li>
             <li class="nav-item"><%= link_to 'サインアップ', new_user_registration_path, class: 'nav-link' %></li>
-            <li class="nav-item"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'nav-link' %></li>
-            <li class="nav-item"><%= link_to '管理者ログイン', users_guest_admin_sign_in_path, method: :post, class: 'nav-link' %></li>
+            
+            <%# <li class="nav-item"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'nav-link' %></li>
+            <%# <li class="nav-item"><%= link_to '管理者ログイン', users_guest_admin_sign_in_path, method: :post, class: 'nav-link' %></li>
           <% end %>
         </ul>
       </nav>
@@ -79,16 +81,17 @@
           <li class="sidebar-nav-item"><%= link_to '一覧', posts_path %></li>
           <% if user_signed_in? %>
             <li class="sidebar-nav-item"><%= link_to 'マイページ', my_page_path(current_user.id) %></li>
-            <li class="sidebar-nav-item"><%= link_to '新規投稿', new_post_path %></li>
+            <li class="sidebar-nav-item"><%= link_to '投稿する', new_post_path %></li>
             <li class="sidebar-nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             <% if current_user.admin? %>
               <li class="sidebar-nav-item"><%= link_to '管理画面', rails_admin_path %></li>
             <% end %>
           <% else %>
+            <li class="sidebar-nav-item"><%= link_to '投稿する', new_user_session_path %></li>
             <li class="sidebar-nav-item"><%= link_to 'ログイン', new_user_session_path %></li>
             <li class="sidebar-nav-item"><%= link_to 'サインアップ', new_user_registration_path %></li>
-            <li class="sidebar-nav-item"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></li>
-            <li class="sidebar-nav-item"><%= link_to '管理者ログイン', users_guest_admin_sign_in_path, method: :post %></li>
+            <%# <li class="sidebar-nav-item"><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %></li>
+            <%# <li class="sidebar-nav-item"><%= link_to '管理者ログイン', users_guest_admin_sign_in_path, method: :post %></li> 
           <% end %>
         </ul>
       </nav>
