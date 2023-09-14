@@ -1,3 +1,9 @@
+<% content_for :title do %>
+  <% province = @post.address.split(' ')[0] %>
+  <% city = @post.address.split(' ')[1] %>
+  <%"#{province + city}の星空スポット|天体観測・星空・天の川" %>
+<% end %>
+
 <% if @post.image? %>
     <% image_url = @post.image.url %>
 <% else %>

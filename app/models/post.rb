@@ -39,7 +39,8 @@ class Post < ApplicationRecord
       address_arry[4] = result['quarter']
       address_arry[5] = result['town']
       address_arry[6] = result['road']
-      self.address = address_arry.join
+      address_arry.delete(nil)
+      self.address = address_arry.join(' ')
     end
   end
 end
