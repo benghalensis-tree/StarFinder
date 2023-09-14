@@ -6,9 +6,7 @@ class Post < ApplicationRecord
   validates :access_date, presence: true, date: {
     after: Date.new(1900, 1, 1)
   }
-  validate :address_present
-  reverse_geocoded_by :latitude, :longitude, language: :ja
-  after_validation :reverse_geocode
+  validate :custom_geocoder
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
@@ -26,12 +24,23 @@ class Post < ApplicationRecord
     ["comments", "favorite_users", "favorites", "user", "view_counts"]
   end
 
-  def address_present  
-    if Geocoder.address([latitude, longitude]).present? == false
+  def custom_geocoder
+    result = Geocoder.search([latitude, longitude],language: :ja).first.data['address']
+    if result.present? == false
       errors.add(:address, "は存在しない住所です。")
-    elsif Geocoder.address([latitude, longitude]).include?('Japan') == false
+    elsif result['country'].include?('日本') == false
       errors.add(:address, 'は日本の地点のみ登録できます。')
+    else
+      address_arry = []
+      address_arry[0] = result['province']
+      address_arry[1] = result['city']
+      address_arry[2] = result['county']
+      address_arry[3] = result['region']
+      address_arry[4] = result['quarter']
+      address_arry[5] = result['town']
+      address_arry[6] = result['road']
+      address_arry.delete(nil)
+      self.address = address_arry.join(' ')
     end
   end
-
 end

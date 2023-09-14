@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%"明るさランク#{@star_light.rank}" %>
+<% end %>
+
 <header class="star-lights-show-masthead parallax-content d-flex align-items-center"  style="background-image: url(<%= asset_path "star_lights_rank_img/#{@star_light.rank}.jpg" %>) ">
     <div class="star-lights-show-img-cover d-flex flex-column align-items-center justify-content-center fadein">
         <div class="text-center">

@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%"#{@user.name}のお気に入り一覧" %>
+<% end %>
+
 <%= render '/my_pages/profile' %>
 <h2 class="container mb-1 px-4 mt-5 px-lg-5 text-center">お気に入り</h2>
 <%= render '/posts/list', posts: @posts %>
