@@ -32,7 +32,7 @@
     <nav class="d-none d-lg-block">
       <nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top">
         <%= link_to maps_path, class: 'navbar-brand ml-5' do%>
-          <%= image_tag(asset_path('logo.png'), style: 'width: 30px;')%>StarFinder
+          <%= image_tag(asset_path('logo.png'), style: 'width: 100px;')%>
         <% end %>
         <ul class="navbar-nav mr-auto">
           <% if notice %>
@@ -70,7 +70,7 @@
     <nav class="d-lg-none">
         <nav class="navbar justify-content-start navbar-expand-md navbar-dark bg-secondary fixed-top">
             <%= link_to maps_path, class: 'navbar-brand ml-1' do%>
-              <%= image_tag(asset_path('logo.png'), style: 'width: 30px;')%><small>StarFinder</small>
+              <%= image_tag(asset_path('logo.png'), style: 'width: 100px;')%>
             <% end %>
             <div class='col-6'><%= render 'shared/search', q: @q, url: posts_path %></div>
             <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
