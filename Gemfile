@@ -43,6 +43,7 @@ gem 'fog-aws'
 gem "aws-sdk-s3", require: false 
 gem 'date_validator'
 gem 'kaminari'
+gem 'rack-rewrite'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
