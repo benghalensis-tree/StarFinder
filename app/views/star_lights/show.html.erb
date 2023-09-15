@@ -1,10 +1,19 @@
 <% content_for :title do %>
-  <%"明るさランク#{@star_light.rank}" %>
+  <% if @star_light.address.present? %>
+    <% province = @star_light.address.split(' ')[0] %>
+    <% city = @star_light.address.split(' ')[1] %>
+    <%"#{province + city}の星の明るさ・天気・月齢・ホテル" %>
+  <% else %>
+    <%"星の明るさ・天気・月齢・ホテル" %>
+  <% end %>
 <% end %>
 
 <header class="star-lights-show-masthead parallax-content d-flex align-items-center"  style="background-image: url(<%= asset_path "star_lights_rank_img/#{@star_light.rank}.jpg" %>) ">
     <div class="star-lights-show-img-cover d-flex flex-column align-items-center justify-content-center fadein">
         <div class="text-center">
+            <div class='text-light'>
+              <%= @star_light.address %>の星の明るさ
+            </div>
             <h2 class='text-light star-lights-show-rank-font'>ランク：<%= @star_light.rank %></h2>
             <% @star_light.rank.times do%>
                 <%= image_tag asset_path("magnitude_icons/icon_#{@star_light.rank}.png"), class: 'star-lights-show-rank-icon' %>
